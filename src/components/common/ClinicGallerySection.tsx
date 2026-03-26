@@ -10,13 +10,13 @@ const STATIC_FALLBACK: ClinicGalleryImage[] = [
   { id: "5", image_url: "/Astra_Dental_Langley_Treatment_Rooms.jpg", alt_text: "Astra Dental Langley treatment room", caption: "Patient Comfort First", sort_order: 4, is_active: true, created_at: "", updated_at: "" },
 ];
 
-const AUTO_INTERVAL = 4000;
+const AUTO_INTERVAL = 4500;
+const FADE_DURATION = 900;
 
 export default function ClinicGallerySection() {
   const [images, setImages] = useState<ClinicGalleryImage[]>([]);
   const [current, setCurrent] = useState(0);
-  const [animating, setAnimating] = useState(false);
-  const [direction, setDirection] = useState<"left" | "right">("left");
+  const [transitioning, setTransitioning] = useState(false);
   const [paused, setPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -28,26 +28,23 @@ export default function ClinicGallerySection() {
   }, []);
 
   const goTo = useCallback(
-    (index: number, dir: "left" | "right") => {
-      if (animating || images.length === 0) return;
-      setDirection(dir);
-      setAnimating(true);
+    (index: number) => {
+      if (transitioning || images.length === 0 || index === current) return;
+      setTransitioning(true);
       setTimeout(() => {
         setCurrent(index);
-        setAnimating(false);
-      }, 420);
+        setTransitioning(false);
+      }, FADE_DURATION);
     },
-    [animating, images.length]
+    [transitioning, images.length, current]
   );
 
   const next = useCallback(() => {
-    const idx = (current + 1) % images.length;
-    goTo(idx, "left");
+    goTo((current + 1) % images.length);
   }, [current, images.length, goTo]);
 
   const prev = useCallback(() => {
-    const idx = (current - 1 + images.length) % images.length;
-    goTo(idx, "right");
+    goTo((current - 1 + images.length) % images.length);
   }, [current, images.length, goTo]);
 
   useEffect(() => {
@@ -73,12 +70,6 @@ export default function ClinicGallerySection() {
   }
 
   if (images.length === 0) return null;
-
-  const slideClass = animating
-    ? direction === "left"
-      ? "translate-x-[-100%] opacity-0"
-      : "translate-x-[100%] opacity-0"
-    : "translate-x-0 opacity-100";
 
   return (
     <section className="bg-white py-20 lg:py-28 overflow-hidden">
@@ -110,18 +101,25 @@ export default function ClinicGallerySection() {
             {images.map((img, i) => (
               <div
                 key={img.id}
-                className={`absolute inset-0 transition-all duration-[420ms] ease-in-out ${
-                  i === current ? slideClass : "opacity-0 pointer-events-none"
-                }`}
+                className="absolute inset-0"
+                style={{
+                  opacity: i === current ? 1 : 0,
+                  transition: `opacity ${FADE_DURATION}ms ease-in-out`,
+                  pointerEvents: i === current ? "auto" : "none",
+                  zIndex: i === current ? 1 : 0,
+                }}
                 aria-hidden={i !== current}
               >
                 <img
                   src={img.image_url}
                   alt={img.alt_text}
                   loading="lazy"
-                  className={`w-full h-full object-cover object-center transition-transform duration-[4000ms] ease-out ${
-                    i === current && !animating ? "scale-[1.04]" : "scale-100"
+                  className={`w-full h-full object-cover object-center transition-transform ease-out ${
+                    i === current && !transitioning
+                      ? "scale-[1.04]"
+                      : "scale-100"
                   }`}
+                  style={{ transitionDuration: `${AUTO_INTERVAL + FADE_DURATION}ms` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent" />
                 {img.caption && (
@@ -154,7 +152,7 @@ export default function ClinicGallerySection() {
             {images.map((_, i) => (
               <button
                 key={i}
-                onClick={() => goTo(i, i > current ? "left" : "right")}
+                onClick={() => goTo(i)}
                 className={`rounded-full transition-all duration-300 ${
                   i === current
                     ? "w-6 h-2 bg-teal-600"
