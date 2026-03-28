@@ -18,6 +18,8 @@ import AdminLocationsPage from "./pages/AdminLocationsPage";
 import AdminServiceImagesPage from "./pages/AdminServiceImagesPage";
 import AdminPatientFormsPage from "./pages/AdminPatientFormsPage";
 import NewPatientFormPage from "./pages/NewPatientFormPage";
+import BotoxPage from "./pages/services/BotoxPage";
+import DentalImplantsPage from "./pages/services/DentalImplantsPage";
 
 const locationSlugs = [
   "dentist-langley",
@@ -90,6 +92,8 @@ const router = createBrowserRouter([
       { path: "blog/:slug", element: <BlogPostPage /> },
       { path: "patient-info/new-patient-form/", element: <NewPatientFormPage /> },
       { path: "langley-dental-services/", element: <ServicesHubPage /> },
+      { path: "langley-dental-services/botox/", element: <BotoxPage /> },
+      { path: "langley-dental-services/dental-implants-langley/", element: <DentalImplantsPage /> },
       {
         path: "langley-dental-services/:categorySlug/",
         element: <ServiceCategoryPage />,

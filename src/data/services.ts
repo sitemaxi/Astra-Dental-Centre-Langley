@@ -225,9 +225,28 @@ export const serviceCategories: ServiceCategory[] = [
     title: "Prosthodontics",
     slug: "prosthodontics",
     categoryPath: "/langley-dental-services/prosthodontics/",
-    description: "Specialized restoration and replacement of teeth to restore function and aesthetics.",
+    description: "Specialized restoration and replacement of teeth — crowns, bridges, and dentures to restore your smile and function.",
     icon: "Star",
-    services: [],
+    services: [
+      {
+        title: "Dental Crowns",
+        slug: "crowns",
+        categorySlug: "cosmetic-dentistry",
+        description: "Custom-made ceramic or porcelain caps that protect and restore damaged, cracked, or heavily filled teeth.",
+      },
+      {
+        title: "Dental Bridges",
+        slug: "bridges",
+        categorySlug: "cosmetic-dentistry",
+        description: "Fixed restorations that replace one or more missing teeth by anchoring to neighbouring healthy teeth.",
+      },
+      {
+        title: "Dentures",
+        slug: "dentures",
+        categorySlug: "general-dentistry",
+        description: "Full or partial removable appliances to replace multiple missing teeth comfortably and affordably.",
+      },
+    ],
   },
   {
     title: "Periodontics",
@@ -235,7 +254,20 @@ export const serviceCategories: ServiceCategory[] = [
     categoryPath: "/langley-dental-services/periodontics/",
     description: "Prevention, diagnosis, and treatment of gum disease and conditions affecting the supporting structures of teeth.",
     icon: "Leaf",
-    services: [],
+    services: [
+      {
+        title: "Professional Teeth Cleaning",
+        slug: "dental-exams-and-cleanings",
+        categorySlug: "preventive-dentistry",
+        description: "Routine deep cleaning to remove plaque and tartar buildup that regular brushing can't reach.",
+      },
+      {
+        title: "Gum Surgery",
+        slug: "gum-surgery",
+        categorySlug: "gum-surgery",
+        description: "Surgical pocket reduction and gum grafting procedures for advanced periodontal disease.",
+      },
+    ],
   },
   {
     title: "Children's Dentistry",
@@ -243,6 +275,41 @@ export const serviceCategories: ServiceCategory[] = [
     categoryPath: "/langley-dental-services/childrens-dentistry/",
     description: "Gentle, child-friendly dental care focused on building healthy habits from an early age.",
     icon: "Smile",
+    services: [
+      {
+        title: "Children's Dental Exams & Cleanings",
+        slug: "dental-exams-and-cleanings",
+        categorySlug: "preventive-dentistry",
+        description: "Gentle routine checkups and professional cleanings tailored for children of all ages.",
+      },
+      {
+        title: "Orthodontics for Children",
+        slug: "braces-for-kids",
+        categorySlug: "orthodontics",
+        description: "Early orthodontic treatment to guide jaw development and correct misalignment in children.",
+      },
+      {
+        title: "Composite Fillings for Kids",
+        slug: "composite-fillings",
+        categorySlug: "general-dentistry",
+        description: "Tooth-coloured fillings that treat cavities gently and restore young smiles naturally.",
+      },
+    ],
+  },
+  {
+    title: "Botox & TMJ Therapy",
+    slug: "botox",
+    categoryPath: "/langley-dental-services/botox/",
+    description: "Therapeutic and aesthetic Botox treatments for jaw pain, TMJ disorders, bruxism, and facial rejuvenation.",
+    icon: "Sparkles",
+    services: [],
+  },
+  {
+    title: "Dental Implants",
+    slug: "dental-implants-langley",
+    categoryPath: "/langley-dental-services/dental-implants-langley/",
+    description: "Permanent, natural-looking tooth replacement using titanium implants anchored directly into the jawbone.",
+    icon: "Zap",
     services: [],
   },
 ];

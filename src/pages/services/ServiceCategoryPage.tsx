@@ -136,7 +136,7 @@ export default function ServiceCategoryPage() {
                         key={service.slug}
                         title={service.title}
                         description={service.description}
-                        href={`/${category.slug}/${service.slug}/`}
+                        href={`/${service.categorySlug}/${service.slug}/`}
                       />
                     ))}
                   </div>

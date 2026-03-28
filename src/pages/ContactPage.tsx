@@ -1,6 +1,7 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import Hero from "../components/common/Hero";
 import BookingForm from "../components/common/BookingForm";
+import ParkingBanner from "../components/common/ParkingBanner";
 import { BUSINESS } from "../data/navigation";
 
 export default function ContactPage() {
@@ -12,6 +13,8 @@ export default function ContactPage() {
         compact
         breadcrumb={[{ label: "Contact Us", href: "/contact-us/" }]}
       />
+
+      <ParkingBanner />
 
       <section className="py-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

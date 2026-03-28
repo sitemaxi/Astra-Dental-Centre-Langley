@@ -910,7 +910,7 @@ function ClinicGalleryImages() {
   );
 }
 
-type Tab = "categories" | "services" | "whoweserve" | "homehero" | "clinicgallery";
+type Tab = "categories" | "services" | "whoweserve" | "homehero" | "clinicgallery" | "video";
 
 export default function AdminServiceImagesPage() {
   const navigate = useNavigate();
@@ -1031,6 +1031,15 @@ export default function AdminServiceImagesPage() {
             <LayoutGrid size={14} />
             Clinic Gallery
           </button>
+          <button
+            onClick={() => setTab("video")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              tab === "video" ? "bg-white text-navy-900 shadow-sm" : "text-gray-500 hover:text-navy-900"
+            }`}
+          >
+            <Upload size={14} />
+            Services Video
+          </button>
         </div>
 
         {tab === "categories" && (
@@ -1113,6 +1122,137 @@ export default function AdminServiceImagesPage() {
         )}
 
         {tab === "clinicgallery" && <ClinicGalleryImages />}
+
+        {tab === "video" && <ServicesVideoUpload />}
+      </div>
+    </div>
+  );
+}
+
+function ServicesVideoUpload() {
+  const videoRef = useRef<HTMLInputElement>(null);
+  const [videoUrl, setVideoUrl] = useState<string>("");
+  const [uploading, setUploading] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getSiteImagesByKeys(["services-hub-video"]).then((rows) => {
+      const row = rows.find((r) => r.key === "services-hub-video");
+      setVideoUrl(row?.image_url || "");
+      setLoading(false);
+    });
+  }, []);
+
+  async function uploadVideo(file: File) {
+    setUploading(true);
+    const ext = file.name.split(".").pop();
+    const filename = `videos/services-hub-${Date.now()}.${ext}`;
+    const { error } = await supabase.storage.from("blog-images").upload(filename, file, { upsert: true });
+    if (!error) {
+      const { data } = supabase.storage.from("blog-images").getPublicUrl(filename);
+      setVideoUrl(data.publicUrl);
+    }
+    setUploading(false);
+  }
+
+  async function save() {
+    setSaving(true);
+    await upsertSiteImageByKey("services-hub-video", videoUrl || null);
+    setSaving(false);
+    setSuccess(true);
+    setTimeout(() => setSuccess(false), 3000);
+  }
+
+  async function remove() {
+    setVideoUrl("");
+    await upsertSiteImageByKey("services-hub-video", null);
+  }
+
+  if (loading) {
+    return (
+      <div className="flex items-center gap-2 text-sm text-gray-400 py-8 justify-center">
+        <Loader2 size={16} className="animate-spin" /> Loading...
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white rounded-2xl border border-gray-100 p-6">
+      <h2 className="font-poppins font-semibold text-navy-900 text-base mb-1">Services Hub — Feature Video</h2>
+      <p className="text-xs text-gray-400 leading-relaxed mb-5">
+        Upload a video (MP4, MOV, WebM — up to 200 MB) that will appear on the All Services page above the "Dental Care for Every Stage of Life" section. The video only appears when a URL is saved here. It requires the user to press play and never autoplays.
+      </p>
+
+      <div className="space-y-4">
+        <div>
+          <label className="block text-xs font-semibold text-gray-600 mb-1.5">Video URL</label>
+          <div className="flex gap-2">
+            <input
+              value={videoUrl}
+              onChange={(e) => setVideoUrl(e.target.value)}
+              placeholder="Paste a video URL or upload below"
+              className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
+            />
+            {videoUrl && (
+              <button
+                onClick={remove}
+                className="flex items-center gap-1.5 px-3 py-2 border border-red-200 text-red-500 text-xs font-medium rounded-lg hover:bg-red-50 transition-colors"
+              >
+                <Trash2 size={11} />
+                Remove
+              </button>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-xs font-semibold text-gray-600 mb-1.5">Upload Video File</label>
+          <>
+            <input
+              ref={videoRef}
+              type="file"
+              accept="video/mp4,video/quicktime,video/webm,video/*"
+              className="hidden"
+              onChange={(e) => {
+                const f = e.target.files?.[0];
+                if (f) uploadVideo(f);
+                if (videoRef.current) videoRef.current.value = "";
+              }}
+            />
+            <button
+              onClick={() => videoRef.current?.click()}
+              disabled={uploading}
+              className="flex items-center gap-1.5 px-4 py-2 border border-gray-200 text-gray-600 text-sm font-medium rounded-xl hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {uploading ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
+              {uploading ? "Uploading... (large files may take a moment)" : "Choose Video File"}
+            </button>
+          </>
+          <p className="text-[11px] text-gray-400 mt-1.5">Recommended: MP4 format, 1080p or lower. Files up to ~200 MB are supported.</p>
+        </div>
+
+        {videoUrl && (
+          <div>
+            <label className="block text-xs font-semibold text-gray-600 mb-1.5">Preview</label>
+            <video
+              src={videoUrl}
+              controls
+              preload="metadata"
+              className="w-full rounded-xl border border-gray-100 bg-gray-50 aspect-video"
+            />
+          </div>
+        )}
+
+        <button
+          onClick={save}
+          disabled={saving}
+          className="flex items-center gap-2 px-5 py-2.5 bg-teal-600 text-white text-sm font-semibold rounded-xl hover:bg-teal-700 transition-colors disabled:opacity-50"
+        >
+          {saving ? <Loader2 size={14} className="animate-spin" /> : success ? <CheckCircle2 size={14} /> : <Save size={14} />}
+          {saving ? "Saving..." : success ? "Saved!" : "Save Video"}
+        </button>
       </div>
     </div>
   );

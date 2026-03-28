@@ -67,6 +67,7 @@ const WHO_WE_SERVE_DEFAULTS = {
   "services-who-we-serve-right": "https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=600",
   "services-compare-before":     "https://images.pexels.com/photos/3762940/pexels-photo-3762940.jpeg?auto=compress&cs=tinysrgb&w=800",
   "services-compare-after":      "https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "services-hub-video":          "",
 } as const;
 
 export default function ServicesHubPage() {
@@ -87,7 +88,7 @@ export default function ServicesHubPage() {
 
   function getWhoWeServeImage(key: keyof typeof WHO_WE_SERVE_DEFAULTS): string {
     const row = whoWeServeImages.find((r) => r.key === key);
-    return row?.image_url || WHO_WE_SERVE_DEFAULTS[key];
+    return row?.image_url || WHO_WE_SERVE_DEFAULTS[key] || "";
   }
 
   return (
@@ -169,6 +170,32 @@ export default function ServicesHubPage() {
           </div>
         </div>
       </section>
+
+      {/* Feature Video */}
+      {getWhoWeServeImage("services-hub-video") && (
+        <section className="py-14 bg-navy-950">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <span className="section-label mb-3 !text-teal-400">See Us in Action</span>
+              <h2 className="font-poppins text-2xl font-bold text-white leading-tight">
+                A Look Inside Astra Dental Centre
+              </h2>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <video
+                src={getWhoWeServeImage("services-hub-video")}
+                controls
+                preload="none"
+                playsInline
+                poster="https://images.pexels.com/photos/3881449/pexels-photo-3881449.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                className="w-full aspect-video bg-navy-900"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Who is this for */}
       <section className="py-16 bg-white">

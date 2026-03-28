@@ -13,6 +13,7 @@ import DoctorBio from "../components/common/DoctorBio";
 import Testimonials from "../components/common/Testimonials";
 import WhyAccordion from "../components/common/WhyAccordion";
 import ClinicGallerySection from "../components/common/ClinicGallerySection";
+import ParkingBanner from "../components/common/ParkingBanner";
 import { serviceCategories } from "../data/services";
 import { BUSINESS } from "../data/navigation";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
@@ -176,6 +177,8 @@ export default function HomePage() {
         images={heroReady ? heroImages : []}
         mobileImages={heroReady ? mobileHeroImages : []}
       />
+
+      <ParkingBanner />
 
       {/* CDCP Section */}
       <section className="bg-white border-b border-gray-100">
