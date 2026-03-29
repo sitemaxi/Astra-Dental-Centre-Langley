@@ -105,9 +105,13 @@ export default function DentalImplantsPage() {
   const processRef = useScrollAnimation<HTMLDivElement>();
   const whyRef = useScrollAnimation<HTMLDivElement>();
   const [dbCategoryImage, setDbCategoryImage] = useState<CategoryImage | null>(null);
+  const [imageReady, setImageReady] = useState(false);
 
   useEffect(() => {
-    getCategoryImage("dental-implants-langley").then(setDbCategoryImage);
+    getCategoryImage("dental-implants-langley").then((img) => {
+      setDbCategoryImage(img);
+      setImageReady(true);
+    });
   }, []);
 
   return (
@@ -171,11 +175,15 @@ export default function DentalImplantsPage() {
 
             <aside className="space-y-5">
               <div className="rounded-2xl overflow-hidden shadow-card">
-                <img
-                  src={dbCategoryImage?.hero_image_url || "https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800"}
-                  alt={dbCategoryImage?.hero_image_alt || "Dental Implants in Langley BC"}
-                  className="w-full h-52 object-cover"
-                />
+                {imageReady ? (
+                  <img
+                    src={dbCategoryImage?.hero_image_url || "https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800"}
+                    alt={dbCategoryImage?.hero_image_alt || "Dental Implants in Langley BC"}
+                    className="w-full h-52 object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-52 bg-gray-100 animate-pulse" />
+                )}
               </div>
 
               <div className="bg-navy-950 rounded-2xl p-6 text-white">
