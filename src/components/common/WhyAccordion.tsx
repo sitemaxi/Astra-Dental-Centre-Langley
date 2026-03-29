@@ -3,13 +3,13 @@ import { useState } from "react";
 const panels = [
   {
     id: 1,
-    label: "Family Dentistry",
+    label: "Latest Technology",
     imageUrl:
-      "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?q=80&w=1974&auto=format&fit=crop",
+      "https://gyqodvtskytuzifinoxq.supabase.co/storage/v1/object/public/blog-images/clinic-gallery/1774748369573-1774748369573.jpg",
   },
   {
     id: 2,
-    label: "Modern Technology",
+    label: "Modern Equipments",
     imageUrl:
       "/Astra_Dental_Langley_Comfortable_Treatment_Rooms2.png",
   },
