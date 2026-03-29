@@ -3,13 +3,13 @@ import { useState } from "react";
 const panels = [
   {
     id: 1,
-    label: "Family Dentistry",
+    label: "Latest Tech",
     imageUrl:
-      "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?q=80&w=1974&auto=format&fit=crop",
+      "https://gyqodvtskytuzifinoxq.supabase.co/storage/v1/object/public/blog-images/clinic-gallery/1774748369573-1774748369573.jpg",
   },
   {
     id: 2,
-    label: "Modern Technology",
+    label: "Modern Equipments",
     imageUrl:
       "https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop",
   },
