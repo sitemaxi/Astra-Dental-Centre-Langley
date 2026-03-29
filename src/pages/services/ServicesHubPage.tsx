@@ -176,9 +176,9 @@ export default function ServicesHubPage() {
         <section className="py-14 bg-navy-950">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8">
-              <span className="section-label mb-3 !text-teal-400">See Us in Action</span>
+              <span className="section-label mb-3 !text-teal-400">Modern technolog/span>
               <h2 className="font-poppins text-2xl font-bold text-white leading-tight">
-                A Look Inside Astra Dental Centre
+                CEREC Ceramic Restorations
               </h2>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl">
