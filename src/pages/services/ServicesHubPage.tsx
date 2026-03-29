@@ -187,7 +187,7 @@ export default function ServicesHubPage() {
                 controls
                 preload="none"
                 playsInline
-                poster="https://images.pexels.com/photos/3881449/pexels-photo-3881449.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                poster="https://gyqodvtskytuzifinoxq.supabase.co/storage/v1/object/public/blog-images/clinic-gallery/1774748369573-1774748369573.jpg"
                 className="w-full aspect-video bg-navy-900"
               >
                 Your browser does not support the video tag.
