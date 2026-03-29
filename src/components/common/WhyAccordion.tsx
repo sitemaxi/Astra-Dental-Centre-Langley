@@ -3,7 +3,7 @@ import { useState } from "react";
 const panels = [
   {
     id: 1,
-    label: "Advanced Digital Dentistry,
+    label: "Advanced Digital Dentistry"
     imageUrl:
       "https://gyqodvtskytuzifinoxq.supabase.co/storage/v1/object/public/blog-images/clinic-gallery/1774748369573-1774748369573.jpg",
   },
