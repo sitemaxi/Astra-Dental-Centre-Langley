@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { X, MapPin, Navigation } from "lucide-react";
 
 const DISMISS_KEY = "parking-banner-dismissed";
-const PARKING_MAP_URL = "https://maps.google.com/?q=20058+Industrial+Ave+Langley+BC";
+const PARKING_MAP_URL = "https://maps.google.com/?q=20061+Fraser+Hwy+Langley+BC";
 
 export default function ParkingBanner() {
   const [visible, setVisible] = useState(false);
