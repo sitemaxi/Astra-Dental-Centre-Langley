@@ -134,7 +134,7 @@ export default function BlogPostPage() {
     : null;
 
   return (
-    <article className="pt-28 pb-12 px-4">
+    <article className="pt-29 pb-12 px-4">
       <div className="max-w-[720px] mx-auto">
 
         {/* Back link */}
