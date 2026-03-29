@@ -7,14 +7,14 @@ import { BUSINESS } from "../data/navigation";
 export default function ContactPage() {
   return (
     <>
+      <ParkingBanner />
+
       <Hero
         title="Contact Us"
         subtitle="We'd love to hear from you. Book an appointment, ask a question, or find out how to reach us."
         compact
         breadcrumb={[{ label: "Contact Us", href: "/contact-us/" }]}
       />
-
-      <ParkingBanner />
 
       <section className="py-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

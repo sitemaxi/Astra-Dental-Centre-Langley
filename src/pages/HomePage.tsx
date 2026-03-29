@@ -171,14 +171,14 @@ export default function HomePage() {
 
   return (
     <>
+      <ParkingBanner />
+
       <Hero
         title="Your Smile Deserves the Best Care in Langley"
         subtitle="Astra Dental Centre provides comprehensive, compassionate dental services for the whole family, ranging from routine cleanings to advanced restorations."
         images={heroReady ? heroImages : []}
         mobileImages={heroReady ? mobileHeroImages : []}
       />
-
-      <ParkingBanner />
 
       {/* CDCP Section */}
       <section className="bg-white border-b border-gray-100">
