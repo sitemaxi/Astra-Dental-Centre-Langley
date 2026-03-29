@@ -6,8 +6,8 @@ import Hero from "../../components/common/Hero";
 import CTASection from "../../components/common/CTASection";
 import FAQSection from "../../components/common/FAQSection";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
-import { getServiceImage } from "../../lib/serviceImagesApi";
-import type { ServiceImage } from "../../lib/serviceImagesApi";
+import { getCategoryImage } from "../../lib/serviceImagesApi";
+import type { CategoryImage } from "../../lib/serviceImagesApi";
 
 const implantTypes = [
   {
@@ -104,10 +104,10 @@ export default function DentalImplantsPage() {
   const contentRef = useScrollAnimation<HTMLDivElement>();
   const processRef = useScrollAnimation<HTMLDivElement>();
   const whyRef = useScrollAnimation<HTMLDivElement>();
-  const [dbServiceImage, setDbServiceImage] = useState<ServiceImage | null>(null);
+  const [dbCategoryImage, setDbCategoryImage] = useState<CategoryImage | null>(null);
 
   useEffect(() => {
-    getServiceImage("dental-implants-langley").then(setDbServiceImage);
+    getCategoryImage("dental-implants-langley").then(setDbCategoryImage);
   }, []);
 
   return (
@@ -170,24 +170,13 @@ export default function DentalImplantsPage() {
             </div>
 
             <aside className="space-y-5">
-              {dbServiceImage?.hero_image_url && (
-                <div className="rounded-2xl overflow-hidden shadow-card">
-                  <img
-                    src={dbServiceImage.hero_image_url}
-                    alt={dbServiceImage.hero_image_alt || "Dental Implants in Langley BC"}
-                    className="w-full h-52 object-cover"
-                  />
-                </div>
-              )}
-              {!dbServiceImage?.hero_image_url && (
-                <div className="rounded-2xl overflow-hidden shadow-card">
-                  <img
-                    src="https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="Dental Implants in Langley BC"
-                    className="w-full h-52 object-cover"
-                  />
-                </div>
-              )}
+              <div className="rounded-2xl overflow-hidden shadow-card">
+                <img
+                  src={dbCategoryImage?.hero_image_url || "https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800"}
+                  alt={dbCategoryImage?.hero_image_alt || "Dental Implants in Langley BC"}
+                  className="w-full h-52 object-cover"
+                />
+              </div>
 
               <div className="bg-navy-950 rounded-2xl p-6 text-white">
                 <h3 className="font-poppins font-semibold text-base mb-2">Book an Implant Consultation</h3>
