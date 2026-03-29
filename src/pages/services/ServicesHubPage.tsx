@@ -178,7 +178,7 @@ export default function ServicesHubPage() {
             <div className="text-center mb-8">
               <span className="section-label mb-3 !text-teal-400">Modern technolog</span>
               <h2 className="font-poppins text-2xl font-bold text-white leading-tight">
-                A Look Inside Astra Dental Centr
+                A Look InsCEREC Ceramic Restorations
               </h2>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl">
