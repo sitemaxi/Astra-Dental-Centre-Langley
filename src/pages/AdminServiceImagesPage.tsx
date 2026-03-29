@@ -1133,6 +1133,7 @@ function ServicesVideoUpload() {
   const videoRef = useRef<HTMLInputElement>(null);
   const [videoUrl, setVideoUrl] = useState<string>("");
   const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string>("");
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -1147,12 +1148,19 @@ function ServicesVideoUpload() {
 
   async function uploadVideo(file: File) {
     setUploading(true);
+    setUploadError("");
     const ext = file.name.split(".").pop();
     const filename = `videos/services-hub-${Date.now()}.${ext}`;
     const { error } = await supabase.storage.from("blog-images").upload(filename, file, { upsert: true });
-    if (!error) {
+    if (error) {
+      setUploadError(`Upload failed: ${error.message}`);
+    } else {
       const { data } = supabase.storage.from("blog-images").getPublicUrl(filename);
-      setVideoUrl(data.publicUrl);
+      const url = data.publicUrl;
+      setVideoUrl(url);
+      await upsertSiteImageByKey("services-hub-video", url);
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
     }
     setUploading(false);
   }
@@ -1231,6 +1239,9 @@ function ServicesVideoUpload() {
             </button>
           </>
           <p className="text-[11px] text-gray-400 mt-1.5">Recommended: MP4 format, 1080p or lower. Files up to ~200 MB are supported.</p>
+          {uploadError && (
+            <p className="text-xs text-red-600 mt-2 bg-red-50 border border-red-200 rounded-lg px-3 py-2">{uploadError}</p>
+          )}
         </div>
 
         {videoUrl && (
