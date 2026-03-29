@@ -11,7 +11,7 @@ const panels = [
     id: 2,
     label: "Modern Equipments",
     imageUrl:
-      "https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop",
+      "/home/project/public/Astra_Dental_Langley_Comfortable_Treatment_Rooms3.png",
   },
   {
     id: 3,
