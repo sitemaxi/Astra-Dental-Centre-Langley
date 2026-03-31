@@ -46,7 +46,7 @@ export default function ParkingBanner() {
             <div className="flex items-center gap-2 min-w-0">
               <MapPin size={14} className="flex-shrink-0 text-teal-200 mt-0.5" />
               <p className="text-xs leading-snug">
-                <span className="font-semibold">Parking Directions</span>
+                <span className="font-semibold">PWatch video for parking directions</span>
                 <span> — Entrance from 20058 Industrial Ave.</span>
               </p>
             </div>
@@ -64,7 +64,7 @@ export default function ParkingBanner() {
               className="flex-1 flex items-center justify-center gap-1.5 border border-white/70 text-white font-semibold text-xs px-3 py-2 rounded-full hover:bg-teal-600 transition-colors"
             >
               <PlayCircle size={12} />
-              See the Video
+             Watch video for parking directions
             </button>
             <a
               href={PARKING_MAP_URL}
