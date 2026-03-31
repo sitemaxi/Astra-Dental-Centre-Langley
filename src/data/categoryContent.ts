@@ -32,7 +32,7 @@ export const categoryPageContent: Record<string, CategoryPageContent> = {
       { title: "Bite Guards", desc: "Custom night guards to protect teeth from grinding and clenching" },
     ],
     whoFor: [
-      { label: "Patients with cavities", desc: "We restore decayed teeth with natural-looking composite fillings" },
+      { label: "Patients with cavities", desc: "We restore decayed teeth with natural-looking white fillings" },
       { label: "Adults missing teeth", desc: "Custom dentures that fit comfortably and restore full chewing function" },
       { label: "Teeth grinders", desc: "Custom bite guards to protect enamel and relieve jaw tension overnight" },
       { label: "Patients with damaged teeth", desc: "Inlays and onlays repair and strengthen structurally compromised teeth" },
