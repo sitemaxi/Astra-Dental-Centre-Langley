@@ -46,7 +46,7 @@ export default function ParkingBanner() {
             <div className="flex items-center gap-2 min-w-0">
               <MapPin size={14} className="flex-shrink-0 text-teal-200 mt-0.5" />
               <p className="text-xs leading-snug">
-                <span className="font-semibold">PWatch video for parking directions</span>
+                <span className="font-semibold">Parking Directions</span>
                 <span> — Entrance from 20058 Industrial Ave.</span>
               </p>
             </div>
