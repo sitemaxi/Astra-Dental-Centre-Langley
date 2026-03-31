@@ -289,7 +289,7 @@ export const serviceCategories: ServiceCategory[] = [
         description: "Early orthodontic treatment to guide jaw development and correct misalignment in children.",
       },
       {
-        title: "Composite Fillings for Kids",
+        title: "White Fillings for Kids",
         slug: "composite-fillings",
         categorySlug: "general-dentistry",
         description: "Tooth-coloured fillings that treat cavities gently and restore young smiles naturally.",
