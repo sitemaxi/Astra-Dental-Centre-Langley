@@ -34,7 +34,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 const whyChooseUs = [
   "Comprehensive care for the whole family",
-  "State-of-the-art dental technology",
+  "Advanced digital technology",
   "CEREC same-day ceramic restorations",
   "Invisalign certified provider",
   "Direct billing to major insurance plans",
