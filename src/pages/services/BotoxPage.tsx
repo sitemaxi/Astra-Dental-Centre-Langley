@@ -76,7 +76,7 @@ const faqs = [
 ];
 
 const whyChooseUs = [
-  { title: "15+ Years Experience", desc: "Trusted by Langley families since 2009." },
+  { title: "15+ Years Experience", desc: "Trusted by Langley families since 2013." },
   { title: "Trained Dental Team", desc: "Facial anatomy expertise from years of clinical practice." },
   { title: "All Ages Welcome", desc: "Children, adults, and seniors all in one clinic." },
   { title: "Direct Insurance Billing", desc: "We handle your insurance so you don't have to." },
