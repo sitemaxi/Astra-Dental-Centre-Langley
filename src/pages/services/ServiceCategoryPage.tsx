@@ -15,7 +15,7 @@ import type { FAQItem } from "../../components/common/FAQSection";
 const categoryFAQs: Record<string, FAQItem[]> = {
   "general-dentistry": [
     { question: "How often should I visit the dentist?", answer: "Most patients benefit from visiting every six months for a routine exam and cleaning. Patients with specific oral health concerns may need more frequent visits." },
-    { question: "Are composite fillings safe?", answer: "Yes, composite resin fillings are a safe, effective, and aesthetically pleasing option for restoring decayed teeth. They bond directly to the tooth structure." },
+    { question: "Are white fillings safe?", answer: "Yes, composite resin fillings are a safe, effective, and aesthetically pleasing option for restoring decayed teeth. They bond directly to the tooth structure." },
     { question: "How do I care for my dentures?", answer: "Remove and rinse dentures after eating, brush them daily with a soft brush and denture cleaner, soak them overnight, and visit us regularly for adjustments." },
   ],
   "cosmetic-dentistry": [
