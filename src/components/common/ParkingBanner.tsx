@@ -64,7 +64,7 @@ export default function ParkingBanner() {
               className="flex-1 flex items-center justify-center gap-1.5 border border-white/70 text-white font-semibold text-xs px-3 py-2 rounded-full hover:bg-teal-600 transition-colors"
             >
               <PlayCircle size={12} />
-             Watch video for parking directions
+            See the Video
             </button>
             <a
               href={PARKING_MAP_URL}
