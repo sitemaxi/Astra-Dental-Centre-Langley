@@ -33,7 +33,7 @@ const whyChooseUs = [
   {
     icon: <Star size={20} />,
     title: "14 years of experience in BC and Langley",
-    desc: "Serving Langley families since 2009 with skilled, compassionate care.",
+    desc: "Serving Langley families since 2013 with skilled, compassionate care.",
   },
   {
     icon: <Zap size={20} />,
