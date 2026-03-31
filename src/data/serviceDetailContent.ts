@@ -7,7 +7,7 @@ export interface ServiceDetailExtra {
 
 export const serviceDetailExtras: Record<string, ServiceDetailExtra> = {
   "composite-fillings": {
-    seoTitle: "Composite Fillings in Langley, BC",
+    seoTitle: "white Fillings in Langley, BC",
     heroImage: "https://images.pexels.com/photos/3845623/pexels-photo-3845623.jpeg?auto=compress&cs=tinysrgb&w=800",
     whoFor: [
       { label: "Patients with cavities", desc: "Composite resin restores decayed teeth naturally without metallic appearance" },
