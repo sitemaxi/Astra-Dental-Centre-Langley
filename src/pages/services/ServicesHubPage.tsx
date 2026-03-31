@@ -32,7 +32,7 @@ const iconMap: Record<string, React.ReactNode> = {
 const whyChooseUs = [
   {
     icon: <Star size={20} />,
-    title: "15+ Years of Experience",
+    title: "14 years of experience in BC and Langley",
     desc: "Serving Langley families since 2009 with skilled, compassionate care.",
   },
   {
