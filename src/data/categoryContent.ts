@@ -25,7 +25,7 @@ export const categoryPageContent: Record<string, CategoryPageContent> = {
     details: "Whether you need a simple tooth-coloured filling, custom-fitted dentures, or a precision inlay restoration, our experienced team uses modern techniques and tooth-coloured materials to deliver results that look and feel natural. We focus on prevention first, so routine visits help us catch problems early — before they become painful or costly.",
     heroImage: "https://images.pexels.com/photos/3881449/pexels-photo-3881449.jpeg?auto=compress&cs=tinysrgb&w=1200",
     includes: [
-      { title: "Composite Fillings", desc: "Tooth-coloured fillings that blend seamlessly with your natural teeth" },
+      { title: "White Fillings", desc: "Tooth-coloured fillings that blend seamlessly with your natural teeth" },
       { title: "Dentures", desc: "Custom-fitted full or partial dentures to restore your smile and function" },
       { title: "Inlay Restorations", desc: "Precision-crafted restorations that preserve more of your natural tooth" },
       { title: "Onlay Restorations", desc: "Extended restorations for larger areas of damage or decay" },
