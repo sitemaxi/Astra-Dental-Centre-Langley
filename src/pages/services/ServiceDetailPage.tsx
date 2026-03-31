@@ -16,7 +16,7 @@ import { getServiceBeforeAfters, getServiceImage } from "../../lib/serviceImages
 import type { ServiceBeforeAfter, ServiceImage } from "../../lib/serviceImagesApi";
 
 const whyChooseUs = [
-  { icon: <Star size={16} />, title: "15+ Years Experience", desc: "Trusted by Langley patients since 2013." },
+  { icon: <Star size={16} />, title: "14 years of experience in BC and Langley", desc: "Trusted by Langley patients since 2013." },
   { icon: <Zap size={16} />, title: "Modern Technology", desc: "Digital X-rays, CEREC, advanced diagnostics." },
   { icon: <Users size={16} />, title: "All Ages Welcome", desc: "Children to seniors, one caring team." },
   { icon: <Shield size={16} />, title: "Direct Billing", desc: "We handle your insurance directly." },
