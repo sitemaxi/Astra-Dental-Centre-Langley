@@ -92,7 +92,7 @@ const faqs = [
 ];
 
 const whyChooseUs = [
-  { title: "15+ Years Experience", desc: "Trusted by Langley families since 2013." },
+  { title: "14 years of experience in BC and Langley", desc: "Trusted by Langley families since 2013." },
   { title: "Advanced Technology", desc: "Digital X-rays and precise implant planning." },
   { title: "All Ages Welcome", desc: "Adults and seniors treated with equal care." },
   { title: "Direct Insurance Billing", desc: "We handle your insurance claims directly." },
