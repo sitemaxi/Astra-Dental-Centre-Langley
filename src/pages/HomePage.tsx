@@ -38,7 +38,7 @@ const whyChooseUs = [
   "CEREC same-day ceramic restorations",
   "Invisalign certified provider",
   "Direct billing to major insurance plans",
-  "Welcoming, anxiety-free environment",
+  "Large rooms to help patients feel anxiety-free and comfortable",
 ];
 
 const FAQ_ITEMS = [
