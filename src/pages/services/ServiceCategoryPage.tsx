@@ -57,7 +57,7 @@ const categoryFAQs: Record<string, FAQItem[]> = {
 };
 
 const whyChooseUs = [
-  { icon: <Star size={18} />, title: "15+ Years Experience", desc: "Trusted by Langley families since 2013." },
+  { icon: <Star size={18} />, title: "14 years of experience in BC and Langley", desc: "Trusted by Langley families since 2013." },
   { icon: <Zap size={18} />, title: "Modern Technology", desc: "Digital X-rays, CEREC, and advanced diagnostics." },
   { icon: <Users size={18} />, title: "All Ages Welcome", desc: "Children, adults, and seniors all in one clinic." },
   { icon: <Shield size={18} />, title: "Direct Insurance Billing", desc: "We handle your insurance so you don't have to." },
