@@ -86,10 +86,10 @@ export const categoryPageContent: Record<string, CategoryPageContent> = {
     details: "From clear Invisalign aligners for adults and teens who want a discreet option, to traditional braces for children with developing smiles, we offer personalized orthodontic treatment plans for every case. We also provide TMJ therapy for patients experiencing jaw pain or bite dysfunction — a commonly overlooked but highly treatable condition.",
     heroImage: "https://images.pexels.com/photos/3762940/pexels-photo-3762940.jpeg?auto=compress&cs=tinysrgb&w=1200",
     includes: [
-      { title: "Invisalign Clear Aligners", desc: "Virtually invisible aligners for discreet straightening in Langley" },
-      { title: "Braces for Kids", desc: "Early orthodontic treatment to guide jaw and tooth development" },
+      { title: "Braces for Teens & Kids", desc: "Early orthodontic treatment to guide jaw and tooth development" },
       { title: "Braces for Adults", desc: "Ceramic and metal options designed to fit adult lifestyles" },
-      { title: "TMJ Treatment", desc: "Diagnosis and relief for jaw pain, clicking, and bite dysfunction" },
+      { title: "Invisalign / Clear Aligners", desc: "Virtually invisible aligners for discreet straightening in Langley" },
+      { title: "TMJ", desc: "Diagnosis and relief for jaw pain, clicking, and bite dysfunction" },
     ],
     whoFor: [
       { label: "Children aged 7+", desc: "Early evaluation allows us to catch and correct alignment issues early" },

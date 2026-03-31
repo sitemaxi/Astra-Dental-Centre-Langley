@@ -16,7 +16,7 @@ export interface ServiceCategory {
 
 export const serviceCategories: ServiceCategory[] = [
   {
-    title: "General Dentistry",
+    title: "General Dentistry (Includes Crowns)",
     slug: "general-dentistry",
     categoryPath: "/langley-dental-services/general-dentistry/",
     description: "Comprehensive dental care for patients of all ages, addressing everyday oral health needs.",
@@ -94,7 +94,7 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
-    title: "Preventive Dentistry",
+    title: "Preventive Dentistry (Cleaning)",
     slug: "preventive-dentistry",
     categoryPath: "/langley-dental-services/preventive-dentistry/",
     description: "Proactive treatments to maintain oral health and prevent dental problems before they start.",
@@ -115,26 +115,14 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
-    title: "Orthodontics",
+    title: "Orthodontics (Braces & Invisalign)",
     slug: "orthodontics",
     categoryPath: "/langley-dental-services/orthodontics/",
     description: "Teeth straightening solutions for children and adults to achieve a properly aligned, beautiful smile.",
     icon: "AlignCenter",
     services: [
       {
-        title: "TMJ",
-        slug: "tmj",
-        categorySlug: "orthodontics",
-        description: "Diagnosis and treatment of temporomandibular joint disorders causing jaw pain.",
-      },
-      {
-        title: "Invisalign",
-        slug: "invisalign",
-        categorySlug: "orthodontics",
-        description: "Clear removable aligners that gradually straighten teeth without metal brackets.",
-      },
-      {
-        title: "Braces for Kids",
+        title: "Braces for Teens & Kids",
         slug: "braces-for-kids",
         categorySlug: "orthodontics",
         description: "Early orthodontic treatment to guide jaw development and correct misalignment.",
@@ -145,10 +133,22 @@ export const serviceCategories: ServiceCategory[] = [
         categorySlug: "orthodontics",
         description: "Discreet orthodontic options designed to fit the lifestyle of adult patients.",
       },
+      {
+        title: "Invisalign / Clear Aligners",
+        slug: "invisalign",
+        categorySlug: "orthodontics",
+        description: "Clear removable aligners that gradually straighten teeth without metal brackets.",
+      },
+      {
+        title: "TMJ",
+        slug: "tmj",
+        categorySlug: "orthodontics",
+        description: "Diagnosis and treatment of temporomandibular joint disorders causing jaw pain.",
+      },
     ],
   },
   {
-    title: "Endodontics",
+    title: "Endodontics (Root Canals)",
     slug: "endodontics",
     categoryPath: "/langley-dental-services/endodontics/",
     description: "Specialized care for the inner tissue of teeth, focused on relieving pain and saving natural teeth.",
@@ -181,7 +181,7 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
-    title: "Oral Surgery",
+    title: "Oral Surgery (Extractions)",
     slug: "oral-surgery",
     categoryPath: "/langley-dental-services/oral-surgery/",
     description: "Surgical procedures to address complex dental conditions requiring expert care.",
@@ -222,7 +222,7 @@ export const serviceCategories: ServiceCategory[] = [
     services: [],
   },
   {
-    title: "Prosthodontics",
+    title: "Prosthodontics (Crowns, Bridges & Dentures)",
     slug: "prosthodontics",
     categoryPath: "/langley-dental-services/prosthodontics/",
     description: "Specialized restoration and replacement of teeth — crowns, bridges, and dentures to restore your smile and function.",

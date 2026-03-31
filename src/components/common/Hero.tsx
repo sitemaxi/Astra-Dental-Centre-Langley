@@ -43,7 +43,7 @@ export default function Hero({
   if (compact) {
     const compactImg = slideImages[0];
     return (
-      <section className="relative bg-navy-950 pt-[110px] pb-14 overflow-hidden">
+      <section className="relative bg-navy-950 pt-[145px] pb-14 overflow-hidden">
         {compactImg && (
           <div
             className="absolute inset-0 bg-cover bg-center opacity-10"

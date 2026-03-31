@@ -201,7 +201,7 @@ export default function DentalImplantsPage() {
                 <div className="space-y-1">
                   {[
                     { label: "Oral Surgery (Extractions)", href: "/langley-dental-services/oral-surgery/" },
-                    { label: "Prosthodontics", href: "/langley-dental-services/prosthodontics/" },
+                    { label: "Prosthodontics (Crowns, Bridges & Dentures)", href: "/langley-dental-services/prosthodontics/" },
                     { label: "All Services", href: "/langley-dental-services/" },
                   ].map((l) => (
                     <Link

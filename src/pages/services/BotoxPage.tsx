@@ -201,7 +201,7 @@ export default function BotoxPage() {
                 <div className="space-y-1">
                   {[
                     { label: "Orthodontics (Braces & Invisalign)", href: "/langley-dental-services/orthodontics/" },
-                    { label: "General Dentistry", href: "/langley-dental-services/general-dentistry/" },
+                    { label: "General Dentistry (Includes Crowns)", href: "/langley-dental-services/general-dentistry/" },
                     { label: "All Services", href: "/langley-dental-services/" },
                   ].map((l) => (
                     <Link

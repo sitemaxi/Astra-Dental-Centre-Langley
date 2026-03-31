@@ -55,6 +55,10 @@ const FAQ_ITEMS = [
     answer: "Yes, we accept the Canada Dental Care Plan. Please contact our team to confirm your eligibility and coverage details.",
   },
   {
+    question: "What should I do in a dental emergency?",
+    answer: "If you are experiencing a dental emergency — such as a severe toothache, broken or knocked-out tooth, lost filling or crown, or facial swelling — call our clinic immediately. We prioritize emergency patients and will do our best to see you the same day. For a knocked-out tooth, keep it moist (in milk or saliva) and bring it with you. Do not delay care, as prompt treatment can save your tooth and prevent complications.",
+  },
+  {
     question: "Are you accepting new patients?",
     answer: "Yes, we are always happy to welcome new patients and families to our clinic.",
   },
