@@ -23,7 +23,7 @@ export const serviceCategories: ServiceCategory[] = [
     icon: "Stethoscope",
     services: [
       {
-        title: "Composite Fillings",
+        title: "White Fillings",
         slug: "composite-fillings",
         categorySlug: "general-dentistry",
         description: "Tooth-coloured composite resin fillings that restore the natural look and function of your teeth.",
