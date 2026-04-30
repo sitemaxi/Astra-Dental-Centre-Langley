@@ -272,18 +272,7 @@ export default function NewPatientFormPage() {
       },
       body: JSON.stringify({
         type: "new_patient",
-        data: {
-          title: form.title,
-          first_name: form.first_name,
-          last_name: form.last_name,
-          date_of_birth: form.date_of_birth,
-          email: form.email,
-          phone: form.phone,
-          emergency_name: form.emergency_name,
-          emergency_relationship: form.emergency_relationship,
-          emergency_phone: form.emergency_phone,
-          referred_by: form.referred_by,
-        },
+        data: { ...form },
       }),
     }).catch(() => { /* email failure is silent — data is already saved */ });
 
