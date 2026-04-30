@@ -123,13 +123,35 @@ export default function BookingForm() {
       message: form.message,
     });
 
-    setSubmitting(false);
-
     if (dbError) {
+      setSubmitting(false);
       setError("Something went wrong. Please try again or call us directly.");
       return;
     }
 
+    // Fire-and-forget email notification — does not block success flow
+    fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-form-email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+      },
+      body: JSON.stringify({
+        type: "appointment",
+        data: {
+          first_name: form.firstName,
+          last_name: form.lastName,
+          email: form.email,
+          phone: form.phone,
+          service: form.service,
+          preferred_date: form.date,
+          preferred_time: form.time,
+          message: form.message,
+        },
+      }),
+    }).catch(() => { /* email failure is silent — data is already saved */ });
+
+    setSubmitting(false);
     setSubmitted(true);
   }
 

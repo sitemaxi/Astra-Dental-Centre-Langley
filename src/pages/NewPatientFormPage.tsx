@@ -257,13 +257,37 @@ export default function NewPatientFormPage() {
 
     const { error: dbError } = await supabase.from("new_patient_forms").insert(payload);
 
-    setSubmitting(false);
-
     if (dbError) {
+      setSubmitting(false);
       setError("Something went wrong. Please try again or call us directly at 604-533-8806.");
       return;
     }
 
+    // Fire-and-forget email notification — does not block success flow
+    fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-form-email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+      },
+      body: JSON.stringify({
+        type: "new_patient",
+        data: {
+          title: form.title,
+          first_name: form.first_name,
+          last_name: form.last_name,
+          date_of_birth: form.date_of_birth,
+          email: form.email,
+          phone: form.phone,
+          emergency_name: form.emergency_name,
+          emergency_relationship: form.emergency_relationship,
+          emergency_phone: form.emergency_phone,
+          referred_by: form.referred_by,
+        },
+      }),
+    }).catch(() => { /* email failure is silent — data is already saved */ });
+
+    setSubmitting(false);
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
