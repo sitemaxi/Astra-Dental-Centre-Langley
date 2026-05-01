@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /admin/login
+Disallow: /admin/blog
+Disallow: /admin/ai-settings
+Disallow: /admin/locations
+Disallow: /admin/service-images
+Disallow: /admin/patient-forms
+
+Sitemap: https://www.astradentalcentre.com/sitemap.xml

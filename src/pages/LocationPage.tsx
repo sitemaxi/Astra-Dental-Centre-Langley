@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
+import SEOHead from "../components/SEOHead";
+import { MedicalBusinessSchema, BreadcrumbSchema } from "../components/SchemaMarkup";
 import {
   Phone,
   Calendar,
@@ -108,8 +110,19 @@ export default function LocationPage({ locationSlug }: LocationPageProps) {
     return <Navigate to="/" replace />;
   }
 
+  const cityName = location.name;
+  const locationPath = `/${locationSlug}/`;
+
   return (
     <>
+      <SEOHead
+        title={`Dentist in ${cityName}, BC | Astra Dental Centre Langley`}
+        description={`Looking for a dentist near ${cityName}? Astra Dental Centre in Langley, BC is just minutes away. Comprehensive family dental care, new patients welcome. Book today.`}
+        keywords={`dentist ${cityName}, dentist near ${cityName}, ${cityName} dental clinic, Langley dentist, family dentist ${cityName} BC`}
+        canonicalPath={locationPath}
+      />
+      <MedicalBusinessSchema />
+      <BreadcrumbSchema items={[{ label: `Dentist ${cityName}`, href: locationPath }]} />
       <Hero
         title={location.heroTitle}
         subtitle={location.heroSubtitle}

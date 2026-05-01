@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
+import SEOHead from "../components/SEOHead";
 import { Calendar, ArrowRight, Clock, Search, Eye, Loader2, FileText } from "lucide-react";
 import Hero from "../components/common/Hero";
 import CTASection from "../components/common/CTASection";
@@ -89,6 +90,12 @@ export default function BlogPage() {
 
   return (
     <>
+      <SEOHead
+        title="Dental Health Blog | Tips & Insights | Astra Dental Centre Langley"
+        description="Read dental health tips, oral care advice, and clinic news from the team at Astra Dental Centre in Langley, BC. Stay informed and keep your smile healthy."
+        keywords="dental health blog, oral care tips, dentist blog Langley, Astra Dental Centre news"
+        canonicalPath="/blog/"
+      />
       <Hero
         title="Dental Health Blog"
         subtitle="Tips, insights, and updates from the team at Astra Dental Centre — helping you make informed decisions about your oral health."

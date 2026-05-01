@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle, Zap } from "lucide-react";
+import SEOHead from "../../components/SEOHead";
+import { MedicalBusinessSchema, BreadcrumbSchema } from "../../components/SchemaMarkup";
 import HolographicCard from "../../components/ui/holographic-card";
 import Hero from "../../components/common/Hero";
 import CTASection from "../../components/common/CTASection";
@@ -116,6 +118,17 @@ export default function DentalImplantsPage() {
 
   return (
     <>
+      <SEOHead
+        title="Dental Implants in Langley, BC | Astra Dental Centre"
+        description="Permanent, natural-looking dental implants in Langley, BC. Replace missing teeth with titanium implants that look, feel and function like your natural teeth. Book a consultation."
+        keywords="dental implants Langley BC, teeth implants Langley, missing teeth Langley, implant dentist Langley, dental implant cost Langley"
+        canonicalPath="/langley-dental-services/dental-implants-langley/"
+      />
+      <MedicalBusinessSchema />
+      <BreadcrumbSchema items={[
+        { label: "Langley Dental Services", href: "/langley-dental-services/" },
+        { label: "Dental Implants", href: "/langley-dental-services/dental-implants-langley/" },
+      ]} />
       <Hero
         title="Dental Implants in Langley, BC"
         subtitle="The most permanent, natural-looking solution for missing teeth. Titanium implants that look, feel, and function just like your own teeth."

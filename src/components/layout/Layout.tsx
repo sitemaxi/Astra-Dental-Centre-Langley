@@ -2,12 +2,14 @@ import { Outlet, ScrollRestoration, Link } from "react-router-dom";
 import { Phone, Calendar } from "lucide-react";
 import Header from "./Header";
 import Footer from "./Footer";
+import RouteTracker from "../RouteTracker";
 import { BUSINESS } from "../../data/navigation";
 
 export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollRestoration />
+      <RouteTracker />
       <Header />
       <main className="flex-1">
         <Outlet />

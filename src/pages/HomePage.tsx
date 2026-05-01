@@ -6,6 +6,8 @@ import {
   Activity, Scissors, Heart, Star, Leaf, Smile,
   BadgeCheck, ExternalLink, ChevronDown,
 } from "lucide-react";
+import SEOHead from "../components/SEOHead";
+import { LocalBusinessSchema } from "../components/SchemaMarkup";
 import Hero from "../components/common/Hero";
 import CTASection from "../components/common/CTASection";
 import ServiceCard from "../components/common/ServiceCard";
@@ -175,6 +177,13 @@ export default function HomePage() {
 
   return (
     <>
+      <SEOHead
+        title="Astra Dental Centre | Langley, BC Family & Cosmetic Dentist"
+        description="Astra Dental Centre in Langley, BC offers comprehensive dental care for the whole family — general, cosmetic, preventive, orthodontics, implants and more. Book today."
+        keywords="dentist Langley BC, family dentist Langley, cosmetic dentistry Langley, dental implants Langley, Invisalign Langley, Astra Dental Centre"
+        canonicalPath="/"
+      />
+      <LocalBusinessSchema faqs={FAQ_ITEMS} />
       <ParkingBanner />
 
       <Hero

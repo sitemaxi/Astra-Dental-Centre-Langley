@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle, Star, Zap, Users, Shield, MapPin, Clock, ExternalLink } from "lucide-react";
+import SEOHead from "../../components/SEOHead";
+import { MedicalBusinessSchema, BreadcrumbSchema } from "../../components/SchemaMarkup";
 import HolographicCard from "../../components/ui/holographic-card";
 import Hero from "../../components/common/Hero";
 import CTASection from "../../components/common/CTASection";
@@ -100,6 +102,17 @@ export default function BotoxPage() {
 
   return (
     <>
+      <SEOHead
+        title="Botox & TMJ Therapy in Langley, BC | Astra Dental Centre"
+        description="Therapeutic and aesthetic Botox treatments in Langley, BC. Relief from TMJ pain, bruxism, jaw clenching, and headaches administered by our trained dental team."
+        keywords="Botox Langley BC, TMJ treatment Langley, jaw pain dentist Langley, bruxism treatment, dental Botox Langley"
+        canonicalPath="/langley-dental-services/botox/"
+      />
+      <MedicalBusinessSchema />
+      <BreadcrumbSchema items={[
+        { label: "Langley Dental Services", href: "/langley-dental-services/" },
+        { label: "Botox & TMJ Therapy", href: "/langley-dental-services/botox/" },
+      ]} />
       <Hero
         title="Botox & TMJ Therapy in Langley, BC"
         subtitle="Therapeutic and aesthetic Botox treatments administered by our trained dental team — providing relief from jaw pain, bruxism, headaches, and more."

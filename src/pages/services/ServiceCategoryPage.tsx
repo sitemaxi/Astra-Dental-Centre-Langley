@@ -1,5 +1,7 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import SEOHead from "../../components/SEOHead";
+import { MedicalBusinessSchema, BreadcrumbSchema } from "../../components/SchemaMarkup";
 import { ArrowLeft, ArrowRight, CheckCircle, Star, Zap, Users, Shield, MapPin, Clock } from "lucide-react";
 import HolographicCard from "../../components/ui/holographic-card";
 import Hero from "../../components/common/Hero";
@@ -94,8 +96,21 @@ export default function ServiceCategoryPage() {
   const heroImageUrl = imagesReady ? (dbHeroImage || content?.heroImage || null) : null;
   const mobileImageUrl = imagesReady ? (dbMobileImage || heroImageUrl) : null;
 
+  const catTitle = content?.seoTitle ?? category.title;
+
   return (
     <>
+      <SEOHead
+        title={`${catTitle} in Langley, BC | Astra Dental Centre`}
+        description={`${category.description} Astra Dental Centre in Langley, BC provides expert ${category.title.toLowerCase()} for all ages. Book your appointment today.`}
+        keywords={`${category.title.toLowerCase()} Langley BC, dentist Langley ${category.title.toLowerCase()}, ${catTitle.toLowerCase()}`}
+        canonicalPath={category.categoryPath}
+      />
+      <MedicalBusinessSchema />
+      <BreadcrumbSchema items={[
+        { label: "Langley Dental Services", href: "/langley-dental-services/" },
+        { label: category.title, href: category.categoryPath },
+      ]} />
       <Hero
         title={content?.seoTitle ?? category.title}
         subtitle={category.description}

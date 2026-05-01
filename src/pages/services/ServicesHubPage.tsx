@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import SEOHead from "../../components/SEOHead";
+import { MedicalBusinessSchema, BreadcrumbSchema } from "../../components/SchemaMarkup";
 import { Phone, CheckCircle, MapPin, Clock, Star, Shield, Users, Zap } from "lucide-react";
 import HolographicCard from "../../components/ui/holographic-card";
 import Hero from "../../components/common/Hero";
@@ -93,6 +95,14 @@ export default function ServicesHubPage() {
 
   return (
     <>
+      <SEOHead
+        title="Dental Services in Langley, BC | Astra Dental Centre"
+        description="Comprehensive dental services in Langley, BC — general, cosmetic, preventive, orthodontics, implants, root canals, and more. All ages welcome. Book your appointment today."
+        keywords="dental services Langley BC, Langley dentist services, cosmetic dentistry Langley, orthodontics Langley, dental implants Langley, family dentistry Langley"
+        canonicalPath="/langley-dental-services/"
+      />
+      <MedicalBusinessSchema />
+      <BreadcrumbSchema items={[{ label: "Langley Dental Services", href: "/langley-dental-services/" }]} />
       <Hero
         title="Dental Services in Langley, BC"
         subtitle="Astra Dental Centre offers a complete range of dental treatments for every age and every need — all under one roof in Langley, BC."

@@ -1,7 +1,9 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, Download, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import SEOHead from "../components/SEOHead";
 import { supabase } from "../lib/supabase";
+import { trackFormSubmit } from "../lib/analytics";
 
 const inputClass =
   "w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-all placeholder:text-gray-300 bg-white";
@@ -276,6 +278,7 @@ export default function NewPatientFormPage() {
       }),
     }).catch(() => { /* email failure is silent — data is already saved */ });
 
+    trackFormSubmit("new_patient_form");
     setSubmitting(false);
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -311,6 +314,12 @@ export default function NewPatientFormPage() {
 
   return (
     <div className="min-h-screen bg-surface">
+      <SEOHead
+        title="New Patient Form | Astra Dental Centre Langley, BC"
+        description="Complete your new patient medical questionnaire online before your first visit to Astra Dental Centre in Langley, BC. Saves time at your appointment."
+        keywords="new patient form dentist Langley, dental questionnaire, Astra Dental new patient, first dental visit Langley"
+        canonicalPath="/patient-info/new-patient-form/"
+      />
       {/* Hero */}
       <div className="bg-navy-950 pt-28 pb-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

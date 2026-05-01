@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useSearchParams, Link } from "react-router-dom";
+import SEOHead from "../components/SEOHead";
+import { ArticleSchema, BreadcrumbSchema } from "../components/SchemaMarkup";
 import {
   Calendar, Clock, Eye, Tag, User, Share2,
   Twitter, Linkedin, Link2, ChevronRight, ChevronDown, Facebook
@@ -88,9 +90,6 @@ export default function BlogPostPage() {
       setPost(p);
       setLoading(false);
       incrementViews(p.id).catch(() => {});
-      document.title = p.meta_title ?? p.title;
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute("content", p.meta_description ?? p.excerpt ?? "");
       getPublishedPosts().then((all) => {
         setRelated(
           all.filter((r) => r.id !== p.id && r.category === p.category).slice(0, 3)
@@ -135,6 +134,22 @@ export default function BlogPostPage() {
 
   return (
     <article className="pt-32 pb-12 px-4">
+      <SEOHead
+        title={post.meta_title ?? post.title}
+        description={post.meta_description ?? post.excerpt ?? `Read ${post.title} on the Astra Dental Centre blog.`}
+        ogImage={post.featured_image ?? undefined}
+        ogType="article"
+        canonicalPath={`/blog/${post.slug}`}
+      />
+      <ArticleSchema
+        title={post.title}
+        description={post.meta_description ?? post.excerpt ?? ""}
+        image={post.featured_image ?? undefined}
+        publishedAt={post.published_at}
+        slug={post.slug}
+        authorName={post.author_name}
+      />
+      <BreadcrumbSchema items={[{ label: "Blog", href: "/blog/" }, { label: post.title, href: `/blog/${post.slug}` }]} />
       <div className="max-w-[720px] mx-auto">
 
         {/* Back link */}

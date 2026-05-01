@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import SEOHead from "../components/SEOHead";
 import Hero from "../components/common/Hero";
 import BookingForm from "../components/common/BookingForm";
 import ParkingBanner from "../components/common/ParkingBanner";
@@ -7,6 +8,12 @@ import { BUSINESS } from "../data/navigation";
 export default function ContactPage() {
   return (
     <>
+      <SEOHead
+        title="Contact Us | Book a Dental Appointment in Langley, BC"
+        description="Contact Astra Dental Centre in Langley, BC to book an appointment or ask a question. Call 604-533-8806 or use our online booking form. New patients welcome."
+        keywords="book dentist Langley, dental appointment Langley BC, contact Astra Dental Centre, dentist phone number Langley"
+        canonicalPath="/contact-us/"
+      />
       <ParkingBanner />
 
       <Hero

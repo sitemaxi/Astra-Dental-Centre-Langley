@@ -1,5 +1,7 @@
 import { ArrowRight, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
+import SEOHead from "../components/SEOHead";
+import { MedicalBusinessSchema } from "../components/SchemaMarkup";
 import Hero from "../components/common/Hero";
 import CTASection from "../components/common/CTASection";
 import DoctorBio from "../components/common/DoctorBio";
@@ -33,6 +35,13 @@ export default function AboutPage() {
 
   return (
     <>
+      <SEOHead
+        title="About the Dentist | Dr. B. Kumar Potluri | Astra Dental Centre Langley"
+        description="Meet Dr. B. Kumar Potluri, the experienced dentist behind Astra Dental Centre in Langley, BC. Learn about his philosophy, training, and commitment to patient care."
+        keywords="Dr Potluri dentist Langley, about Astra Dental Centre, dentist Langley BC, family dentist"
+        canonicalPath="/about-the-dentist/"
+      />
+      <MedicalBusinessSchema />
       <Hero
         title="About the Dentist"
         subtitle="Learn about the dental professional behind Astra Dental Centre and our commitment to exceptional oral health care."

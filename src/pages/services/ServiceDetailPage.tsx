@@ -1,5 +1,7 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import SEOHead from "../../components/SEOHead";
+import { MedicalBusinessSchema, BreadcrumbSchema } from "../../components/SchemaMarkup";
 import { ArrowLeft, CheckCircle, ArrowRight, Phone, Star, Zap, Users, Shield, MapPin, Clock } from "lucide-react";
 import HolographicCard from "../../components/ui/holographic-card";
 import Hero from "../../components/common/Hero";
@@ -102,6 +104,18 @@ export default function ServiceDetailPage() {
 
   return (
     <>
+      <SEOHead
+        title={`${seoTitle} | Langley, BC | Astra Dental Centre`}
+        description={`${details?.intro ?? service.description} Astra Dental Centre in Langley, BC. Book your consultation today.`}
+        keywords={`${service.title.toLowerCase()} Langley BC, ${seoTitle.toLowerCase()}, dentist Langley ${category.title.toLowerCase()}`}
+        canonicalPath={`/${categorySlug}/${serviceSlug}/`}
+      />
+      <MedicalBusinessSchema />
+      <BreadcrumbSchema items={[
+        { label: "Langley Dental Services", href: "/langley-dental-services/" },
+        { label: category.title, href: category.categoryPath },
+        { label: service.title, href: `/${categorySlug}/${serviceSlug}/` },
+      ]} />
       <Hero
         title={seoTitle}
         subtitle={service.description}
