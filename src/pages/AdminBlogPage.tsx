@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { SquarePen as PenSquare, Trash2, ExternalLink, PlusCircle, LogOut, Eye, Clock, Tag, CalendarDays, ChevronRight, Loader2, AlertCircle, Users, TrendingUp, Calendar, BarChart2, FileText, Sparkles, MapPin, Image as ImageIcon, ClipboardList } from "lucide-react";
+import { SquarePen as PenSquare, Trash2, ExternalLink, PlusCircle, LogOut, Eye, Clock, Tag, CalendarDays, ChevronRight, Loader2, AlertCircle, Users, TrendingUp, Calendar, BarChart2, FileText, Sparkles, MapPin, Image as ImageIcon, ClipboardList, Download } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import { getAllPosts, deletePost, type BlogPost } from "../lib/blogApi";
 
@@ -258,6 +258,14 @@ export default function AdminBlogPage() {
               >
                 <ClipboardList size={14} className="text-teal-500" />
                 Patient Forms
+              </Link>
+              <Link
+                to="/admin/download-images"
+                className="flex items-center gap-2 border border-gray-200 text-gray-600 text-sm font-medium px-3 py-2 rounded-xl hover:bg-gray-50 transition-colors"
+                title="Download All Images"
+              >
+                <Download size={14} className="text-teal-500" />
+                Download Images
               </Link>
               <Link
                 to="/admin/service-images"

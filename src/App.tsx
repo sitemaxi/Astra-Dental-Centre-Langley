@@ -17,6 +17,7 @@ import AdminAISettingsPage from "./pages/AdminAISettingsPage";
 import AdminLocationsPage from "./pages/AdminLocationsPage";
 import AdminServiceImagesPage from "./pages/AdminServiceImagesPage";
 import AdminPatientFormsPage from "./pages/AdminPatientFormsPage";
+import AdminDownloadImagesPage from "./pages/AdminDownloadImagesPage";
 import NewPatientFormPage from "./pages/NewPatientFormPage";
 import BotoxPage from "./pages/services/BotoxPage";
 import DentalImplantsPage from "./pages/services/DentalImplantsPage";
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/patient-forms",
     element: <AdminPatientFormsPage />,
+  },
+  {
+    path: "/admin/download-images",
+    element: <AdminDownloadImagesPage />,
   },
   {
     path: "/",
