@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight, Download, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import SEOHead from "../components/SEOHead";
 import { supabase } from "../lib/supabase";
-import { trackFormSubmit } from "../lib/analytics";
+import { trackFormSubmit, trackFbLead } from "../lib/analytics";
 
 const inputClass =
   "w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-all placeholder:text-gray-300 bg-white";
@@ -279,6 +279,7 @@ export default function NewPatientFormPage() {
     }).catch(() => { /* email failure is silent — data is already saved */ });
 
     trackFormSubmit("new_patient_form");
+    trackFbLead();
     setSubmitting(false);
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });

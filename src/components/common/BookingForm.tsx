@@ -2,7 +2,7 @@ import { useState, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { CalendarDays, Clock, CheckCircle2, Loader2, AlertCircle, ClipboardList, ChevronRight } from "lucide-react";
 import { supabase } from "../../lib/supabase";
-import { trackFormSubmit } from "../../lib/analytics";
+import { trackFormSubmit, trackFbLead } from "../../lib/analytics";
 
 const SERVICES = [
   "General Dentistry (Includes Crowns)",
@@ -153,6 +153,7 @@ export default function BookingForm() {
     }).catch(() => { /* email failure is silent — data is already saved */ });
 
     trackFormSubmit("appointment_booking");
+    trackFbLead();
     setSubmitting(false);
     setSubmitted(true);
   }

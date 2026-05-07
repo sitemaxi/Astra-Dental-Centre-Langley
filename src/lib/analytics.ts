@@ -4,6 +4,7 @@ declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
     dataLayer?: unknown[];
+    fbq?: (...args: unknown[]) => void;
   }
 }
 
@@ -34,4 +35,10 @@ export function trackFormSubmit(formName: string): void {
 
 export function trackCTAClick(label: string): void {
   trackEvent("cta_click", { label });
+}
+
+export function trackFbLead(): void {
+  if (typeof window !== "undefined" && typeof window.fbq === "function") {
+    window.fbq("track", "Lead");
+  }
 }
