@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, ChevronRight } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronRight, Facebook, Instagram } from "lucide-react";
 import { BUSINESS } from "../../data/navigation";
 import { serviceCategories } from "../../data/services";
 import { locations } from "../../data/locations";
@@ -42,6 +42,31 @@ export default function Footer() {
                   <MapPin size={13} className="text-teal-500" />
                 </span>
                 <span>{BUSINESS.address}<br />{BUSINESS.city}</span>
+              </div>
+            </div>
+            <div className="mt-6">
+              <p className="text-xs font-poppins font-semibold text-white uppercase tracking-widest mb-3">Follow Us</p>
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61574706966726"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Facebook"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-navy-800 text-gray-400 hover:bg-blue-600/30 hover:text-blue-400 transition-colors group"
+                >
+                  <Facebook size={14} />
+                  <span className="text-xs font-medium">Facebook</span>
+                </a>
+                <a
+                  href="https://www.instagram.com/astra_dentalcentre/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Instagram"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-navy-800 text-gray-400 hover:bg-pink-600/30 hover:text-pink-400 transition-colors group"
+                >
+                  <Instagram size={14} />
+                  <span className="text-xs font-medium">Instagram</span>
+                </a>
               </div>
             </div>
           </div>
