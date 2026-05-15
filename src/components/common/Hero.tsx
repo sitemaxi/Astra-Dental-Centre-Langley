@@ -155,7 +155,7 @@ export default function Hero({
               {/* Trust indicators */}
               <div className="flex flex-wrap gap-6">
                 {[
-                  { num: "15+", label: "Years Experience" },
+                  { num: "30+", label: "Years Experience" },
                   { num: "3,000+", label: "Patients Served" },
                   { num: "4.9★", label: "Google Rating" },
                 ].map((stat) => (
