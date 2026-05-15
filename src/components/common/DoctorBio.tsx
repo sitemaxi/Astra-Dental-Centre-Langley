@@ -33,7 +33,7 @@ export default function DoctorBio() {
             <div className="absolute -bottom-6 -right-4 lg:right-8 bg-white rounded-2xl shadow-card-hover p-5 border border-gray-100">
               <div className="flex items-center gap-4">
                 <div className="text-center">
-                  <p className="font-poppins font-bold text-2xl text-navy-900 leading-none">29+</p>
+                  <p className="font-poppins font-bold text-2xl text-navy-900 leading-none">30+</p>
                   <p className="text-xs text-gray-500 mt-0.5">Years Exp.</p>
                 </div>
                 <div className="w-px h-10 bg-gray-100" />
