@@ -64,7 +64,7 @@ export default function DoctorBio() {
               <span className="gradient-text">Personal Touch</span>
             </h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              Dr. B. Kumar Potluri has been practicing dentistry since 1996, bringing over 29+ years of experience in all aspects of oral health care. He is dedicated to providing personalized and comprehensive dental care for every patient at Astra Dental Centre in Langley.
+              Dr. B. Kumar Potluri has been practicing dentistry since 1996, bringing over 30+ years of experience in all aspects of oral health care. He is dedicated to providing personalized and comprehensive dental care for every patient at Astra Dental Centre in Langley.
             </p>
             <p className="text-gray-500 text-sm leading-relaxed mb-4">
               While an accomplished General Dentist, Dr. Potluri maintains a true passion for preventative, restorative, and cosmetic dentistry — interests he has cultivated throughout his career through active patient care and extensive continuing education.
