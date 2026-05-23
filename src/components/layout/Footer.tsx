@@ -151,8 +151,12 @@ export default function Footer() {
       <div className="border-t border-navy-800/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-gray-500">&copy; {year} {BUSINESS.name}. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <Link to="/terms-and-conditions/" className="text-xs text-gray-500 hover:text-teal-400 transition-colors">Terms &amp; Conditions</Link>
+            <span className="text-gray-700 text-xs">·</span>
+            <Link to="/privacy-policy/" className="text-xs text-gray-500 hover:text-teal-400 transition-colors">Privacy Policy</Link>
+          </div>
           <a href="https://sitemaxi.com/" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-teal-400 transition-colors">Designed by Sitemaxi Canada</a>
-          <p className="text-xs text-gray-500">Serving Langley, Surrey, Aldergrove & the Fraser Valley</p>
         </div>
       </div>
     </footer>
