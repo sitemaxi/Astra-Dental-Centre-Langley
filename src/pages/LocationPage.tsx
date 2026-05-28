@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
-import { MedicalBusinessSchema, BreadcrumbSchema } from "../components/SchemaMarkup";
+import { LocationSchema, BreadcrumbSchema } from "../components/SchemaMarkup";
 import {
   Phone,
   Calendar,
@@ -121,7 +121,11 @@ export default function LocationPage({ locationSlug }: LocationPageProps) {
         keywords={`dentist ${cityName}, dentist near ${cityName}, ${cityName} dental clinic, Langley dentist, family dentist ${cityName} BC`}
         canonicalPath={locationPath}
       />
-      <MedicalBusinessSchema />
+      <LocationSchema
+        cityName={cityName}
+        locationPath={locationPath}
+        faqs={location.faqs}
+      />
       <BreadcrumbSchema items={[{ label: `Dentist ${cityName}`, href: locationPath }]} />
       <Hero
         title={location.heroTitle}

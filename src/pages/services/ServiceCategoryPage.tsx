@@ -1,7 +1,7 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import SEOHead from "../../components/SEOHead";
-import { MedicalBusinessSchema, BreadcrumbSchema } from "../../components/SchemaMarkup";
+import { ServiceCategorySchema, BreadcrumbSchema } from "../../components/SchemaMarkup";
 import { ArrowLeft, ArrowRight, CheckCircle, Star, Zap, Users, Shield, MapPin, Clock } from "lucide-react";
 import HolographicCard from "../../components/ui/holographic-card";
 import Hero from "../../components/common/Hero";
@@ -106,7 +106,11 @@ export default function ServiceCategoryPage() {
         keywords={`${category.title.toLowerCase()} Langley BC, dentist Langley ${category.title.toLowerCase()}, ${catTitle.toLowerCase()}`}
         canonicalPath={category.categoryPath}
       />
-      <MedicalBusinessSchema />
+      <ServiceCategorySchema
+        categoryName={catTitle}
+        categoryPath={category.categoryPath}
+        faqs={faqs}
+      />
       <BreadcrumbSchema items={[
         { label: "Langley Dental Services", href: "/langley-dental-services/" },
         { label: category.title, href: category.categoryPath },

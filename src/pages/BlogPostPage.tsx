@@ -148,6 +148,7 @@ export default function BlogPostPage() {
         publishedAt={post.published_at}
         slug={post.slug}
         authorName={post.author_name}
+        faqs={post.faq_section ?? undefined}
       />
       <BreadcrumbSchema items={[{ label: "Blog", href: "/blog/" }, { label: post.title, href: `/blog/${post.slug}` }]} />
       <div className="max-w-[720px] mx-auto">
