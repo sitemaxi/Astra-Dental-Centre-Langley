@@ -43,7 +43,7 @@ export default function Hero({
   if (compact) {
     const compactImg = slideImages[0];
     return (
-      <section className="relative bg-navy-950 pt-[145px] pb-14 overflow-hidden">
+      <section className="relative bg-navy-950 pt-[145px] pb-8 sm:pb-14 overflow-hidden">
         {compactImg && (
           <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
@@ -80,31 +80,68 @@ export default function Hero({
   }
 
   const hasMobileImages = mobileImages && mobileImages.length > 0;
+  // First image is the LCP candidate — rendered as <img> for fetchpriority support
+  const lcpDesktop = slideImages[0] ?? null;
+  const lcpMobile = hasMobileImages ? mobileImages![0] : lcpDesktop;
 
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-      {/* Desktop background images (hidden on mobile when mobile images are set) */}
-      {slideImages.map((src, i) => (
+      {/* LCP image — rendered as <img> so browsers can prioritise it */}
+      {lcpDesktop && (
+        <>
+          {/* Desktop LCP */}
+          <img
+            src={lcpDesktop}
+            alt=""
+            aria-hidden="true"
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            width="1920"
+            height="1080"
+            className={`absolute inset-0 w-full h-full object-cover object-center scale-105${hasMobileImages ? " hidden sm:block" : ""}`}
+            style={{ opacity: activeIndex === 0 ? 1 : 0, transition: "opacity 1s" }}
+          />
+          {/* Mobile LCP */}
+          {hasMobileImages && lcpMobile && (
+            <img
+              src={lcpMobile}
+              alt=""
+              aria-hidden="true"
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
+              width="768"
+              height="1024"
+              className="absolute inset-0 w-full h-full object-cover object-top scale-105 sm:hidden"
+              style={{ opacity: activeIndex === 0 ? 1 : 0, transition: "opacity 1s" }}
+            />
+          )}
+        </>
+      )}
+
+      {/* Remaining carousel slides (background-image, lazy) */}
+      {slideImages.slice(1).map((src, i) => (
         <div
           key={`d-${src}`}
           className={`absolute inset-0 bg-cover bg-center scale-105 transition-opacity duration-1000${hasMobileImages ? " hidden sm:block" : ""}`}
           style={{
             backgroundImage: `url(${src})`,
-            opacity: i === activeIndex ? 1 : 0,
+            opacity: i + 1 === activeIndex ? 1 : 0,
           }}
         />
       ))}
-      {/* Mobile background images */}
-      {hasMobileImages && mobileImages!.map((src, i) => (
+      {hasMobileImages && mobileImages!.slice(1).map((src, i) => (
         <div
           key={`m-${src}`}
           className="absolute inset-0 bg-cover bg-top scale-105 transition-opacity duration-1000 sm:hidden"
           style={{
             backgroundImage: `url(${src})`,
-            opacity: i === activeIndex ? 1 : 0,
+            opacity: i + 1 === activeIndex ? 1 : 0,
           }}
         />
       ))}
+
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-hero-gradient" />
 

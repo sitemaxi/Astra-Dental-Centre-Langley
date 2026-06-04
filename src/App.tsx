@@ -23,6 +23,7 @@ import BotoxPage from "./pages/services/BotoxPage";
 import DentalImplantsPage from "./pages/services/DentalImplantsPage";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
+import ThankYouPage from "./pages/ThankYouPage";
 
 const locationSlugs = [
   "dentist-langley",
@@ -100,6 +101,7 @@ const router = createBrowserRouter([
       { path: "patient-info/new-patient-form/", element: <NewPatientFormPage /> },
       { path: "terms-and-conditions/", element: <TermsPage /> },
       { path: "privacy-policy/", element: <PrivacyPage /> },
+      { path: "thankyou/", element: <ThankYouPage /> },
       { path: "langley-dental-services/", element: <ServicesHubPage /> },
       { path: "langley-dental-services/botox/", element: <BotoxPage /> },
       { path: "langley-dental-services/dental-implants-langley/", element: <DentalImplantsPage /> },

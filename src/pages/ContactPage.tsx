@@ -23,12 +23,12 @@ export default function ContactPage() {
         breadcrumb={[{ label: "Contact Us", href: "/contact-us/" }]}
       />
 
-      <section className="py-20 bg-surface">
+      <section className="pt-8 pb-16 sm:pt-12 sm:pb-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
 
             {/* Form — wider column */}
-            <div className="lg:col-span-3 bg-white rounded-3xl shadow-card p-8 md:p-10">
+            <div className="lg:col-span-3 bg-white rounded-3xl shadow-card p-6 sm:p-8 md:p-10">
               <span className="section-label mb-4">Book an Appointment</span>
               <h2 className="font-poppins text-2xl font-bold text-navy-900 mb-2">Request Your Visit</h2>
               <p className="text-sm text-gray-500 mb-7">Select your preferred date and time and our team will confirm availability with Dr. Potluri.</p>

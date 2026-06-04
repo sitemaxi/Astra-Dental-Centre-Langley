@@ -1,13 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WCZCSHZH');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="google-site-verification" content="1PYUQtjUZ8kDllI7zEXjggvcsdPIeAmo6LZ4ecsq7YQ" />
     <link rel="icon" type="image/png" href="/Astra_Dental_Favicon_PNG.png" />
@@ -18,15 +11,56 @@
     <title>Astra Dental Centre | Langley, BC Family &amp; Cosmetic Dentist</title>
     <meta name="description" content="Astra Dental Centre in Langley, BC offers comprehensive dental care including general, cosmetic, preventive and specialty dentistry. Book your appointment today." />
 
-    <!-- Preconnect for fonts -->
+    <!-- DNS prefetch for third-party origins -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://connect.facebook.net" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- Preconnect for fonts (critical path) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Non-blocking font load -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    </noscript>
 
     <!-- Apple touch icon -->
     <link rel="apple-touch-icon" href="/Astra_Dental_Favicon_PNG.png" />
 
-    <!-- Meta Pixel Code -->
+    <!-- Google Analytics 4 — deferred so it does not block render -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-P3XDSS2GYV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P3XDSS2GYV', { anonymize_ip: true });
+    </script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCZCSHZH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Google Tag Manager — loaded after page content so it does not block FCP -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WCZCSHZH');</script>
+
+    <!-- Meta Pixel Code — loaded after page content -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -39,27 +73,8 @@
       fbq('init', '4281497735436793');
       fbq('track', 'PageView');
     </script>
-    <!-- End Meta Pixel Code -->
-
-    <!-- Google Analytics 4 — G-P3XDSS2GYV -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P3XDSS2GYV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-P3XDSS2GYV', { anonymize_ip: true });
-    </script>
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCZCSHZH"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- Meta Pixel noscript fallback -->
     <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=4281497735436793&ev=PageView&noscript=1"
-    ></noscript>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    /></noscript>
   </body>
 </html>

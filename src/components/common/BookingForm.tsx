@@ -1,8 +1,8 @@
 import { useState, FormEvent } from "react";
-import { Link } from "react-router-dom";
-import { CalendarDays, Clock, CheckCircle2, Loader2, AlertCircle, ClipboardList, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { CalendarDays, Clock, Loader2, AlertCircle } from "lucide-react";
 import { supabase } from "../../lib/supabase";
-import { trackFormSubmit, trackFbLead } from "../../lib/analytics";
+import { trackFormSubmit } from "../../lib/analytics";
 
 const SERVICES = [
   "General Dentistry (Includes Crowns)",
@@ -75,6 +75,7 @@ function getDayIndexFromDateString(dateStr: string): number {
 }
 
 export default function BookingForm() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -86,7 +87,6 @@ export default function BookingForm() {
     message: "",
   });
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
   const selectedDayIndex = form.date ? getDayIndexFromDateString(form.date) : null;
@@ -153,50 +153,15 @@ export default function BookingForm() {
     }).catch(() => { /* email failure is silent — data is already saved */ });
 
     trackFormSubmit("appointment_booking");
-    trackFbLead();
     setSubmitting(false);
-    setSubmitted(true);
-  }
-
-  if (submitted) {
-    return (
-      <div className="flex flex-col items-center justify-center text-center py-12 px-4">
-        <div className="w-16 h-16 rounded-full bg-teal-50 flex items-center justify-center mb-5">
-          <CheckCircle2 size={32} className="text-teal-500" />
-        </div>
-        <h3 className="font-poppins text-xl font-bold text-navy-900 mb-3">Thank You, {form.firstName}!</h3>
-        <p className="text-gray-600 text-sm leading-relaxed max-w-sm mb-2">
-          We've received your appointment request for{" "}
-          <span className="font-semibold text-navy-800">
-            {new Date(form.date + "T00:00:00").toLocaleDateString("en-CA", {
-              weekday: "long", year: "numeric", month: "long", day: "numeric",
-            })}
-          </span>{" "}
-          around <span className="font-semibold text-navy-800">{form.time}</span>.
-        </p>
-        <p className="text-gray-500 text-xs leading-relaxed max-w-sm mt-3 bg-amber-50 border border-amber-100 rounded-xl px-4 py-3">
-          <span className="font-semibold text-amber-700">Please note:</span> This is not a confirmed booking. Our team will review Dr. Potluri's availability and contact you to confirm your appointment.
-        </p>
-        {form.service === "New Patient Exam" && (
-          <div className="mt-5 max-w-sm w-full bg-teal-50 border border-teal-100 rounded-2xl px-5 py-4 text-left">
-            <div className="flex items-center gap-2 mb-2">
-              <ClipboardList size={16} className="text-teal-600 flex-shrink-0" />
-              <p className="text-sm font-semibold text-teal-800">Complete Your New Patient Form</p>
-            </div>
-            <p className="text-xs text-teal-700 leading-relaxed mb-3">
-              Save time at your first visit by completing your medical history questionnaire online before your appointment.
-            </p>
-            <Link
-              to="/patient-info/new-patient-form/"
-              className="inline-flex items-center gap-1.5 bg-teal-600 text-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-teal-700 transition-colors"
-            >
-              Fill Out New Patient Form
-              <ChevronRight size={13} />
-            </Link>
-          </div>
-        )}
-      </div>
-    );
+    navigate("/thankyou/", {
+      state: {
+        firstName: form.firstName,
+        date: form.date,
+        time: form.time,
+        service: form.service,
+      },
+    });
   }
 
   return (
