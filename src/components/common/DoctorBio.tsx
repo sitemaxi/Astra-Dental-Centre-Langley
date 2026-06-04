@@ -25,6 +25,10 @@ export default function DoctorBio() {
                 src="/Dr.Bhushan_Kumar_Astra-Dental-Langley.png"
                 alt="Dr. Bhushan Kumar - Astra Dental Centre"
                 className="w-full h-[500px] object-cover object-top"
+                loading="lazy"
+                decoding="async"
+                width="750"
+                height="500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent" />
             </div>

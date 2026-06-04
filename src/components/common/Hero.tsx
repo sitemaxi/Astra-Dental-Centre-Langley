@@ -19,6 +19,15 @@ interface HeroProps {
   mobileImages?: string[];
 }
 
+// Append Supabase image transform params to reduce download size.
+// Only applied to Supabase storage URLs; all other URLs are returned as-is.
+function withSize(url: string, width: number, quality = 75): string {
+  if (!url) return url;
+  if (!url.includes("supabase.co/storage")) return url;
+  const sep = url.includes("?") ? "&" : "?";
+  return `${url}${sep}width=${width}&quality=${quality}`;
+}
+
 export default function Hero({
   title,
   subtitle,
@@ -80,53 +89,50 @@ export default function Hero({
   }
 
   const hasMobileImages = mobileImages && mobileImages.length > 0;
-  // First image is the LCP candidate — rendered as <img> for fetchpriority support
   const lcpDesktop = slideImages[0] ?? null;
   const lcpMobile = hasMobileImages ? mobileImages![0] : lcpDesktop;
 
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-      {/* LCP image — rendered as <img> so browsers can prioritise it */}
+      {/*
+        LCP image: use <picture> so the browser only downloads the image
+        appropriate for the current viewport (mobile vs desktop). Both
+        variants get fetchPriority="high" so the browser prioritises them.
+      */}
       {lcpDesktop && (
-        <>
-          {/* Desktop LCP */}
+        <picture
+          className="absolute inset-0 w-full h-full"
+          aria-hidden="true"
+          style={{ opacity: activeIndex === 0 ? 1 : 0, transition: "opacity 1s" }}
+        >
+          {/* Mobile source — only downloaded on narrow viewports */}
+          {hasMobileImages && lcpMobile && (
+            <source
+              media="(max-width: 767px)"
+              srcSet={withSize(lcpMobile, 828)}
+            />
+          )}
+          {/* Desktop source */}
           <img
-            src={lcpDesktop}
+            src={withSize(lcpDesktop, 1600)}
             alt=""
-            aria-hidden="true"
             fetchPriority="high"
             loading="eager"
             decoding="async"
-            width="1920"
-            height="1080"
-            className={`absolute inset-0 w-full h-full object-cover object-center scale-105${hasMobileImages ? " hidden sm:block" : ""}`}
-            style={{ opacity: activeIndex === 0 ? 1 : 0, transition: "opacity 1s" }}
+            width="1600"
+            height="900"
+            className="w-full h-full object-cover object-center scale-105"
           />
-          {/* Mobile LCP */}
-          {hasMobileImages && lcpMobile && (
-            <img
-              src={lcpMobile}
-              alt=""
-              aria-hidden="true"
-              fetchPriority="high"
-              loading="eager"
-              decoding="async"
-              width="768"
-              height="1024"
-              className="absolute inset-0 w-full h-full object-cover object-top scale-105 sm:hidden"
-              style={{ opacity: activeIndex === 0 ? 1 : 0, transition: "opacity 1s" }}
-            />
-          )}
-        </>
+        </picture>
       )}
 
-      {/* Remaining carousel slides (background-image, lazy) */}
+      {/* Remaining carousel slides — loaded lazily via background-image */}
       {slideImages.slice(1).map((src, i) => (
         <div
           key={`d-${src}`}
           className={`absolute inset-0 bg-cover bg-center scale-105 transition-opacity duration-1000${hasMobileImages ? " hidden sm:block" : ""}`}
           style={{
-            backgroundImage: `url(${src})`,
+            backgroundImage: `url(${withSize(src, 1600)})`,
             opacity: i + 1 === activeIndex ? 1 : 0,
           }}
         />
@@ -136,7 +142,7 @@ export default function Hero({
           key={`m-${src}`}
           className="absolute inset-0 bg-cover bg-top scale-105 transition-opacity duration-1000 sm:hidden"
           style={{
-            backgroundImage: `url(${src})`,
+            backgroundImage: `url(${withSize(src, 828)})`,
             opacity: i + 1 === activeIndex ? 1 : 0,
           }}
         />

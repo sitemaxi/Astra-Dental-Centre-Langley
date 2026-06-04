@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google Tag Manager — kept in head; its inline snippet is tiny and sets async=true for the actual gtm.js load -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WCZCSHZH');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8" />
     <meta name="google-site-verification" content="1PYUQtjUZ8kDllI7zEXjggvcsdPIeAmo6LZ4ecsq7YQ" />
     <link rel="icon" type="image/png" href="/Astra_Dental_Favicon_PNG.png" />
@@ -44,23 +52,8 @@
       gtag('js', new Date());
       gtag('config', 'G-P3XDSS2GYV', { anonymize_ip: true });
     </script>
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCZCSHZH"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-
-    <!-- Google Tag Manager — loaded after page content so it does not block FCP -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WCZCSHZH');</script>
-
-    <!-- Meta Pixel Code — loaded after page content -->
+    <!-- Meta Pixel Code — async, non-blocking -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -73,8 +66,17 @@
       fbq('init', '4281497735436793');
       fbq('track', 'PageView');
     </script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WCZCSHZH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- Meta Pixel noscript fallback -->
     <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=4281497735436793&ev=PageView&noscript=1"
     /></noscript>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

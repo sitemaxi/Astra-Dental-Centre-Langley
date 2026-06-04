@@ -183,6 +183,9 @@ export default function Header() {
                 src="/Astra_Dental_Mobile_Logo.png"
                 alt="Astra Dental Centre"
                 className="h-20 w-auto"
+                width="420"
+                height="140"
+                fetchPriority="high"
               />
             </Link>
 

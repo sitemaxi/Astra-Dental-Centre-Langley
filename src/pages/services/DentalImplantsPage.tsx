@@ -193,6 +193,10 @@ export default function DentalImplantsPage() {
                     src={dbCategoryImage?.hero_image_url || "https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg?auto=compress&cs=tinysrgb&w=800"}
                     alt={dbCategoryImage?.hero_image_alt || "Dental Implants in Langley BC"}
                     className="w-full h-52 object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="208"
                   />
                 ) : (
                   <div className="w-full h-52 bg-gray-100 animate-pulse" />

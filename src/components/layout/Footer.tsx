@@ -19,6 +19,10 @@ export default function Footer() {
                 src="/Astra_Dental_LOGO_PNG_White.png"
                 alt="Astra Dental Centre"
                 className="h-16 w-auto"
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="106"
               />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed mb-6">

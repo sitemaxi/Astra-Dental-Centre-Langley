@@ -250,6 +250,10 @@ export default function HomePage() {
                   src="/Canadian_Dental_Care_Plan_(CDCP)_sample_card.png"
                   alt="Canadian Dental Care Plan sample card"
                   className="w-full rounded-2xl shadow-lg object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="376"
                 />
                 <p className="text-center text-[11px] text-gray-400 mt-3 leading-snug">
                   Sample CDCP card shown for illustrative purposes only.

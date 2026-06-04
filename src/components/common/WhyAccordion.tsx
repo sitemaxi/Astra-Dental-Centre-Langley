@@ -85,6 +85,10 @@ export default function WhyAccordion() {
             src={panel.imageUrl}
             alt={panel.label}
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+            width="800"
+            height="420"
           />
         </div>
       ))}
