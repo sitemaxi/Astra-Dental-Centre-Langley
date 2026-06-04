@@ -24,7 +24,7 @@ export default function ThankYouPage() {
     // Google Ads conversion
     // TODO: Replace AW-CONVERSION_ID/CONVERSION_LABEL with your actual Google Ads
     // conversion action ID from Google Ads → Tools → Conversions.
-    // Format: AW-XXXXXXXXXX/XXXXXXXXXXXXXXXXXXXX
+    // Format: AW-xmrZCOTHwLgcENmNqtZD/18166220505
     if (typeof window !== "undefined" && typeof window.gtag === "function") {
       window.gtag("event", "conversion", {
         send_to: "AW-CONVERSION_ID/CONVERSION_LABEL",
