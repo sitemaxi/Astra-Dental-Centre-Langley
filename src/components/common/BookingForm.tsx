@@ -4,6 +4,12 @@ import { CalendarDays, Clock, Loader2, AlertCircle } from "lucide-react";
 import { supabase } from "../../lib/supabase";
 import { trackFormSubmit } from "../../lib/analytics";
 
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
+
 const SERVICES = [
   "General Dentistry (Includes Crowns)",
   "Cosmetic Dentistry",
@@ -151,6 +157,21 @@ export default function BookingForm() {
         },
       }),
     }).catch(() => { /* email failure is silent — data is already saved */ });
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "conversion",
+      user_data: {
+        email: form.email,
+        phone_number: form.phone,
+        first_name: form.firstName,
+        last_name: form.lastName,
+      },
+      appointment_data: {
+        preferred_date: form.date,
+        preferred_time: form.time,
+      },
+    });
 
     trackFormSubmit("appointment_booking");
     setSubmitting(false);
