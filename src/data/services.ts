@@ -139,12 +139,6 @@ export const serviceCategories: ServiceCategory[] = [
         categorySlug: "orthodontics",
         description: "Clear removable aligners that gradually straighten teeth without metal brackets.",
       },
-      {
-        title: "TMJ",
-        slug: "tmj",
-        categorySlug: "orthodontics",
-        description: "Diagnosis and treatment of temporomandibular joint disorders causing jaw pain.",
-      },
     ],
   },
   {
@@ -295,14 +289,6 @@ export const serviceCategories: ServiceCategory[] = [
         description: "Tooth-coloured fillings that treat cavities gently and restore young smiles naturally.",
       },
     ],
-  },
-  {
-    title: "Botox & TMJ Therapy",
-    slug: "botox",
-    categoryPath: "/langley-dental-services/botox/",
-    description: "Therapeutic and aesthetic Botox treatments for jaw pain, TMJ disorders, bruxism, and facial rejuvenation.",
-    icon: "Sparkles",
-    services: [],
   },
   {
     title: "Dental Implants",

@@ -53,9 +53,8 @@ export const serviceDetailExtras: Record<string, ServiceDetailExtra> = {
     heroImage: "https://images.pexels.com/photos/4269694/pexels-photo-4269694.jpeg?auto=compress&cs=tinysrgb&w=800",
     whoFor: [
       { label: "Patients who grind their teeth at night", desc: "A custom bite guard protects enamel and prevents premature wear" },
-      { label: "Patients with jaw pain or morning headaches", desc: "Bite guards relieve tension and reduce TMJ-related discomfort" },
+      { label: "Patients with jaw pain or morning headaches", desc: "Bite guards relieve tension and reduce clenching-related discomfort" },
       { label: "Patients with chipped or sensitive teeth", desc: "Guards protect against the force of clenching that causes damage" },
-      { label: "Patients with TMJ symptoms", desc: "Bite guard therapy is often a first-line treatment for jaw dysfunction" },
       { label: "Patients dissatisfied with over-the-counter options", desc: "A custom-fitted guard is far more comfortable and effective" },
     ],
   },
@@ -157,16 +156,6 @@ export const serviceDetailExtras: Record<string, ServiceDetailExtra> = {
       { label: "Children with developing teeth", desc: "X-rays monitor eruption, spacing, and jaw development" },
       { label: "Patients with symptoms of decay or pain", desc: "X-rays pinpoint the exact location and extent of the problem" },
       { label: "Patients before implants or surgery", desc: "Bone density and anatomy assessment is essential for treatment planning" },
-    ],
-  },
-  "tmj": {
-    seoTitle: "TMJ Treatment in Langley, BC",
-    heroImage: "https://images.pexels.com/photos/4269694/pexels-photo-4269694.jpeg?auto=compress&cs=tinysrgb&w=800",
-    whoFor: [
-      { label: "Patients with jaw pain or clicking", desc: "TMJ therapy targets the joint dysfunction causing your symptoms" },
-      { label: "Patients with frequent morning headaches", desc: "Nighttime clenching is a common cause that bite guard therapy can resolve" },
-      { label: "Patients with limited jaw opening", desc: "We assess and treat restricted jaw movement with conservative approaches" },
-      { label: "Patients with bite misalignment", desc: "Bite adjustment or orthodontic treatment may reduce jaw strain" },
     ],
   },
   "invisalign": {

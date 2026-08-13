@@ -39,7 +39,6 @@ export const primaryNav: NavLink[] = [
       { label: "Prosthodontics (Crowns, Bridges & Dentures)", href: "/langley-dental-services/prosthodontics/" },
       { label: "Periodontics", href: "/langley-dental-services/periodontics/" },
       { label: "Children's Dentistry", href: "/langley-dental-services/childrens-dentistry/" },
-      { label: "Botox & TMJ Therapy", href: "/langley-dental-services/botox/" },
       { label: "Dental Implants", href: "/langley-dental-services/dental-implants-langley/" },
     ],
   },

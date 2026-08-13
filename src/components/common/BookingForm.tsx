@@ -21,7 +21,6 @@ const SERVICES = [
   "Prosthodontics (Crowns, Bridges & Dentures)",
   "Periodontics",
   "Children's Dentistry",
-  "Botox & TMJ Therapy",
   "Dental Implants",
   "New Patient Exam",
   "Other",

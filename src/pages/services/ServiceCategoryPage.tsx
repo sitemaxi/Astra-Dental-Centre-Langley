@@ -32,7 +32,6 @@ const categoryFAQs: Record<string, FAQItem[]> = {
   "orthodontics": [
     { question: "What age should children get orthodontic evaluation?", answer: "The Canadian Association of Orthodontists recommends an evaluation by age 7, when issues with jaw growth and emerging teeth can be detected early." },
     { question: "How long does Invisalign treatment take?", answer: "The average Invisalign treatment takes 12–18 months, though simpler cases can be completed in as few as 6 months." },
-    { question: "What is TMJ disorder?", answer: "TMJ (temporomandibular joint) disorder involves pain and dysfunction in the jaw joint. Treatment may include night guards, physical therapy, or other interventions." },
   ],
   "endodontics": [
     { question: "Is a root canal painful?", answer: "With modern anesthetics and techniques, root canal treatment is no more uncomfortable than getting a filling. Most patients are surprised at how comfortable the procedure is." },

@@ -19,7 +19,6 @@ import AdminServiceImagesPage from "./pages/AdminServiceImagesPage";
 import AdminPatientFormsPage from "./pages/AdminPatientFormsPage";
 import AdminDownloadImagesPage from "./pages/AdminDownloadImagesPage";
 import NewPatientFormPage from "./pages/NewPatientFormPage";
-import BotoxPage from "./pages/services/BotoxPage";
 import DentalImplantsPage from "./pages/services/DentalImplantsPage";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
@@ -103,7 +102,6 @@ const router = createBrowserRouter([
       { path: "privacy-policy/", element: <PrivacyPage /> },
       { path: "thankyou/", element: <ThankYouPage /> },
       { path: "langley-dental-services/", element: <ServicesHubPage /> },
-      { path: "langley-dental-services/botox/", element: <BotoxPage /> },
       { path: "langley-dental-services/dental-implants-langley/", element: <DentalImplantsPage /> },
       {
         path: "langley-dental-services/:categorySlug/",
