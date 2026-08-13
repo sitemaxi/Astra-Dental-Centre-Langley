@@ -3,7 +3,6 @@ import SEOHead from "../components/SEOHead";
 import Hero from "../components/common/Hero";
 import BookingForm from "../components/common/BookingForm";
 import ParkingBanner from "../components/common/ParkingBanner";
-import StoreLocator from "../components/common/StoreLocator";
 import { BUSINESS } from "../data/navigation";
 
 export default function ContactPage() {
@@ -119,12 +118,18 @@ export default function ContactPage() {
               Connected to our Google Business Profile — get directions, view hours, and navigate directly to our Langley clinic.
             </p>
           </div>
-          <div className="rounded-3xl overflow-hidden shadow-card border border-gray-100" style={{ height: "600px" }}>
-            <StoreLocator />
+          <div className="rounded-3xl overflow-hidden shadow-card border border-gray-100 bg-surface">
+            <iframe
+              title="Map to Astra Dental Centre in Langley, BC"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d736.0089356636234!2d-122.66712063771944!3d49.10863049410286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485cfd5f42d6087%3A0xaec8e87c10582f27!2sAstra%20Dental%20Centre!5e0!3m2!1sen!2sca!4v1774064383741!5m2!1sen!2sca"
+              className="w-full h-[420px] sm:h-[520px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://www.google.com/maps/dir/?api=1&destination=49.1082904,-122.6667404"
+              href="https://www.google.com/maps/dir/49.0459614,-122.8410159/Astra+Dental+Centre,+20061+Fraser+Hwy+%23120,+Langley,+BC+V3A+0R4/@49.1074343,-122.6689704,17.9z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x5485cfd5f42d6087:0xaec8e87c10582f27!2m2!1d-122.6667404!2d49.1082904"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-navy-900 text-white text-sm font-semibold rounded-full hover:bg-navy-800 transition-colors"
