@@ -1,8 +1,9 @@
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Navigation } from "lucide-react";
 import SEOHead from "../components/SEOHead";
 import Hero from "../components/common/Hero";
 import BookingForm from "../components/common/BookingForm";
 import ParkingBanner from "../components/common/ParkingBanner";
+import StoreLocator from "../components/common/StoreLocator";
 import { BUSINESS } from "../data/navigation";
 
 export default function ContactPage() {
@@ -102,6 +103,42 @@ export default function ContactPage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Google Business Profile Store Locator */}
+      <section className="pb-16 sm:pb-20 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <span className="section-label mb-4">Find Us</span>
+            <h2 className="font-poppins text-2xl sm:text-3xl font-bold text-navy-900 mb-3">
+              Locate Astra Dental Centre
+            </h2>
+            <p className="text-sm text-gray-500 max-w-xl mx-auto">
+              Connected to our Google Business Profile — get directions, view hours, and navigate directly to our Langley clinic.
+            </p>
+          </div>
+          <div className="rounded-3xl overflow-hidden shadow-card border border-gray-100" style={{ height: "600px" }}>
+            <StoreLocator />
+          </div>
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=49.1082904,-122.6667404"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-navy-900 text-white text-sm font-semibold rounded-full hover:bg-navy-800 transition-colors"
+            >
+              <Navigation size={16} />
+              Get Directions
+            </a>
+            <a
+              href={`tel:${BUSINESS.phone}`}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-teal-50 text-teal-700 text-sm font-semibold rounded-full hover:bg-teal-100 transition-colors"
+            >
+              <Phone size={16} />
+              Call {BUSINESS.phone}
+            </a>
           </div>
         </div>
       </section>
