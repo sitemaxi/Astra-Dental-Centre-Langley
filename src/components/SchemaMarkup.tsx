@@ -18,10 +18,10 @@ const DENTIST_BASE = {
     "Astra Dental Centre in Langley, BC offers comprehensive family and cosmetic dental care including general dentistry, orthodontics, implants, and more.",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Unit 120, 20061 Fraser Hwy",
+    streetAddress: "20061 Fraser Hwy #120",
     addressLocality: "Langley",
     addressRegion: "BC",
-    postalCode: "V3A 4E1",
+    postalCode: "V3A 0R4",
     addressCountry: "CA",
   },
   geo: {

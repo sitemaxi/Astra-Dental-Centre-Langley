@@ -2,7 +2,7 @@ import SEOHead from "../components/SEOHead";
 
 const EFFECTIVE_DATE = "May 23, 2026";
 const BUSINESS_NAME = "Astra Dental Centre";
-const BUSINESS_ADDRESS = "Unit 120, 20061 Fraser Hwy, Langley, BC";
+const BUSINESS_ADDRESS = "20061 Fraser Hwy #120, Langley, BC V3A 0R4";
 const CONTACT_EMAIL = "reception@astradentalcentre.com";
 const CONTACT_PHONE = "604-533-8806";
 const WEBSITE = "www.astradentalcentre.com";

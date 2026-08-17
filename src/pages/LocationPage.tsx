@@ -71,7 +71,7 @@ const whyChoosePoints = [
   },
   {
     title: "Convenient Langley Location",
-    body: "Located at Unit 120, 20061 Fraser Hwy with free on-site parking, extended evening hours, and Saturday appointments.",
+    body: "Located at 20061 Fraser Hwy #120, Langley, BC V3A 0R4 with free on-site parking, extended evening hours, and Saturday appointments.",
   },
 ];
 
@@ -339,9 +339,9 @@ export default function LocationPage({ locationSlug }: LocationPageProps) {
               />
               <div className="p-5">
                 <p className="text-sm text-gray-500 text-center">
-                  Unit 120, 20061 Fraser Hwy, Langley, BC &mdash;{" "}
+                  20061 Fraser Hwy #120, Langley, BC V3A 0R4 &mdash;{" "}
                   <a
-                    href="https://maps.google.com/?q=20061+Fraser+Hwy+Langley+BC"
+                    href="https://maps.google.com/?q=20061+Fraser+Hwy+%23120+Langley+BC+V3A+0R4"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-teal-600 hover:underline font-medium"

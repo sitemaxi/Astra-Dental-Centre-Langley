@@ -211,7 +211,7 @@ function generatePatientFormPDF(f: PatientForm) {
   doc.setTextColor(204, 241, 238);
   const submittedStr = `Submitted: ${new Date(f.created_at).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}`;
   doc.text(submittedStr, W - marginR, 10, { align: "right" });
-  doc.text("Unit 120, 20061 Fraser Hwy, Langley, BC", W - marginR, 16.5, { align: "right" });
+  doc.text("20061 Fraser Hwy #120, Langley, BC V3A 0R4", W - marginR, 16.5, { align: "right" });
   y = 28;
 
   // ── SECTION A — PERSONAL INFORMATION ────────────────────────────────────
@@ -482,7 +482,7 @@ function generatePatientFormPDF(f: PatientForm) {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(6.5);
     doc.setTextColor(...GRAY);
-    doc.text("Astra Dental Centre  |  Unit 120, 20061 Fraser Hwy, Langley, BC  |  604-533-8806", W / 2, 276, { align: "center" });
+    doc.text("Astra Dental Centre  |  20061 Fraser Hwy #120, Langley, BC V3A 0R4  |  604-533-8806", W / 2, 276, { align: "center" });
     doc.text(`Page ${i} of ${pageCount}`, W - marginR, 276, { align: "right" });
   }
 

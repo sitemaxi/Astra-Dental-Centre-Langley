@@ -154,7 +154,7 @@ export default function Header() {
         <div className="hidden md:block bg-navy-950">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 py-2.5 flex items-center justify-between">
             <span className="text-sm text-navy-200 tracking-wide">
-              Unit 120, 20061 Fraser Hwy, Langley, BC
+              20061 Fraser Hwy #120, Langley, BC V3A 0R4
             </span>
             <div className="flex items-center gap-6">
               <a

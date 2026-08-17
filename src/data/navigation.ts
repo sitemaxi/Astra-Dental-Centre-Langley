@@ -2,9 +2,9 @@ export const BUSINESS = {
   name: "Astra Dental Centre",
   phone: "604-533-8806",
   email: "reception@astradentalcentre.com",
-  address: "Unit 120, 20061 Fraser Hwy",
-  city: "Langley, BC",
-  fullAddress: "Unit 120, 20061 Fraser Hwy, Langley, BC",
+  address: "20061 Fraser Hwy #120",
+  city: "Langley, BC V3A 0R4",
+  fullAddress: "20061 Fraser Hwy #120, Langley, BC V3A 0R4",
   hours: {
     monday: "10:00 AM – 7:00 PM",
     tuesday: "9:00 AM – 5:00 PM",

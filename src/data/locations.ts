@@ -31,7 +31,7 @@ export const locations: LocationData[] = [
     heroSubtitle: "Comprehensive dental care for the whole family — right here in Langley.",
     introHeading: "Serving the Langley Community",
     introParagraph:
-      "Astra Dental Centre is conveniently located at Unit 120, 20061 Fraser Hwy in the heart of Langley. Whether you live in Langley City, Willowbrook, Walnut Grove, or anywhere else in the Township, our clinic is easy to reach and always welcoming new patients. With ample parking and flexible hours, including Saturday appointments, we've built our practice around the busy schedules of Langley families.",
+      "Astra Dental Centre is conveniently located at 20061 Fraser Hwy #120 in the heart of Langley. Whether you live in Langley City, Willowbrook, Walnut Grove, or anywhere else in the Township, our clinic is easy to reach and always welcoming new patients. With ample parking and flexible hours, including Saturday appointments, we've built our practice around the busy schedules of Langley families.",
     driveTime: "a short drive",
     driveRoute: "Fraser Hwy",
     directionsDetail:
@@ -47,7 +47,7 @@ export const locations: LocationData[] = [
       {
         question: "Where exactly is Astra Dental Centre located in Langley?",
         answer:
-          "We're at Unit 120, 20061 Fraser Hwy, Langley, BC — right on the main Fraser Hwy corridor with convenient on-site parking.",
+          "We're at 20061 Fraser Hwy #120, Langley, BC V3A 0R4 — right on the main Fraser Hwy corridor with convenient on-site parking.",
       },
       {
         question: "Do you offer Invisalign in Langley?",
@@ -78,11 +78,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Premium dental care just minutes from Willowbrook Shopping Centre.",
     introHeading: "Dental Care Near Willowbrook",
     introParagraph:
-      "If you live or work near Willowbrook in Langley, Astra Dental Centre is your closest full-service dental clinic. Located at Unit 120, 20061 Fraser Hwy — just a short drive from the Willowbrook area — we serve patients from the Willowbrook neighbourhood and all of the surrounding Township. Convenient evening hours on Thursdays and Saturday appointments make it easy to fit dental care into your busy life near Willowbrook.",
+      "If you live or work near Willowbrook in Langley, Astra Dental Centre is your closest full-service dental clinic. Located at 20061 Fraser Hwy #120 — just a short drive from the Willowbrook area — we serve patients from the Willowbrook neighbourhood and all of the surrounding Township. Convenient evening hours on Thursdays and Saturday appointments make it easy to fit dental care into your busy life near Willowbrook.",
     driveTime: "under 5 minutes",
     driveRoute: "Fraser Hwy heading east",
     directionsDetail:
-      "From the Willowbrook Shopping Centre area, head east on Fraser Hwy. Astra Dental Centre is approximately 3 minutes along Fraser Hwy on your right side at 20061 Fraser Hwy (Unit 120). Free parking is available directly in front of the clinic.",
+      "From the Willowbrook Shopping Centre area, head east on Fraser Hwy. Astra Dental Centre is approximately 3 minutes along Fraser Hwy on your right side at 20061 Fraser Hwy #120. Free parking is available directly in front of the clinic.",
     whyChooseParagraph:
       "Willowbrook residents trust Astra Dental Centre because we combine a warm, welcoming atmosphere with genuinely advanced dental care. Dr. Potluri has treated Willowbrook families for years, offering everything from routine hygiene visits to Invisalign, dental implants, and cosmetic smile makeovers — all under one roof.",
     faqs: [
@@ -125,11 +125,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Friendly, modern dental care for Walnut Grove families and beyond.",
     introHeading: "Serving Walnut Grove and North Langley",
     introParagraph:
-      "Astra Dental Centre warmly welcomes patients from Walnut Grove, one of Langley's most family-friendly neighbourhoods. Our clinic at Unit 120, 20061 Fraser Hwy is accessible from Walnut Grove via a straightforward drive south along 200 St or 208 St to Fraser Hwy — making us one of the most convenient dental options for Walnut Grove residents. With extended evening hours and Saturday availability, dental care fits into your schedule without the stress.",
+      "Astra Dental Centre warmly welcomes patients from Walnut Grove, one of Langley's most family-friendly neighbourhoods. Our clinic at 20061 Fraser Hwy #120 is accessible from Walnut Grove via a straightforward drive south along 200 St or 208 St to Fraser Hwy — making us one of the most convenient dental options for Walnut Grove residents. With extended evening hours and Saturday availability, dental care fits into your schedule without the stress.",
     driveTime: "approximately 10 minutes",
     driveRoute: "south along 200 St to Fraser Hwy",
     directionsDetail:
-      "From Walnut Grove, head south on 200 St or 208 St until you reach Fraser Hwy, then turn east. Astra Dental Centre is located at 20061 Fraser Hwy (Unit 120) just past the 200 St intersection. The drive is typically under 10 minutes from the heart of Walnut Grove.",
+      "From Walnut Grove, head south on 200 St or 208 St until you reach Fraser Hwy, then turn east. Astra Dental Centre is located at 20061 Fraser Hwy #120 just past the 200 St intersection. The drive is typically under 10 minutes from the heart of Walnut Grove.",
     whyChooseParagraph:
       "Walnut Grove is a community of young families, and Astra Dental Centre is designed to serve them well. We offer children's dentistry, orthodontics, preventive care, and cosmetic services — making it easy for the whole family to be seen at one trusted clinic. Dr. Potluri's caring approach ensures even nervous patients feel at ease from the moment they walk in.",
     faqs: [
@@ -141,7 +141,7 @@ export const locations: LocationData[] = [
       {
         question: "How long is the drive from Walnut Grove to your clinic?",
         answer:
-          "It's approximately 8–10 minutes from central Walnut Grove. Head south to Fraser Hwy and we're at 20061 Fraser Hwy, Unit 120.",
+          "It's approximately 8–10 minutes from central Walnut Grove. Head south to Fraser Hwy and we're at 20061 Fraser Hwy #120.",
       },
       {
         question: "Do you offer family dentistry for Walnut Grove residents?",
@@ -172,11 +172,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Comfortable, comprehensive dental care serving Brookswood and south Langley.",
     introHeading: "Dental Care for Brookswood Residents",
     introParagraph:
-      "Residents of Brookswood and south Langley choose Astra Dental Centre for dependable, high-quality dental care without having to travel far. Located at Unit 120, 20061 Fraser Hwy, our clinic is just minutes north of Brookswood along 200 St. From routine cleanings to dental implants and Invisalign, our full-service clinic handles everything your family needs. We're proud to serve one of Langley's most established and tight-knit communities.",
+      "Residents of Brookswood and south Langley choose Astra Dental Centre for dependable, high-quality dental care without having to travel far. Located at 20061 Fraser Hwy #120, our clinic is just minutes north of Brookswood along 200 St. From routine cleanings to dental implants and Invisalign, our full-service clinic handles everything your family needs. We're proud to serve one of Langley's most established and tight-knit communities.",
     driveTime: "approximately 10 minutes",
     driveRoute: "north on 200 St to Fraser Hwy",
     directionsDetail:
-      "From Brookswood, head north on 200 St to Fraser Hwy, then turn east. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), a short distance from the 200 St and Fraser Hwy intersection. The drive from central Brookswood typically takes under 10 minutes.",
+      "From Brookswood, head north on 200 St to Fraser Hwy, then turn east. Astra Dental Centre is at 20061 Fraser Hwy #120, a short distance from the 200 St and Fraser Hwy intersection. The drive from central Brookswood typically takes under 10 minutes.",
     whyChooseParagraph:
       "Brookswood is a community that values quality and trust, and that's exactly what Astra Dental Centre delivers. Dr. Potluri has earned a reputation in the broader Langley area for thorough, compassionate care. Whether you need a preventive check-up or a complete smile transformation, our modern clinic is equipped to handle it all — and your Brookswood family is always welcome.",
     faqs: [
@@ -188,7 +188,7 @@ export const locations: LocationData[] = [
       {
         question: "How far is Astra Dental from Brookswood?",
         answer:
-          "Approximately 8–10 minutes north of Brookswood. Head north on 200 St to Fraser Hwy, then east to 20061 Fraser Hwy, Unit 120.",
+          "Approximately 8–10 minutes north of Brookswood. Head north on 200 St to Fraser Hwy, then east to 20061 Fraser Hwy #120.",
       },
       {
         question: "Can I get dental implants near Brookswood?",
@@ -203,7 +203,7 @@ export const locations: LocationData[] = [
       {
         question: "Is parking easy at your clinic?",
         answer:
-          "Yes — free on-site parking is available directly at Unit 120, 20061 Fraser Hwy. No parking hassle, ever.",
+          "Yes — free on-site parking is available directly at 20061 Fraser Hwy #120. No parking hassle, ever.",
       },
     ],
     ctaHeading: "Brookswood's Dental Care Team is Ready for You",
@@ -219,11 +219,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Serving Murrayville and east Langley with expert, caring dental treatment.",
     introHeading: "Dental Care for Murrayville and East Langley",
     introParagraph:
-      "Murrayville is one of Langley's most historic and charming communities, and Astra Dental Centre is proud to serve patients from this wonderful neighbourhood. Our clinic at Unit 120, 20061 Fraser Hwy is conveniently located along the Fraser Hwy corridor, making it simple for Murrayville residents to access top-tier dental care. We welcome new patients and offer a full range of services from preventive hygiene to complex restorations.",
+      "Murrayville is one of Langley's most historic and charming communities, and Astra Dental Centre is proud to serve patients from this wonderful neighbourhood. Our clinic at 20061 Fraser Hwy #120 is conveniently located along the Fraser Hwy corridor, making it simple for Murrayville residents to access top-tier dental care. We welcome new patients and offer a full range of services from preventive hygiene to complex restorations.",
     driveTime: "approximately 8 minutes",
     driveRoute: "west on Fraser Hwy",
     directionsDetail:
-      "From Murrayville, head west on Fraser Hwy. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120) — approximately an 8-minute drive west along Fraser Hwy from the Murrayville area near 216 St. Our clinic is on the north side of Fraser Hwy with free parking.",
+      "From Murrayville, head west on Fraser Hwy. Astra Dental Centre is at 20061 Fraser Hwy #120 — approximately an 8-minute drive west along Fraser Hwy from the Murrayville area near 216 St. Our clinic is on the north side of Fraser Hwy with free parking.",
     whyChooseParagraph:
       "Murrayville patients appreciate that Astra Dental Centre feels like a neighbourhood practice — familiar, welcoming, and genuinely invested in your long-term dental health. Dr. Potluri takes time with every patient to explain treatment options and ensure comfort throughout. From seniors needing dentures or implants to teens starting Invisalign, we care for the whole Murrayville community.",
     faqs: [
@@ -235,7 +235,7 @@ export const locations: LocationData[] = [
       {
         question: "How far is Astra Dental Centre from Murrayville?",
         answer:
-          "About 8 minutes heading west on Fraser Hwy from central Murrayville to 20061 Fraser Hwy, Unit 120.",
+          "About 8 minutes heading west on Fraser Hwy from central Murrayville to 20061 Fraser Hwy #120.",
       },
       {
         question: "Do you offer dentures or implants for seniors in Murrayville?",
@@ -250,7 +250,7 @@ export const locations: LocationData[] = [
       {
         question: "Is free parking available?",
         answer:
-          "Yes. There's free dedicated parking right at our clinic entrance at Unit 120, 20061 Fraser Hwy.",
+          "Yes. There's free dedicated parking right at our clinic entrance at 20061 Fraser Hwy #120.",
       },
     ],
     ctaHeading: "Murrayville Patients: We're Just Minutes Away",
@@ -266,11 +266,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Just across the Langley–Surrey border — quality dental care within easy reach.",
     introHeading: "Dental Clinic Serving Cloverdale Patients",
     introParagraph:
-      "Cloverdale residents looking for a great dental clinic don't have to look far. Astra Dental Centre, located at Unit 120, 20061 Fraser Hwy in Langley, is just minutes across the Surrey–Langley boundary. Many of our patients make the short trip from Cloverdale because of our advanced services, friendly team, and the ease of direct insurance billing. If you've been searching for a reliable dentist near Cloverdale, we'd love to welcome you.",
+      "Cloverdale residents looking for a great dental clinic don't have to look far. Astra Dental Centre, located at 20061 Fraser Hwy #120 in Langley, is just minutes across the Surrey–Langley boundary. Many of our patients make the short trip from Cloverdale because of our advanced services, friendly team, and the ease of direct insurance billing. If you've been searching for a reliable dentist near Cloverdale, we'd love to welcome you.",
     driveTime: "approximately 10 minutes",
     driveRoute: "east on Fraser Hwy from Cloverdale",
     directionsDetail:
-      "From central Cloverdale, head east on Fraser Hwy (or 64 Ave). Continue east past the Langley border and Astra Dental Centre will be on your left at 20061 Fraser Hwy (Unit 120). The drive is typically under 10 minutes from the Cloverdale town centre area.",
+      "From central Cloverdale, head east on Fraser Hwy (or 64 Ave). Continue east past the Langley border and Astra Dental Centre will be on your left at 20061 Fraser Hwy #120. The drive is typically under 10 minutes from the Cloverdale town centre area.",
     whyChooseParagraph:
       "Cloverdale patients choose to drive to Astra Dental Centre because the quality of care is worth it. Dr. Potluri's experience with complex treatments — including Invisalign, dental implants, and cosmetic dentistry — attracts patients from across the Lower Mainland. Our clinic is modern, fully equipped, and staffed by a team that genuinely cares about your comfort and outcomes.",
     faqs: [
@@ -313,11 +313,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Exceptional dental care in Langley — worth the drive from White Rock.",
     introHeading: "White Rock Patients Welcome at Astra Dental Centre",
     introParagraph:
-      "Astra Dental Centre at Unit 120, 20061 Fraser Hwy in Langley serves patients from White Rock and South Surrey who are seeking advanced dental care in a welcoming, modern environment. While we're not in White Rock itself, many of our patients make the drive from the ocean community for our comprehensive range of services — from Invisalign and dental implants to cosmetic smile design. The trip up Fraser Hwy is well worth it for the quality of care you receive.",
+      "Astra Dental Centre at 20061 Fraser Hwy #120 in Langley serves patients from White Rock and South Surrey who are seeking advanced dental care in a welcoming, modern environment. While we're not in White Rock itself, many of our patients make the drive from the ocean community for our comprehensive range of services — from Invisalign and dental implants to cosmetic smile design. The trip up Fraser Hwy is well worth it for the quality of care you receive.",
     driveTime: "approximately 20–25 minutes",
     driveRoute: "north on King George Blvd, then east on Fraser Hwy",
     directionsDetail:
-      "From White Rock or South Surrey, head north on King George Blvd toward Surrey Central, then follow Fraser Hwy east into Langley. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 20–25 minutes from the White Rock waterfront area depending on traffic.",
+      "From White Rock or South Surrey, head north on King George Blvd toward Surrey Central, then follow Fraser Hwy east into Langley. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 20–25 minutes from the White Rock waterfront area depending on traffic.",
     whyChooseParagraph:
       "White Rock patients who visit Astra Dental Centre often tell us the drive is entirely worth it. Our clinic offers services that may not be available or as affordable closer to home — including CEREC same-day crowns, Invisalign, and comprehensive implant treatment. Dr. Potluri's thorough, patient-first approach ensures you always feel heard and cared for.",
     faqs: [
@@ -344,7 +344,7 @@ export const locations: LocationData[] = [
       {
         question: "Is free parking available at your Langley clinic?",
         answer:
-          "Yes — free dedicated parking is available directly at Unit 120, 20061 Fraser Hwy.",
+          "Yes — free dedicated parking is available directly at 20061 Fraser Hwy #120.",
       },
     ],
     ctaHeading: "White Rock Patients: Premium Dental Care Awaits in Langley",
@@ -360,11 +360,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Modern dental care in Langley — conveniently close to North Delta.",
     introHeading: "Dental Clinic Near North Delta",
     introParagraph:
-      "North Delta residents looking for an exceptional dental clinic have found a trusted option in Astra Dental Centre, located at Unit 120, 20061 Fraser Hwy in Langley. A short drive across the Langley–Delta border puts you in one of the Lower Mainland's most modern dental clinics. From general dentistry and Invisalign to dental implants and gum treatments, we offer comprehensive care for North Delta patients of all ages.",
+      "North Delta residents looking for an exceptional dental clinic have found a trusted option in Astra Dental Centre, located at 20061 Fraser Hwy #120 in Langley. A short drive across the Langley–Delta border puts you in one of the Lower Mainland's most modern dental clinics. From general dentistry and Invisalign to dental implants and gum treatments, we offer comprehensive care for North Delta patients of all ages.",
     driveTime: "approximately 15–20 minutes",
     driveRoute: "east on Hwy 10 / 64 Ave to Fraser Hwy",
     directionsDetail:
-      "From North Delta, take Hwy 10 (64 Ave) east into Langley. Continue east past 176 St onto Fraser Hwy. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 15–20 minutes from central North Delta depending on traffic.",
+      "From North Delta, take Hwy 10 (64 Ave) east into Langley. Continue east past 176 St onto Fraser Hwy. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 15–20 minutes from central North Delta depending on traffic.",
     whyChooseParagraph:
       "North Delta patients choose to visit Astra Dental Centre because we offer the breadth and quality of care that's hard to find in a single clinic. Dr. Potluri is experienced across all areas of modern dentistry, and our team goes above and beyond to ensure every patient feels at ease. We direct-bill most major insurance providers, making your visit as seamless as possible.",
     faqs: [
@@ -407,11 +407,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Full-service dental care for Aldergrove families — just a short drive on Fraser Hwy.",
     introHeading: "Dental Care for Aldergrove and East Langley",
     introParagraph:
-      "Aldergrove residents deserve a dental clinic that's modern, welcoming, and equipped to handle all their needs — and that's exactly what Astra Dental Centre offers. Located at Unit 120, 20061 Fraser Hwy in Langley, our clinic is an easy drive west along Fraser Hwy from Aldergrove. Whether you need a routine cleaning, Invisalign consultation, or same-day CEREC crown, our team is ready to serve you and your family.",
+      "Aldergrove residents deserve a dental clinic that's modern, welcoming, and equipped to handle all their needs — and that's exactly what Astra Dental Centre offers. Located at 20061 Fraser Hwy #120 in Langley, our clinic is an easy drive west along Fraser Hwy from Aldergrove. Whether you need a routine cleaning, Invisalign consultation, or same-day CEREC crown, our team is ready to serve you and your family.",
     driveTime: "approximately 10–12 minutes",
     driveRoute: "west on Fraser Hwy",
     directionsDetail:
-      "From Aldergrove, head west on Fraser Hwy. Astra Dental Centre is located at 20061 Fraser Hwy (Unit 120), approximately 10–12 minutes from central Aldergrove near 272 St. Our clinic is on the north side of Fraser Hwy with free dedicated parking.",
+      "From Aldergrove, head west on Fraser Hwy. Astra Dental Centre is located at 20061 Fraser Hwy #120, approximately 10–12 minutes from central Aldergrove near 272 St. Our clinic is on the north side of Fraser Hwy with free dedicated parking.",
     whyChooseParagraph:
       "Aldergrove patients value a dental practice that is honest, thorough, and convenient. At Astra Dental Centre, Dr. Potluri brings decades of experience in all areas of dentistry — from preventive hygiene to complex implant cases — to serve Aldergrove families with the care they deserve. We direct-bill most major insurance plans and offer flexible hours, including Saturdays.",
     faqs: [
@@ -423,7 +423,7 @@ export const locations: LocationData[] = [
       {
         question: "How far is Astra Dental Centre from Aldergrove?",
         answer:
-          "About 10–12 minutes heading west on Fraser Hwy from central Aldergrove to our clinic at 20061 Fraser Hwy, Unit 120.",
+          "About 10–12 minutes heading west on Fraser Hwy from central Aldergrove to our clinic at 20061 Fraser Hwy #120.",
       },
       {
         question: "Do you offer family dentistry near Aldergrove?",
@@ -454,11 +454,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Heritage charm meets modern dental care — Astra Dental Centre serves Fort Langley.",
     introHeading: "Dental Care for Fort Langley Residents",
     introParagraph:
-      "Fort Langley is one of the most cherished communities in the Fraser Valley, and Astra Dental Centre is proud to serve its residents. Our clinic at Unit 120, 20061 Fraser Hwy is easily accessible from Fort Langley via Glover Rd south to Fraser Hwy — typically under 10 minutes. From children's dentistry and preventive hygiene to Invisalign and dental implants, we offer comprehensive care in a welcoming, modern environment.",
+      "Fort Langley is one of the most cherished communities in the Fraser Valley, and Astra Dental Centre is proud to serve its residents. Our clinic at 20061 Fraser Hwy #120 is easily accessible from Fort Langley via Glover Rd south to Fraser Hwy — typically under 10 minutes. From children's dentistry and preventive hygiene to Invisalign and dental implants, we offer comprehensive care in a welcoming, modern environment.",
     driveTime: "approximately 8–10 minutes",
     driveRoute: "south on Glover Rd to Fraser Hwy",
     directionsDetail:
-      "From Fort Langley, head south on Glover Rd to Fraser Hwy, then turn west. Astra Dental Centre is located at 20061 Fraser Hwy (Unit 120), approximately 8–10 minutes from the heart of Fort Langley village. Ample free parking is available on site.",
+      "From Fort Langley, head south on Glover Rd to Fraser Hwy, then turn west. Astra Dental Centre is located at 20061 Fraser Hwy #120, approximately 8–10 minutes from the heart of Fort Langley village. Ample free parking is available on site.",
     whyChooseParagraph:
       "Fort Langley residents appreciate a dental practice that mirrors the community's own values — quality, care, and personal attention. Dr. Potluri brings that same commitment to every patient interaction at Astra Dental Centre. Whether you're visiting for a routine check-up or a cosmetic consultation, you'll be treated with genuine warmth and expert professionalism.",
     faqs: [
@@ -470,7 +470,7 @@ export const locations: LocationData[] = [
       {
         question: "How do I get to your clinic from Fort Langley?",
         answer:
-          "Head south on Glover Rd to Fraser Hwy, then turn west. We're at 20061 Fraser Hwy, Unit 120 — approximately 10 minutes from Fort Langley village.",
+          "Head south on Glover Rd to Fraser Hwy, then turn west. We're at 20061 Fraser Hwy #120 — approximately 10 minutes from Fort Langley village.",
       },
       {
         question: "Do you offer cosmetic dentistry for Fort Langley patients?",
@@ -480,7 +480,7 @@ export const locations: LocationData[] = [
       {
         question: "Is parking available?",
         answer:
-          "Yes — free dedicated on-site parking is available at Unit 120, 20061 Fraser Hwy. Easy in, easy out.",
+          "Yes — free dedicated on-site parking is available at 20061 Fraser Hwy #120. Easy in, easy out.",
       },
       {
         question: "Do you accept new patients from Fort Langley?",
@@ -501,11 +501,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Quality dental care in Langley — a comfortable drive from Abbotsford.",
     introHeading: "Welcoming Abbotsford Patients at Astra Dental Centre",
     introParagraph:
-      "Patients from Abbotsford looking for advanced dental care often make the drive to Astra Dental Centre at Unit 120, 20061 Fraser Hwy in Langley. Our full-service clinic offers treatments that are sometimes difficult to access locally — including CEREC same-day crowns, Invisalign, dental implants, and comprehensive cosmetic dentistry. Dr. Potluri and the team at Astra Dental Centre provide the exceptional care that Abbotsford patients have come to trust.",
+      "Patients from Abbotsford looking for advanced dental care often make the drive to Astra Dental Centre at 20061 Fraser Hwy #120 in Langley. Our full-service clinic offers treatments that are sometimes difficult to access locally — including CEREC same-day crowns, Invisalign, dental implants, and comprehensive cosmetic dentistry. Dr. Potluri and the team at Astra Dental Centre provide the exceptional care that Abbotsford patients have come to trust.",
     driveTime: "approximately 25–30 minutes",
     driveRoute: "west on Trans-Canada Hwy (Hwy 1) to Langley",
     directionsDetail:
-      "From Abbotsford, take Trans-Canada Hwy (Hwy 1) west toward Langley. Exit at 200 St / Langley and head north to Fraser Hwy, then turn west. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 25–30 minutes from central Abbotsford.",
+      "From Abbotsford, take Trans-Canada Hwy (Hwy 1) west toward Langley. Exit at 200 St / Langley and head north to Fraser Hwy, then turn west. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 25–30 minutes from central Abbotsford.",
     whyChooseParagraph:
       "Abbotsford patients who visit Astra Dental Centre consistently tell us the drive is worthwhile. Our clinic is equipped with the latest technology — from digital X-rays to CEREC CAD/CAM milling — and Dr. Potluri's depth of experience across all areas of dentistry means fewer referrals and more convenience for you. We direct-bill insurance and offer flexible scheduling.",
     faqs: [
@@ -548,11 +548,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Expert dental care in Langley — accessible from Maple Ridge via Golden Ears Bridge.",
     introHeading: "Maple Ridge Patients Welcome at Astra Dental Centre",
     introParagraph:
-      "Maple Ridge residents seeking a high-quality dental clinic can conveniently reach Astra Dental Centre via the Golden Ears Bridge. Located at Unit 120, 20061 Fraser Hwy in Langley, our clinic offers the kind of comprehensive, technology-forward dental care that Maple Ridge families deserve. From general dentistry and orthodontics to implants and cosmetic procedures, everything is available under one roof.",
+      "Maple Ridge residents seeking a high-quality dental clinic can conveniently reach Astra Dental Centre via the Golden Ears Bridge. Located at 20061 Fraser Hwy #120 in Langley, our clinic offers the kind of comprehensive, technology-forward dental care that Maple Ridge families deserve. From general dentistry and orthodontics to implants and cosmetic procedures, everything is available under one roof.",
     driveTime: "approximately 20–25 minutes",
     driveRoute: "south via Golden Ears Bridge to Fraser Hwy",
     directionsDetail:
-      "From Maple Ridge, cross the Golden Ears Bridge south toward Langley. Follow 208 St south to Fraser Hwy, then turn east. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 20–25 minutes from central Maple Ridge depending on traffic.",
+      "From Maple Ridge, cross the Golden Ears Bridge south toward Langley. Follow 208 St south to Fraser Hwy, then turn east. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 20–25 minutes from central Maple Ridge depending on traffic.",
     whyChooseParagraph:
       "Maple Ridge patients who visit Astra Dental Centre appreciate the full spectrum of services we offer in one accessible location. Dr. Potluri's extensive training and use of leading-edge technology — including CEREC, Invisalign, and digital imaging — means you can get more done with fewer appointments. We direct-bill most insurance plans and always welcome new patients.",
     faqs: [
@@ -564,7 +564,7 @@ export const locations: LocationData[] = [
       {
         question: "How do I get from Maple Ridge to your clinic?",
         answer:
-          "Cross the Golden Ears Bridge south, follow 208 St to Fraser Hwy and turn east. We're at 20061 Fraser Hwy, Unit 120.",
+          "Cross the Golden Ears Bridge south, follow 208 St to Fraser Hwy and turn east. We're at 20061 Fraser Hwy #120.",
       },
       {
         question: "Do you offer dental implants for Maple Ridge patients?",
@@ -595,11 +595,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Serving Surrey patients with comprehensive dental care just across the Langley border.",
     introHeading: "Surrey Patients Welcome at Astra Dental Centre",
     introParagraph:
-      "Patients across Surrey looking for a trusted, full-service dental clinic find a top-tier option at Astra Dental Centre, located at Unit 120, 20061 Fraser Hwy in Langley. Just minutes east of the Surrey–Langley boundary, our clinic is easily accessible from Newton, Fleetwood, South Surrey, and other Surrey neighbourhoods. We offer everything from routine hygiene and children's dentistry to dental implants, Invisalign, and cosmetic smile design.",
+      "Patients across Surrey looking for a trusted, full-service dental clinic find a top-tier option at Astra Dental Centre, located at 20061 Fraser Hwy #120 in Langley. Just minutes east of the Surrey–Langley boundary, our clinic is easily accessible from Newton, Fleetwood, South Surrey, and other Surrey neighbourhoods. We offer everything from routine hygiene and children's dentistry to dental implants, Invisalign, and cosmetic smile design.",
     driveTime: "approximately 15–20 minutes",
     driveRoute: "east on Fraser Hwy / 64 Ave",
     directionsDetail:
-      "From most Surrey neighbourhoods, head east on Fraser Hwy or 64 Ave. Continue east past the Surrey–Langley boundary. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 15–20 minutes from central Surrey. Free parking is available on site.",
+      "From most Surrey neighbourhoods, head east on Fraser Hwy or 64 Ave. Continue east past the Surrey–Langley boundary. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 15–20 minutes from central Surrey. Free parking is available on site.",
     whyChooseParagraph:
       "Surrey patients choose Astra Dental Centre because of the quality and range of services we offer. Dr. Potluri is experienced in all areas of modern dentistry, from complex restorations and implants to Invisalign and cosmetic procedures. Our friendly team, advanced technology, and direct insurance billing make every visit as convenient and comfortable as possible.",
     faqs: [
@@ -642,11 +642,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Premium dental care in Langley — a worthwhile drive from Burnaby.",
     introHeading: "Burnaby Patients Choose Astra Dental Centre",
     introParagraph:
-      "Burnaby residents who demand the best in dental care make the trip to Astra Dental Centre at Unit 120, 20061 Fraser Hwy in Langley. Our clinic offers advanced treatments including CEREC same-day crowns, dental implants, Invisalign, and comprehensive cosmetic dentistry — all with the kind of personal, attentive care that's hard to find in busier urban clinics. If you're looking for a dentist who truly listens and uses the latest technology, Astra Dental Centre is worth the drive from Burnaby.",
+      "Burnaby residents who demand the best in dental care make the trip to Astra Dental Centre at 20061 Fraser Hwy #120 in Langley. Our clinic offers advanced treatments including CEREC same-day crowns, dental implants, Invisalign, and comprehensive cosmetic dentistry — all with the kind of personal, attentive care that's hard to find in busier urban clinics. If you're looking for a dentist who truly listens and uses the latest technology, Astra Dental Centre is worth the drive from Burnaby.",
     driveTime: "approximately 35–45 minutes",
     driveRoute: "east on Hwy 1 to Langley",
     directionsDetail:
-      "From Burnaby, take Hwy 1 (Trans-Canada) east toward Langley. Exit at 200 St in Langley and head south to Fraser Hwy. Turn east on Fraser Hwy — Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 35–45 minutes from central Burnaby depending on traffic.",
+      "From Burnaby, take Hwy 1 (Trans-Canada) east toward Langley. Exit at 200 St in Langley and head south to Fraser Hwy. Turn east on Fraser Hwy — Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 35–45 minutes from central Burnaby depending on traffic.",
     whyChooseParagraph:
       "Burnaby patients who visit Astra Dental Centre consistently remark on the difference in experience — unhurried appointments, thorough explanations, and treatment that's tailored to your specific needs. Dr. Potluri's use of advanced technology like CEREC, digital X-rays, and Invisalign ClinCheck means better outcomes and fewer appointments. We direct-bill insurance and offer flexible scheduling.",
     faqs: [
@@ -673,7 +673,7 @@ export const locations: LocationData[] = [
       {
         question: "Is parking easy at your Langley clinic?",
         answer:
-          "Yes — free dedicated parking is right at our clinic entrance at Unit 120, 20061 Fraser Hwy. No parking stress.",
+          "Yes — free dedicated parking is right at our clinic entrance at 20061 Fraser Hwy #120. No parking stress.",
       },
     ],
     ctaHeading: "Burnaby Patients: Premium Dental Care in Langley Awaits",
@@ -689,11 +689,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Full-service dental care for Clayton Heights families — just minutes west on Fraser Hwy.",
     introHeading: "Dental Care for Clayton Heights Residents",
     introParagraph:
-      "Clayton Heights is one of Surrey's fastest-growing communities, and Astra Dental Centre is proud to serve its families with comprehensive, high-quality dental care. Our clinic at Unit 120, 20061 Fraser Hwy in Langley is an easy drive west from Clayton Heights — typically 10 to 15 minutes. From routine checkups and children's dentistry to Invisalign, CEREC same-day crowns, and dental implants, we offer everything your family needs under one roof.",
+      "Clayton Heights is one of Surrey's fastest-growing communities, and Astra Dental Centre is proud to serve its families with comprehensive, high-quality dental care. Our clinic at 20061 Fraser Hwy #120 in Langley is an easy drive west from Clayton Heights — typically 10 to 15 minutes. From routine checkups and children's dentistry to Invisalign, CEREC same-day crowns, and dental implants, we offer everything your family needs under one roof.",
     driveTime: "approximately 10–15 minutes",
     driveRoute: "west on Fraser Hwy",
     directionsDetail:
-      "From Clayton Heights, head west on Fraser Hwy toward Langley. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 10–15 minutes from the Clayton/Langley border. Free dedicated on-site parking is available.",
+      "From Clayton Heights, head west on Fraser Hwy toward Langley. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 10–15 minutes from the Clayton/Langley border. Free dedicated on-site parking is available.",
     whyChooseParagraph:
       "Clayton Heights families trust Astra Dental Centre for consistent, thorough care. Dr. Potluri combines decades of clinical experience with the latest dental technology — including CEREC CAD/CAM, digital X-rays, and Invisalign ClinCheck — to deliver outstanding results. We direct-bill most major insurance providers and offer Saturday appointments for added convenience.",
     faqs: [
@@ -705,7 +705,7 @@ export const locations: LocationData[] = [
       {
         question: "How do I get to your clinic from Clayton Heights?",
         answer:
-          "Head west on Fraser Hwy from Clayton Heights. We're at 20061 Fraser Hwy, Unit 120, Langley — with free parking on site.",
+          "Head west on Fraser Hwy from Clayton Heights. We're at 20061 Fraser Hwy #120, Langley — with free parking on site.",
       },
       {
         question: "Do you offer family dentistry near Clayton Heights?",
@@ -736,11 +736,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Modern dental care in Langley — easily accessible from Fleetwood, Surrey.",
     introHeading: "Dental Care for Fleetwood, Surrey Residents",
     introParagraph:
-      "Fleetwood residents looking for a trusted dental clinic with advanced technology and attentive care choose Astra Dental Centre. Located at Unit 120, 20061 Fraser Hwy in Langley, our clinic is approximately 15 minutes from Fleetwood via Fraser Hwy heading east. We offer full-service dentistry — from preventive cleanings and children's care to dental implants, cosmetic procedures, and CEREC same-day crowns — all without the need for multiple referrals.",
+      "Fleetwood residents looking for a trusted dental clinic with advanced technology and attentive care choose Astra Dental Centre. Located at 20061 Fraser Hwy #120 in Langley, our clinic is approximately 15 minutes from Fleetwood via Fraser Hwy heading east. We offer full-service dentistry — from preventive cleanings and children's care to dental implants, cosmetic procedures, and CEREC same-day crowns — all without the need for multiple referrals.",
     driveTime: "approximately 15 minutes",
     driveRoute: "east on Fraser Hwy",
     directionsDetail:
-      "From Fleetwood, head east on Fraser Hwy toward Langley. Continue past 168 St and across the Surrey–Langley boundary. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 15 minutes from central Fleetwood.",
+      "From Fleetwood, head east on Fraser Hwy toward Langley. Continue past 168 St and across the Surrey–Langley boundary. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 15 minutes from central Fleetwood.",
     whyChooseParagraph:
       "Fleetwood patients who make the short trip to Astra Dental Centre consistently appreciate our thorough, unhurried approach to dentistry. Dr. Potluri takes the time to understand your dental goals and uses the latest technology to achieve them — whether that's a seamless same-day crown, a straighter smile with Invisalign, or a complete oral health assessment.",
     faqs: [
@@ -783,11 +783,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Exceptional dental care in Langley — a comfortable drive from Guildford, Surrey.",
     introHeading: "Welcoming Guildford Patients at Astra Dental Centre",
     introParagraph:
-      "Guildford is one of Surrey's most vibrant communities, and Astra Dental Centre is proud to serve its residents with world-class dental care. Our clinic at Unit 120, 20061 Fraser Hwy in Langley is roughly 20 minutes east of Guildford Town Centre — a short, convenient drive for families seeking comprehensive dental services. From routine hygiene appointments to full-arch implant restorations and Invisalign treatment, we handle it all in one location.",
+      "Guildford is one of Surrey's most vibrant communities, and Astra Dental Centre is proud to serve its residents with world-class dental care. Our clinic at 20061 Fraser Hwy #120 in Langley is roughly 20 minutes east of Guildford Town Centre — a short, convenient drive for families seeking comprehensive dental services. From routine hygiene appointments to full-arch implant restorations and Invisalign treatment, we handle it all in one location.",
     driveTime: "approximately 20 minutes",
     driveRoute: "east on Fraser Hwy",
     directionsDetail:
-      "From Guildford Town Centre, head east on Fraser Hwy / 104 Ave toward Langley. Continue past the Surrey–Langley border. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 20 minutes from central Guildford.",
+      "From Guildford Town Centre, head east on Fraser Hwy / 104 Ave toward Langley. Continue past the Surrey–Langley border. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 20 minutes from central Guildford.",
     whyChooseParagraph:
       "Guildford patients choose Astra Dental Centre for the breadth of our services and the depth of Dr. Potluri's expertise. Whether you need a routine cleaning or a complex restorative procedure, you'll receive personalized care with the latest dental technology. We direct-bill insurance and offer weekend appointments.",
     faqs: [
@@ -799,7 +799,7 @@ export const locations: LocationData[] = [
       {
         question: "How do I get to your clinic from Guildford?",
         answer:
-          "Head east on Fraser Hwy from Guildford. We're at 20061 Fraser Hwy, Unit 120, Langley — about 20 minutes from Guildford Town Centre.",
+          "Head east on Fraser Hwy from Guildford. We're at 20061 Fraser Hwy #120, Langley — about 20 minutes from Guildford Town Centre.",
       },
       {
         question: "Do you offer dental implants near Guildford?",
@@ -830,11 +830,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Comprehensive dental care in Langley — accessible from South Surrey and White Rock.",
     introHeading: "South Surrey Patients Welcome at Astra Dental Centre",
     introParagraph:
-      "South Surrey and White Rock residents looking for a full-service dental clinic with advanced technology find Astra Dental Centre worth the drive. Located at Unit 120, 20061 Fraser Hwy in Langley, our clinic is approximately 25 minutes from South Surrey via Hwy 10 heading east. We provide a complete range of dental services — from family cleanings and children's dentistry to dental implants, Invisalign, and cosmetic smile design — in a welcoming, state-of-the-art environment.",
+      "South Surrey and White Rock residents looking for a full-service dental clinic with advanced technology find Astra Dental Centre worth the drive. Located at 20061 Fraser Hwy #120 in Langley, our clinic is approximately 25 minutes from South Surrey via Hwy 10 heading east. We provide a complete range of dental services — from family cleanings and children's dentistry to dental implants, Invisalign, and cosmetic smile design — in a welcoming, state-of-the-art environment.",
     driveTime: "approximately 25 minutes",
     driveRoute: "east on Hwy 10 / 64 Ave to Fraser Hwy",
     directionsDetail:
-      "From South Surrey, head east on Hwy 10 (56 Ave) or 64 Ave toward Langley. Turn north onto 200 St and then east on Fraser Hwy, or continue on Hwy 10 to Fraser Hwy directly. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 25 minutes from South Surrey.",
+      "From South Surrey, head east on Hwy 10 (56 Ave) or 64 Ave toward Langley. Turn north onto 200 St and then east on Fraser Hwy, or continue on Hwy 10 to Fraser Hwy directly. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 25 minutes from South Surrey.",
     whyChooseParagraph:
       "South Surrey patients who come to Astra Dental Centre appreciate the all-in-one convenience and quality of care that's hard to match locally. Dr. Potluri's expertise spans the full spectrum of modern dentistry, and our use of CEREC, digital imaging, and Invisalign means you spend less time in the chair and get better results. We direct-bill insurance and always welcome new patients.",
     faqs: [
@@ -846,7 +846,7 @@ export const locations: LocationData[] = [
       {
         question: "How do I get from South Surrey to your clinic?",
         answer:
-          "Take Hwy 10 east to 200 St, then north to Fraser Hwy east. We're at 20061 Fraser Hwy, Unit 120, Langley — about 25 minutes.",
+          "Take Hwy 10 east to 200 St, then north to Fraser Hwy east. We're at 20061 Fraser Hwy #120, Langley — about 25 minutes.",
       },
       {
         question: "Do you offer cosmetic dentistry for South Surrey patients?",
@@ -877,11 +877,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Premium dental care in Langley — convenient for Panorama Ridge residents.",
     introHeading: "Dental Care for Panorama Ridge, Surrey",
     introParagraph:
-      "Panorama Ridge residents in Surrey have a trusted dental home at Astra Dental Centre, located at Unit 120, 20061 Fraser Hwy in Langley. Just 15 to 20 minutes from Panorama Ridge via Fraser Hwy heading east, our clinic offers the comprehensive services and caring environment that Surrey families deserve. From preventive care and orthodontics to restorations and implants, everything is available in one convenient location.",
+      "Panorama Ridge residents in Surrey have a trusted dental home at Astra Dental Centre, located at 20061 Fraser Hwy #120 in Langley. Just 15 to 20 minutes from Panorama Ridge via Fraser Hwy heading east, our clinic offers the comprehensive services and caring environment that Surrey families deserve. From preventive care and orthodontics to restorations and implants, everything is available in one convenient location.",
     driveTime: "approximately 15–20 minutes",
     driveRoute: "east on Fraser Hwy",
     directionsDetail:
-      "From Panorama Ridge, head east on Fraser Hwy toward Langley. Continue past the Surrey–Langley border to 20061 Fraser Hwy (Unit 120). The drive is approximately 15–20 minutes from central Panorama Ridge.",
+      "From Panorama Ridge, head east on Fraser Hwy toward Langley. Continue past the Surrey–Langley border to 20061 Fraser Hwy #120. The drive is approximately 15–20 minutes from central Panorama Ridge.",
     whyChooseParagraph:
       "Panorama Ridge patients appreciate Astra Dental Centre's commitment to quality and efficiency. Our CEREC technology means same-day crowns, our Invisalign expertise means straighter smiles without bulky braces, and our comprehensive approach means fewer referrals. Dr. Potluri and the team make every visit straightforward and stress-free.",
     faqs: [
@@ -924,11 +924,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Comprehensive dental care in Langley — serving Newton, Surrey families.",
     introHeading: "Newton, Surrey Patients Welcome at Astra Dental Centre",
     introParagraph:
-      "Newton is one of Surrey's most established communities, and Astra Dental Centre is pleased to serve its residents with full-service dental care. Our clinic at Unit 120, 20061 Fraser Hwy in Langley is approximately 20 minutes from Newton via Fraser Hwy heading east. Whether you're looking for a new family dentist, need a same-day crown, or are considering Invisalign, Astra Dental Centre provides a complete dental experience in a welcoming, modern setting.",
+      "Newton is one of Surrey's most established communities, and Astra Dental Centre is pleased to serve its residents with full-service dental care. Our clinic at 20061 Fraser Hwy #120 in Langley is approximately 20 minutes from Newton via Fraser Hwy heading east. Whether you're looking for a new family dentist, need a same-day crown, or are considering Invisalign, Astra Dental Centre provides a complete dental experience in a welcoming, modern setting.",
     driveTime: "approximately 20 minutes",
     driveRoute: "east on Fraser Hwy / 64 Ave",
     directionsDetail:
-      "From Newton, head east on Fraser Hwy or 64 Ave toward Langley. Continue past the Surrey–Langley boundary. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 20 minutes from central Newton.",
+      "From Newton, head east on Fraser Hwy or 64 Ave toward Langley. Continue past the Surrey–Langley boundary. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 20 minutes from central Newton.",
     whyChooseParagraph:
       "Newton patients choose Astra Dental Centre because we offer something increasingly rare — a dental clinic where every patient receives unhurried, personalized attention backed by advanced technology. Dr. Potluri's decades of experience and use of tools like CEREC and Invisalign ClinCheck mean better outcomes and a smoother experience. We direct-bill insurance and always accept new patients.",
     faqs: [
@@ -971,11 +971,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Premium dental care in Langley — serving Ocean Park and South Surrey.",
     introHeading: "Ocean Park Patients Welcome at Astra Dental Centre",
     introParagraph:
-      "Ocean Park is a beautiful seaside community in South Surrey, and Astra Dental Centre is delighted to serve its residents with top-tier dental care. Our clinic at Unit 120, 20061 Fraser Hwy in Langley is approximately 25–30 minutes from Ocean Park via Hwy 10 or King George Blvd heading east. We offer the full spectrum of dental services — from family hygiene and children's dentistry to dental implants, cosmetic procedures, and Invisalign — in a modern, comfortable setting.",
+      "Ocean Park is a beautiful seaside community in South Surrey, and Astra Dental Centre is delighted to serve its residents with top-tier dental care. Our clinic at 20061 Fraser Hwy #120 in Langley is approximately 25–30 minutes from Ocean Park via Hwy 10 or King George Blvd heading east. We offer the full spectrum of dental services — from family hygiene and children's dentistry to dental implants, cosmetic procedures, and Invisalign — in a modern, comfortable setting.",
     driveTime: "approximately 25–30 minutes",
     driveRoute: "east on Hwy 10 or King George Blvd to Fraser Hwy",
     directionsDetail:
-      "From Ocean Park, head north on King George Blvd or east on Hwy 10 toward Langley. Connect to Fraser Hwy heading east. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 25–30 minutes from Ocean Park.",
+      "From Ocean Park, head north on King George Blvd or east on Hwy 10 toward Langley. Connect to Fraser Hwy heading east. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 25–30 minutes from Ocean Park.",
     whyChooseParagraph:
       "Ocean Park patients who visit Astra Dental Centre find that the drive is well worth it. Our clinic combines Dr. Potluri's extensive experience with leading-edge technology — CEREC same-day crowns, Invisalign ClinCheck, and digital imaging — to deliver exceptional results in fewer appointments. We offer flexible scheduling including Saturdays and direct-bill most insurance plans.",
     faqs: [
@@ -987,7 +987,7 @@ export const locations: LocationData[] = [
       {
         question: "How do I get from Ocean Park to your clinic?",
         answer:
-          "Head east on Hwy 10 or north on King George Blvd to connect to Fraser Hwy east. We're at 20061 Fraser Hwy, Unit 120, Langley.",
+          "Head east on Hwy 10 or north on King George Blvd to connect to Fraser Hwy east. We're at 20061 Fraser Hwy #120, Langley.",
       },
       {
         question: "Do you offer cosmetic dentistry for Ocean Park patients?",
@@ -1018,11 +1018,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Exceptional dental care in Langley — conveniently reachable from Ladner.",
     introHeading: "Ladner Patients Welcome at Astra Dental Centre",
     introParagraph:
-      "Ladner residents who want access to advanced dental technology and comprehensive care choose Astra Dental Centre at Unit 120, 20061 Fraser Hwy in Langley. Just 20–25 minutes from Ladner via Hwy 17 and Hwy 10, our clinic offers the full range of dental services — from preventive hygiene and children's dentistry to CEREC same-day crowns, dental implants, Invisalign, and cosmetic smile makeovers — all under one roof.",
+      "Ladner residents who want access to advanced dental technology and comprehensive care choose Astra Dental Centre at 20061 Fraser Hwy #120 in Langley. Just 20–25 minutes from Ladner via Hwy 17 and Hwy 10, our clinic offers the full range of dental services — from preventive hygiene and children's dentistry to CEREC same-day crowns, dental implants, Invisalign, and cosmetic smile makeovers — all under one roof.",
     driveTime: "approximately 20–25 minutes",
     driveRoute: "north on Hwy 17 to Hwy 10 east, connecting to Fraser Hwy",
     directionsDetail:
-      "From Ladner, head north on Hwy 17 to Hwy 10, then east toward Langley. Connect to 200 St north and then east on Fraser Hwy, or follow Hwy 10 to the Langley area. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 20–25 minutes from Ladner.",
+      "From Ladner, head north on Hwy 17 to Hwy 10, then east toward Langley. Connect to 200 St north and then east on Fraser Hwy, or follow Hwy 10 to the Langley area. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 20–25 minutes from Ladner.",
     whyChooseParagraph:
       "Ladner patients appreciate the full-service capability and personal attention they receive at Astra Dental Centre. Dr. Potluri's broad expertise means fewer specialist referrals and more comprehensive care in one place. Whether you need a routine cleaning, an implant, or a complete cosmetic overhaul, our team has you covered. We direct-bill insurance and welcome new patients from Ladner.",
     faqs: [
@@ -1034,7 +1034,7 @@ export const locations: LocationData[] = [
       {
         question: "How do I get from Ladner to your clinic?",
         answer:
-          "Take Hwy 17 north to Hwy 10 east, then connect to Fraser Hwy east. We're at 20061 Fraser Hwy, Unit 120, Langley.",
+          "Take Hwy 17 north to Hwy 10 east, then connect to Fraser Hwy east. We're at 20061 Fraser Hwy #120, Langley.",
       },
       {
         question: "Do you offer dental implants near Ladner?",
@@ -1065,11 +1065,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Advanced dental care in Langley — worth the drive from Tsawwassen.",
     introHeading: "Tsawwassen Patients Choose Astra Dental Centre",
     introParagraph:
-      "Tsawwassen residents seeking advanced dental services find Astra Dental Centre at Unit 120, 20061 Fraser Hwy in Langley to be a top choice. Approximately 25–30 minutes from Tsawwassen via Hwy 17 and Hwy 10 heading east, our clinic offers treatments including CEREC same-day crowns, dental implants, Invisalign, full cosmetic smile design, and comprehensive family dentistry — all in one convenient location with an experienced, welcoming team.",
+      "Tsawwassen residents seeking advanced dental services find Astra Dental Centre at 20061 Fraser Hwy #120 in Langley to be a top choice. Approximately 25–30 minutes from Tsawwassen via Hwy 17 and Hwy 10 heading east, our clinic offers treatments including CEREC same-day crowns, dental implants, Invisalign, full cosmetic smile design, and comprehensive family dentistry — all in one convenient location with an experienced, welcoming team.",
     driveTime: "approximately 25–30 minutes",
     driveRoute: "north on Hwy 17 to Hwy 10 east to Fraser Hwy",
     directionsDetail:
-      "From Tsawwassen, take Hwy 17 north toward the Hwy 10 interchange, then head east on Hwy 10 toward Langley. Connect to Fraser Hwy east. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 25–30 minutes from Tsawwassen.",
+      "From Tsawwassen, take Hwy 17 north toward the Hwy 10 interchange, then head east on Hwy 10 toward Langley. Connect to Fraser Hwy east. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 25–30 minutes from Tsawwassen.",
     whyChooseParagraph:
       "Tsawwassen patients who visit Astra Dental Centre consistently find the experience well worth the drive. Our clinic's combination of Dr. Potluri's clinical depth, advanced technology, and genuinely caring team creates an environment where patients feel confident and comfortable. We offer CEREC same-day crowns, Invisalign, dental implants, and more — all with direct insurance billing.",
     faqs: [
@@ -1081,7 +1081,7 @@ export const locations: LocationData[] = [
       {
         question: "How do I get from Tsawwassen to your clinic?",
         answer:
-          "Take Hwy 17 north to Hwy 10 east, then connect to Fraser Hwy. We're at 20061 Fraser Hwy, Unit 120, Langley.",
+          "Take Hwy 17 north to Hwy 10 east, then connect to Fraser Hwy. We're at 20061 Fraser Hwy #120, Langley.",
       },
       {
         question: "Do you offer CEREC crowns for Tsawwassen patients?",
@@ -1112,11 +1112,11 @@ export const locations: LocationData[] = [
     heroSubtitle: "Expert dental care in Langley — accessible from Pitt Meadows via Golden Ears Bridge.",
     introHeading: "Pitt Meadows Patients Welcome at Astra Dental Centre",
     introParagraph:
-      "Pitt Meadows residents can conveniently reach Astra Dental Centre via the Golden Ears Bridge — typically 20–25 minutes to our clinic at Unit 120, 20061 Fraser Hwy in Langley. We offer comprehensive dental services for the whole family, including preventive hygiene, children's dentistry, Invisalign, CEREC same-day crowns, dental implants, and full cosmetic smile design. If you're looking for a dentist who combines advanced technology with genuine, personalized care, Astra Dental Centre is your destination.",
+      "Pitt Meadows residents can conveniently reach Astra Dental Centre via the Golden Ears Bridge — typically 20–25 minutes to our clinic at 20061 Fraser Hwy #120 in Langley. We offer comprehensive dental services for the whole family, including preventive hygiene, children's dentistry, Invisalign, CEREC same-day crowns, dental implants, and full cosmetic smile design. If you're looking for a dentist who combines advanced technology with genuine, personalized care, Astra Dental Centre is your destination.",
     driveTime: "approximately 20–25 minutes",
     driveRoute: "south via Golden Ears Bridge to Langley",
     directionsDetail:
-      "From Pitt Meadows, cross the Golden Ears Bridge south toward Langley. Follow 208 St south to Dewdney Trunk Rd or connect to Fraser Hwy east. Astra Dental Centre is at 20061 Fraser Hwy (Unit 120), approximately 20–25 minutes from central Pitt Meadows.",
+      "From Pitt Meadows, cross the Golden Ears Bridge south toward Langley. Follow 208 St south to Dewdney Trunk Rd or connect to Fraser Hwy east. Astra Dental Centre is at 20061 Fraser Hwy #120, approximately 20–25 minutes from central Pitt Meadows.",
     whyChooseParagraph:
       "Pitt Meadows patients who visit Astra Dental Centre value the convenience of a full-service clinic where everything is available in one place. Dr. Potluri's expertise across general dentistry, orthodontics, implantology, and cosmetic dentistry means you spend less time travelling between specialists and more time enjoying your healthy smile. We direct-bill insurance and always welcome new patients.",
     faqs: [
@@ -1128,7 +1128,7 @@ export const locations: LocationData[] = [
       {
         question: "How do I get from Pitt Meadows to your clinic?",
         answer:
-          "Cross the Golden Ears Bridge south and follow signs toward Langley / Fraser Hwy. We're at 20061 Fraser Hwy, Unit 120.",
+          "Cross the Golden Ears Bridge south and follow signs toward Langley / Fraser Hwy. We're at 20061 Fraser Hwy #120.",
       },
       {
         question: "Do you offer family dentistry for Pitt Meadows residents?",
