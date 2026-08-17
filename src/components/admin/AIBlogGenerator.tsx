@@ -10,14 +10,14 @@ interface Props {
 }
 
 const SUGGESTED_LINKS = [
-  { anchorText: "Book an Appointment", url: "/contact" },
-  { anchorText: "Our Dental Services", url: "/services" },
-  { anchorText: "About Astra Dental", url: "/about" },
-  { anchorText: "General Dentistry", url: "/services/general-dentistry" },
-  { anchorText: "Cosmetic Dentistry", url: "/services/cosmetic-dentistry" },
-  { anchorText: "Dental Implants", url: "/services/oral-surgery/dental-implants" },
-  { anchorText: "Invisalign", url: "/services/orthodontics/invisalign" },
-  { anchorText: "Teeth Whitening", url: "/services/cosmetic-dentistry/teeth-whitening" },
+  { anchorText: "Book an Appointment", url: "/contact-us/" },
+  { anchorText: "Our Dental Services", url: "/langley-dental-services/" },
+  { anchorText: "About Astra Dental", url: "/about-the-dentist/" },
+  { anchorText: "General Dentistry", url: "/langley-dental-services/general-dentistry/" },
+  { anchorText: "Cosmetic Dentistry", url: "/langley-dental-services/cosmetic-dentistry/" },
+  { anchorText: "Dental Implants", url: "/langley-dental-services/dental-implants-langley/" },
+  { anchorText: "Invisalign", url: "/orthodontics/invisalign/" },
+  { anchorText: "Teeth Whitening", url: "/cosmetic-dentistry/zoom-teeth-whitening/" },
 ];
 
 type Step = "input" | "generating" | "preview";
@@ -28,8 +28,8 @@ export default function AIBlogGenerator({ isOpen, onClose, onApply }: Props) {
   const [step, setStep] = useState<Step>("input");
   const [topic, setTopic] = useState("");
   const [internalLinks, setInternalLinks] = useState<Array<{ anchorText: string; url: string }>>([
-    { anchorText: "Book an Appointment", url: "/contact" },
-    { anchorText: "Our Dental Services", url: "/services" },
+    { anchorText: "Book an Appointment", url: "/contact-us/" },
+    { anchorText: "Our Dental Services", url: "/langley-dental-services/" },
   ]);
   const [result, setResult] = useState<AIGeneratedBlog | null>(null);
   const [error, setError] = useState("");

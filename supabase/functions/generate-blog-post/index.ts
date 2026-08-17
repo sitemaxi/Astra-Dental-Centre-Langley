@@ -115,7 +115,7 @@ Deno.serve(async (req: Request) => {
 
     const internalLinksText = internalLinks.length > 0
       ? internalLinks.map((l) => `- ${l.anchorText}: ${l.url}`).join("\n")
-      : "- Our Services: /services\n- Book Appointment: /contact\n- About Us: /about";
+      : "- Our Services: /langley-dental-services/\n- Book Appointment: /contact-us/\n- About Us: /about-the-dentist/";
 
     const contentPrompt = (promptMap["blog_content"] || "Write a professional dental blog post about: {{topic}}")
       .replace("{{internal_links}}", internalLinksText)

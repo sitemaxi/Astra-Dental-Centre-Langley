@@ -3,6 +3,7 @@ import {
   Bold, Italic, Underline, Heading2, Heading3,
   List, ListOrdered, Quote, Link2, Image as ImageIcon
 } from "lucide-react";
+import { resolveInternalHref } from "../lib/internalLinks";
 
 export interface RichTextEditorRef {
   insertImage: (url: string, alt: string) => void;
@@ -87,7 +88,9 @@ const RichTextEditor = forwardRef<RichTextEditorRef, RichTextEditorProps>(
 
     const insertLink = () => {
       const url = prompt("Enter URL:");
-      if (url) exec("createLink", url);
+      if (!url) return;
+      const internalPath = resolveInternalHref(url);
+      exec("createLink", internalPath ?? url.trim());
     };
 
     const formatBlock = (tag: string) => exec("formatBlock", tag);

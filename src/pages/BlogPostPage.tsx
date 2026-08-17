@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams, useSearchParams, Link } from "react-router-dom";
+import { useParams, useSearchParams, Link, useNavigate } from "react-router-dom";
+import { resolveInternalHref } from "../lib/internalLinks";
 import SEOHead from "../components/SEOHead";
 import { ArticleSchema, BreadcrumbSchema } from "../components/SchemaMarkup";
 import {
@@ -70,6 +71,7 @@ function RelatedPost({ post }: { post: BlogPost }) {
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const isPreview = searchParams.get("preview") === "true";
   const [post, setPost] = useState<BlogPost | null>(null);
@@ -210,6 +212,15 @@ export default function BlogPostPage() {
         {/* Content */}
         <div
           className="blog-content"
+          onClick={(e) => {
+            const anchor = (e.target as HTMLElement).closest("a");
+            if (!anchor) return;
+            const internalPath = resolveInternalHref(anchor.getAttribute("href") ?? "");
+            if (internalPath) {
+              e.preventDefault();
+              navigate(internalPath);
+            }
+          }}
           dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
         />
 
