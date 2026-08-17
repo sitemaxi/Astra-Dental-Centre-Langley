@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import Hero from "../components/common/Hero";
 import FAQSection from "../components/common/FAQSection";
-import { getLocationBySlug } from "../data/locations";
+import { getLocationBySlug, locationMetaDescriptions } from "../data/locations";
 import { BUSINESS } from "../data/navigation";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { supabase } from "../lib/supabase";
@@ -117,7 +117,7 @@ export default function LocationPage({ locationSlug }: LocationPageProps) {
     <>
       <SEOHead
         title={`Dentist in ${cityName}, BC | Astra Dental Centre Langley`}
-        description={`Looking for a dentist near ${cityName}? Astra Dental Centre in Langley, BC is just minutes away. Comprehensive family dental care, new patients welcome. Book today.`}
+        description={locationMetaDescriptions[locationSlug] ?? `Looking for a dentist near ${cityName}? Astra Dental Centre in Langley, BC is just minutes away. Comprehensive family dental care, new patients welcome. Book today.`}
         keywords={`dentist ${cityName}, dentist near ${cityName}, ${cityName} dental clinic, Langley dentist, family dentist ${cityName} BC`}
         canonicalPath={locationPath}
       />

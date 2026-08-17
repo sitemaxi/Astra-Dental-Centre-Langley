@@ -1155,3 +1155,55 @@ export const locations: LocationData[] = [
 export function getLocationBySlug(slug: string): LocationData | undefined {
   return locations.find((l) => l.slug === slug);
 }
+
+// Unique SEO meta description per location so no two area pages share snippet text.
+export const locationMetaDescriptions: Record<string, string> = {
+  "dentist-langley":
+    "Astra Dental Centre is your local Langley dentist on Fraser Hwy near 200 St. Family, cosmetic, and emergency care with easy parking. New patients welcome—book today.",
+  "dentist-willowbrook-langley":
+    "Looking for a dentist near Willowbrook? Astra Dental Centre sits minutes from Willowbrook Shopping Centre on Fraser Hwy. Family & cosmetic care—book online today.",
+  "dentist-walnut-grove-langley":
+    "Walnut Grove families trust Astra Dental Centre, a short drive south on 200 St. Gentle general, cosmetic & Invisalign care with Saturday appointments. Book today.",
+  "dentist-brookswood-langley":
+    "Astra Dental Centre serves Brookswood and south Langley, just north on 200 St. Comprehensive family, cosmetic & preventive dentistry. New patients welcome—book today.",
+  "dentist-murrayville-langley":
+    "Astra Dental Centre welcomes Murrayville and east Langley patients, minutes west on Fraser Hwy. Family, cosmetic & implant dentistry with easy parking. Book today.",
+  "dentist-cloverdale-surrey":
+    "Just across the Langley–Surrey border, Astra Dental Centre is an easy drive from Cloverdale on Fraser Hwy. Family & cosmetic care—new patients welcome. Book today.",
+  "dentist-white-rock":
+    "Astra Dental Centre in Langley is worth the drive from White Rock via King George Blvd. Comprehensive family, cosmetic & implant dentistry. Book your appointment today.",
+  "dentist-north-delta":
+    "Astra Dental Centre in Langley is close to North Delta via Hwy 10 / 64 Ave. Modern family, cosmetic & preventive dental care with free parking. New patients welcome.",
+  "dentist-aldergrove-langley":
+    "Aldergrove families reach Astra Dental Centre with a short drive west on Fraser Hwy. Full-service general, cosmetic & emergency dentistry. Book your appointment today.",
+  "dentist-fort-langley":
+    "Astra Dental Centre serves Fort Langley, a quick drive south on Glover Rd to Fraser Hwy. Modern family, cosmetic & implant dental care. New patients welcome—book today.",
+  "dentist-abbotsford":
+    "Astra Dental Centre in Langley is a comfortable drive from Abbotsford via Hwy 1. Comprehensive family, cosmetic & implant dentistry with easy parking. Book today.",
+  "dentist-maple-ridge":
+    "Astra Dental Centre in Langley is easily reached from Maple Ridge via the Golden Ears Bridge. Expert family, cosmetic & implant dental care. Book your appointment today.",
+  "dentist-surrey":
+    "Serving Surrey patients just across the Langley border on Fraser Hwy, Astra Dental Centre offers family, cosmetic & preventive dentistry. New patients welcome—book today.",
+  "dentist-burnaby":
+    "Astra Dental Centre in Langley is a worthwhile drive from Burnaby via Hwy 1. Premium family, cosmetic & implant dentistry with easy parking. Book your appointment today.",
+  "dentist-clayton-heights-surrey":
+    "Clayton Heights families are minutes from Astra Dental Centre, just west on Fraser Hwy. Full-service general, cosmetic & Invisalign care. New patients welcome—book today.",
+  "dentist-fleetwood-surrey":
+    "Astra Dental Centre in Langley is easily reached from Fleetwood, Surrey via Fraser Hwy. Modern family, cosmetic & preventive dentistry. Book your appointment today.",
+  "dentist-guildford-surrey":
+    "Astra Dental Centre in Langley is a comfortable drive from Guildford, Surrey on Fraser Hwy. Comprehensive family, cosmetic & implant dental care. Book online today.",
+  "dentist-south-surrey":
+    "Astra Dental Centre in Langley is accessible from South Surrey via Hwy 10 / 64 Ave. Family, cosmetic & implant dentistry with free parking. New patients welcome—book today.",
+  "dentist-panorama-ridge-surrey":
+    "Panorama Ridge residents reach Astra Dental Centre with an easy drive east on Fraser Hwy. Premium family, cosmetic & preventive dental care. Book your appointment today.",
+  "dentist-newton-surrey":
+    "Astra Dental Centre in Langley serves Newton, Surrey families via Fraser Hwy / 64 Ave. Comprehensive general, cosmetic & Invisalign care. New patients welcome—book today.",
+  "dentist-ocean-park-surrey":
+    "Astra Dental Centre in Langley serves Ocean Park and South Surrey via Hwy 10. Premium family, cosmetic & implant dentistry with easy parking. Book your appointment today.",
+  "dentist-ladner":
+    "Astra Dental Centre in Langley is reachable from Ladner via Hwy 17 and Hwy 10. Exceptional family, cosmetic & implant dental care. New patients welcome—book today.",
+  "dentist-tsawwassen":
+    "Astra Dental Centre in Langley is worth the drive from Tsawwassen via Hwy 17 and Hwy 10. Advanced family, cosmetic & implant dentistry. Book your appointment today.",
+  "dentist-pitt-meadows":
+    "Astra Dental Centre in Langley is accessible from Pitt Meadows via the Golden Ears Bridge. Expert family, cosmetic & implant dental care. Book your appointment today.",
+};
