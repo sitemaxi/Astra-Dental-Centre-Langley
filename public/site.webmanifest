@@ -1,0 +1,19 @@
+{
+  "name": "Astra Dental Centre",
+  "short_name": "Astra Dental",
+  "icons": [
+    {
+      "src": "/48_x_48_Astra_Dental.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/Astra_Dental_Favicon_PNG.png",
+      "sizes": "100x100",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0d4e6e",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
