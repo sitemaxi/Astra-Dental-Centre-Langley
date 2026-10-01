@@ -10,6 +10,7 @@ interface BreadcrumbItem {
 
 interface HeroProps {
   title: string;
+  titleAccent?: string;
   subtitle?: string;
   showCTA?: boolean;
   compact?: boolean;
@@ -30,6 +31,7 @@ function withSize(url: string, width: number, quality = 75): string {
 
 export default function Hero({
   title,
+  titleAccent,
   subtitle,
   showCTA = true,
   compact = false,
@@ -172,10 +174,16 @@ export default function Hero({
 
           <h1 className="font-poppins text-5xl sm:text-6xl lg:text-[68px] font-bold text-white leading-[1.08] tracking-tight mb-6">
             {title}
+            {titleAccent && (
+              <>
+                {" "}
+                <span className="block text-teal-400">{titleAccent}</span>
+              </>
+            )}
           </h1>
 
           {subtitle && (
-            <p className="text-lg text-white/75 leading-relaxed max-w-xl mb-10">
+            <p className="text-lg text-white/75 leading-relaxed max-w-2xl mb-10">
               {subtitle}
             </p>
           )}
