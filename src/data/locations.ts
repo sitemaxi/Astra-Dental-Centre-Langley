@@ -35,7 +35,7 @@ export const locations: LocationData[] = [
     driveTime: "a short drive",
     driveRoute: "Fraser Hwy",
     directionsDetail:
-      "Our clinic sits directly on Fraser Hwy near 200 St, making access simple from all parts of Langley. Whether you're coming from the north end of the Township or from Langley City, follow Fraser Hwy east or west to our clearly marked Unit 120 location with dedicated parking right at the door.",
+      "Our clinic sits directly on Fraser Hwy near 200 St, making access simple from all parts of Langley. Whether you're coming from the north end of the Township or from Langley City, follow Fraser Hwy east or west to our clearly marked clinic at 20061 Fraser Hwy #120 with dedicated parking right at the door.",
     whyChooseParagraph:
       "Langley families choose Astra Dental Centre for the combination of advanced technology and genuinely personal care. Dr. Potluri brings years of experience treating patients of all ages — from first-time toddler check-ups to complex full-mouth restorations. We direct-bill most major insurance plans and offer flexible scheduling to keep dental care accessible and stress-free.",
     faqs: [
@@ -62,7 +62,7 @@ export const locations: LocationData[] = [
       {
         question: "Is parking available at your Langley clinic?",
         answer:
-          "Yes — there is ample free parking directly in front of our unit at 20061 Fraser Hwy, making every visit easy and stress-free.",
+          "Yes — there is ample free parking directly in front of our unit at 20061 Fraser Hwy #120, making every visit easy and stress-free.",
       },
     ],
     ctaHeading: "Ready to Book Your Langley Dental Appointment?",
@@ -78,7 +78,7 @@ export const locations: LocationData[] = [
     heroSubtitle: "Premium dental care just minutes from Willowbrook Shopping Centre.",
     introHeading: "Dental Care Near Willowbrook",
     introParagraph:
-      "If you live or work near Willowbrook in Langley, Astra Dental Centre is your closest full-service dental clinic. Located at 20061 Fraser Hwy #120 — just a short drive from the Willowbrook area — we serve patients from the Willowbrook neighbourhood and all of the surrounding Township. Convenient evening hours on Thursdays and Saturday appointments make it easy to fit dental care into your busy life near Willowbrook.",
+      "If you live or work near Willowbrook in Langley, Astra Dental Centre is your closest full-service dental clinic. Located at 20061 Fraser Hwy #120 — just a short drive from the Willowbrook area — we serve patients from the Willowbrook neighbourhood and all of the surrounding Township. Evening appointments available and Saturday appointments make it easy to fit dental care into your busy life near Willowbrook.",
     driveTime: "under 5 minutes",
     driveRoute: "Fraser Hwy heading east",
     directionsDetail:
@@ -89,12 +89,12 @@ export const locations: LocationData[] = [
       {
         question: "Do you accept patients from the Willowbrook area?",
         answer:
-          "Yes! We serve patients from Willowbrook and all of Langley. Our clinic at 20061 Fraser Hwy is just minutes from the Willowbrook neighbourhood.",
+          "Yes! We serve patients from Willowbrook and all of Langley. Our clinic at 20061 Fraser Hwy #120 is just minutes from the Willowbrook neighbourhood.",
       },
       {
         question: "How far is Astra Dental Centre from Willowbrook?",
         answer:
-          "We're approximately a 3–5 minute drive from Willowbrook Shopping Centre, heading east on Fraser Hwy to our location at 20061 Fraser Hwy.",
+          "We're approximately a 3–5 minute drive from Willowbrook Shopping Centre, heading east on Fraser Hwy to our location at 20061 Fraser Hwy #120.",
       },
       {
         question: "Do you offer teeth whitening near Willowbrook?",
@@ -109,7 +109,7 @@ export const locations: LocationData[] = [
       {
         question: "Is there parking near your clinic?",
         answer:
-          "There is free dedicated parking directly at our Unit 120 location on Fraser Hwy — no need to search for street parking.",
+          "There is free dedicated parking directly at our clinic at 20061 Fraser Hwy #120 — no need to search for street parking.",
       },
     ],
     ctaHeading: "Looking for a Dentist Near Willowbrook?",
@@ -156,7 +156,7 @@ export const locations: LocationData[] = [
       {
         question: "What are your hours? Can I book a weekend appointment?",
         answer:
-          "We're open Monday–Friday and Saturdays 9 AM–3 PM. Evening appointments are available on Thursdays. Call 604-533-8806 to book.",
+          "We're open Monday 10 AM–7 PM, Tuesday to Thursday 9 AM–5 PM, Friday 10 AM–6 PM, and Saturday 9 AM–5 PM. Evening appointments are available. Call 604-533-8806 to book.",
       },
     ],
     ctaHeading: "Serving Walnut Grove Families at Astra Dental Centre",
@@ -282,7 +282,7 @@ export const locations: LocationData[] = [
       {
         question: "How far is your dental clinic from Cloverdale?",
         answer:
-          "Approximately 8–10 minutes east on Fraser Hwy from central Cloverdale to our clinic at 20061 Fraser Hwy, Langley.",
+          "Approximately 8–10 minutes east on Fraser Hwy from central Cloverdale to our clinic at 20061 Fraser Hwy #120, Langley.",
       },
       {
         question: "Do you offer Invisalign near Cloverdale?",
@@ -329,7 +329,7 @@ export const locations: LocationData[] = [
       {
         question: "How far is your clinic from White Rock?",
         answer:
-          "Approximately 20–25 minutes north on King George Blvd, then east on Fraser Hwy to 20061 Fraser Hwy in Langley.",
+          "Approximately 20–25 minutes north on King George Blvd, then east on Fraser Hwy to 20061 Fraser Hwy #120 in Langley.",
       },
       {
         question: "Is Invisalign available near White Rock?",
@@ -376,7 +376,7 @@ export const locations: LocationData[] = [
       {
         question: "How far is Astra Dental Centre from North Delta?",
         answer:
-          "Approximately 15–20 minutes east on Hwy 10 / Fraser Hwy from central North Delta to our clinic at 20061 Fraser Hwy in Langley.",
+          "Approximately 15–20 minutes east on Hwy 10 / Fraser Hwy from central North Delta to our clinic at 20061 Fraser Hwy #120 in Langley.",
       },
       {
         question: "Do you offer teeth whitening near North Delta?",
@@ -438,7 +438,7 @@ export const locations: LocationData[] = [
       {
         question: "Do you offer Saturday appointments?",
         answer:
-          "Yes — we offer Saturday appointments from 9 AM to 3 PM, making it easy for Aldergrove families to fit dental care into the weekend.",
+          "Yes — we offer Saturday appointments from 9 AM to 5 PM, making it easy for Aldergrove families to fit dental care into the weekend.",
       },
     ],
     ctaHeading: "Aldergrove Patients: Quality Dental Care is Minutes Away",
@@ -517,7 +517,7 @@ export const locations: LocationData[] = [
       {
         question: "How far is your clinic from Abbotsford?",
         answer:
-          "Approximately 25–30 minutes west on Trans-Canada Hwy (Hwy 1) from central Abbotsford to our clinic at 20061 Fraser Hwy, Langley.",
+          "Approximately 25–30 minutes west on Trans-Canada Hwy (Hwy 1) from central Abbotsford to our clinic at 20061 Fraser Hwy #120, Langley.",
       },
       {
         question: "Do you offer CEREC same-day crowns near Abbotsford?",
@@ -574,7 +574,7 @@ export const locations: LocationData[] = [
       {
         question: "Can I book a Saturday appointment?",
         answer:
-          "Yes — we offer Saturday appointments from 9 AM to 3 PM, making the trip from Maple Ridge even more convenient.",
+          "Yes — we offer Saturday appointments from 9 AM to 5 PM, making the trip from Maple Ridge even more convenient.",
       },
       {
         question: "Do you accept new patients from Maple Ridge?",
@@ -611,7 +611,7 @@ export const locations: LocationData[] = [
       {
         question: "How long is the drive from Surrey to your clinic?",
         answer:
-          "Approximately 15–20 minutes east on Fraser Hwy / 64 Ave from central Surrey to 20061 Fraser Hwy, Langley.",
+          "Approximately 15–20 minutes east on Fraser Hwy / 64 Ave from central Surrey to 20061 Fraser Hwy #120, Langley.",
       },
       {
         question: "Do you offer Invisalign near Surrey?",
@@ -658,7 +658,7 @@ export const locations: LocationData[] = [
       {
         question: "How far is your clinic from Burnaby?",
         answer:
-          "Approximately 35–45 minutes east on Hwy 1 from central Burnaby to our clinic at 20061 Fraser Hwy in Langley.",
+          "Approximately 35–45 minutes east on Hwy 1 from central Burnaby to our clinic at 20061 Fraser Hwy #120 in Langley.",
       },
       {
         question: "Is CEREC same-day crown available for Burnaby patients?",
@@ -720,7 +720,7 @@ export const locations: LocationData[] = [
       {
         question: "Do you offer Saturday appointments?",
         answer:
-          "Yes — Saturday appointments are available from 9 AM to 3 PM, perfect for busy Clayton Heights families.",
+          "Yes — Saturday appointments are available from 9 AM to 5 PM, perfect for busy Clayton Heights families.",
       },
     ],
     ctaHeading: "Clayton Heights: Quality Dental Care is Minutes Away",
@@ -752,7 +752,7 @@ export const locations: LocationData[] = [
       {
         question: "How far is the drive from Fleetwood to your clinic?",
         answer:
-          "About 15 minutes east on Fraser Hwy from central Fleetwood to our clinic at 20061 Fraser Hwy, Langley.",
+          "About 15 minutes east on Fraser Hwy from central Fleetwood to our clinic at 20061 Fraser Hwy #120, Langley.",
       },
       {
         question: "Do you offer CEREC crowns for Fleetwood patients?",
@@ -814,7 +814,7 @@ export const locations: LocationData[] = [
       {
         question: "Do you offer weekend appointments?",
         answer:
-          "Yes — Saturday appointments are available from 9 AM to 3 PM for Guildford and Surrey patients.",
+          "Yes — Saturday appointments are available from 9 AM to 5 PM for Guildford and Surrey patients.",
       },
     ],
     ctaHeading: "Guildford Patients: Exceptional Dental Care in Langley",
@@ -893,7 +893,7 @@ export const locations: LocationData[] = [
       {
         question: "How long is the drive from Panorama Ridge to Astra Dental Centre?",
         answer:
-          "About 15–20 minutes heading east on Fraser Hwy to 20061 Fraser Hwy, Langley.",
+          "About 15–20 minutes heading east on Fraser Hwy to 20061 Fraser Hwy #120, Langley.",
       },
       {
         question: "Do you offer Invisalign near Panorama Ridge?",
@@ -908,7 +908,7 @@ export const locations: LocationData[] = [
       {
         question: "Are Saturday appointments available?",
         answer:
-          "Yes — Saturday hours from 9 AM to 3 PM make it easy for Panorama Ridge families to fit dental care into the weekend.",
+          "Yes — Saturday hours from 9 AM to 5 PM make it easy for Panorama Ridge families to fit dental care into the weekend.",
       },
     ],
     ctaHeading: "Panorama Ridge: Your Dental Team is Just Down Fraser Hwy",
@@ -940,7 +940,7 @@ export const locations: LocationData[] = [
       {
         question: "How far is the drive from Newton to your Langley clinic?",
         answer:
-          "About 20 minutes east on Fraser Hwy from Newton, Surrey to 20061 Fraser Hwy, Langley.",
+          "About 20 minutes east on Fraser Hwy from Newton, Surrey to 20061 Fraser Hwy #120, Langley.",
       },
       {
         question: "Do you offer children's dentistry near Newton?",
@@ -1002,7 +1002,7 @@ export const locations: LocationData[] = [
       {
         question: "Are weekend appointments available for Ocean Park patients?",
         answer:
-          "Yes — Saturday appointments from 9 AM to 3 PM make the drive from Ocean Park even more practical.",
+          "Yes — Saturday appointments from 9 AM to 5 PM make the drive from Ocean Park even more practical.",
       },
     ],
     ctaHeading: "Ocean Park: World-Class Dental Care in Nearby Langley",
@@ -1096,7 +1096,7 @@ export const locations: LocationData[] = [
       {
         question: "Do you offer Saturday appointments for Tsawwassen patients?",
         answer:
-          "Yes — Saturday hours from 9 AM to 3 PM make the trip from Tsawwassen more convenient.",
+          "Yes — Saturday hours from 9 AM to 5 PM make the trip from Tsawwassen more convenient.",
       },
     ],
     ctaHeading: "Tsawwassen: Premium Dental Care Awaits in Langley",
@@ -1138,7 +1138,7 @@ export const locations: LocationData[] = [
       {
         question: "Can I book a Saturday appointment from Pitt Meadows?",
         answer:
-          "Yes — Saturday appointments from 9 AM to 3 PM make the drive from Pitt Meadows even more practical.",
+          "Yes — Saturday appointments from 9 AM to 5 PM make the drive from Pitt Meadows even more practical.",
       },
       {
         question: "Do you accept new patients from Pitt Meadows?",

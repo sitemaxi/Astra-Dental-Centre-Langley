@@ -26,11 +26,12 @@ const DENTIST_BASE = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 49.10863,
-    longitude: -122.66712,
+    latitude: 49.1082904,
+    longitude: -122.6667404,
   },
   openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Friday"], opens: "10:00", closes: "19:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday"], opens: "10:00", closes: "19:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Friday"], opens: "10:00", closes: "18:00" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Wednesday", "Thursday"], opens: "09:00", closes: "17:00" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "09:00", closes: "17:00" },
   ],
@@ -42,9 +43,9 @@ const DENTIST_BASE = {
   },
   sameAs: [
     "https://www.facebook.com/astradentalcentre",
-    "https://www.google.com/maps?cid=astradentalcentre",
+    "https://www.google.com/maps?cid=12594571977489395495",
   ],
-  hasMap: "https://www.google.com/maps/place/Astra+Dental+Centre",
+  hasMap: "https://www.google.com/maps/place/Astra+Dental+Centre/@49.1082904,-122.6667404,19z/data=!4m6!3m5!1s0x5485cfd5f42d6087:0xaec8e87c10582f27!8m2!3d49.1082904!4d-122.6667404!16s%2Fg%2F1ptx03nb8",
 };
 
 // ---------------------------------------------------------------------------

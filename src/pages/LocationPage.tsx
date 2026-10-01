@@ -173,15 +173,9 @@ export default function LocationPage({ locationSlug }: LocationPageProps) {
               </div>
 
               <div className="space-y-3">
-                {[
-                  { day: "Mon – Wed", hours: BUSINESS.hours.monday },
-                  { day: "Thursday", hours: BUSINESS.hours.thursday },
-                  { day: "Friday", hours: BUSINESS.hours.friday },
-                  { day: "Saturday", hours: BUSINESS.hours.saturday },
-                  { day: "Sunday", hours: BUSINESS.hours.sunday },
-                ].map(({ day, hours }) => (
+                {Object.entries(BUSINESS.hours).map(([day, hours]) => (
                   <div key={day} className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500 font-medium">{day}</span>
+                    <span className="text-gray-500 font-medium capitalize">{day}</span>
                     <span
                       className={`font-semibold text-xs px-2.5 py-1 rounded-full ${
                         hours === "Closed"

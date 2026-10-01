@@ -37,7 +37,7 @@ const CLINIC_HOURS: Record<number, { open: string; close: string } | null> = {
   2: { open: "09:00", close: "17:00" }, // Tuesday 9am–5pm
   3: { open: "09:00", close: "17:00" }, // Wednesday
   4: { open: "09:00", close: "17:00" }, // Thursday
-  5: { open: "10:00", close: "19:00" }, // Friday 10am–7pm
+  5: { open: "10:00", close: "18:00" }, // Friday 10am–6pm
   6: { open: "09:00", close: "17:00" }, // Saturday 9am–5pm
 };
 
