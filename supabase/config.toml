@@ -1,0 +1,8 @@
+[functions.generate-blog-post]
+verify_jwt = true
+
+[functions.generate-location-image]
+verify_jwt = false
+
+[functions.send-form-email]
+verify_jwt = false

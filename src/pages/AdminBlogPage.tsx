@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { SquarePen as PenSquare, Trash2, ExternalLink, PlusCircle, LogOut, Eye, Clock, Tag, CalendarDays, ChevronRight, Loader2, AlertCircle, Users, TrendingUp, Calendar, BarChart2, FileText, Sparkles, MapPin, Image as ImageIcon, ClipboardList, Download } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import { getAllPosts, deletePost, type BlogPost } from "../lib/blogApi";
+import EmailStatusCell, { needsEmailAttention } from "../components/admin/EmailStatusCell";
+import type { EmailStatus } from "../lib/formEmail";
 
 interface AppointmentRequest {
   id: string;
@@ -14,6 +16,8 @@ interface AppointmentRequest {
   preferred_date: string | null;
   preferred_time: string | null;
   message: string | null;
+  email_status: EmailStatus;
+  email_error: string | null;
   created_at: string;
 }
 
@@ -33,7 +37,7 @@ function StatusBadge({ status }: { status: string }) {
 function SkeletonRow() {
   return (
     <tr className="border-b border-gray-100">
-      {[...Array(6)].map((_, i) => (
+      {[...Array(7)].map((_, i) => (
         <td key={i} className="px-4 py-3">
           <div className="h-4 bg-gray-100 rounded animate-pulse" />
         </td>
@@ -51,6 +55,7 @@ export default function AdminBlogPage() {
   const [error, setError] = useState("");
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [deleting, setDeleting] = useState(false);
+  const [apptFilter, setApptFilter] = useState<"all" | "attention">("all");
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -118,6 +123,14 @@ export default function AdminBlogPage() {
   const apptThisMonth = appointments.filter((a) => new Date(a.created_at) >= startOfMonth).length;
   const publishedPosts = posts.filter((p) => p.status === "published").length;
   const totalViews = posts.reduce((sum, p) => sum + (p.views ?? 0), 0);
+  const apptNeedingAttention = appointments.filter((a) => needsEmailAttention(a.email_status)).length;
+  const visibleAppointments = apptFilter === "attention"
+    ? appointments.filter((a) => needsEmailAttention(a.email_status))
+    : appointments;
+
+  const updateApptEmail = (id: string, email_status: EmailStatus, email_error: string | null) => {
+    setAppointments((prev) => prev.map((a) => (a.id === id ? { ...a, email_status, email_error } : a)));
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -174,6 +187,22 @@ export default function AdminBlogPage() {
               <h2 className="text-lg font-bold text-gray-900">Appointment Requests</h2>
               <span className="text-xs text-gray-400 bg-gray-100 rounded-full px-2.5 py-0.5">{appointments.length} total</span>
             </div>
+            <div className="flex items-center gap-1 bg-gray-100 rounded-xl p-1">
+              {([
+                { key: "all", label: "All" },
+                { key: "attention", label: `Needs attention (${apptNeedingAttention})` },
+              ] as const).map(({ key, label }) => (
+                <button
+                  key={key}
+                  onClick={() => setApptFilter(key)}
+                  className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors ${
+                    apptFilter === key ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-800"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
           </div>
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
@@ -186,19 +215,20 @@ export default function AdminBlogPage() {
                     <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Preferred Date</th>
                     <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Time</th>
                     <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Submitted</th>
+                    <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Clinic Email</th>
                   </tr>
                 </thead>
                 <tbody>
                   {loadingAppts ? (
                     [...Array(5)].map((_, i) => <SkeletonRow key={i} />)
-                  ) : appointments.length === 0 ? (
+                  ) : visibleAppointments.length === 0 ? (
                     <tr>
-                      <td colSpan={6} className="px-4 py-10 text-center text-sm text-gray-400">
-                        No appointment requests yet.
+                      <td colSpan={7} className="px-4 py-10 text-center text-sm text-gray-400">
+                        {apptFilter === "attention" ? "Every appointment request has been emailed to the clinic." : "No appointment requests yet."}
                       </td>
                     </tr>
                   ) : (
-                    appointments.map((appt) => (
+                    visibleAppointments.map((appt) => (
                       <tr key={appt.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
                         <td className="px-4 py-3 font-medium text-gray-800">
                           {appt.first_name} {appt.last_name}
@@ -230,6 +260,15 @@ export default function AdminBlogPage() {
                           {new Date(appt.created_at).toLocaleDateString("en-CA", {
                             month: "short", day: "numeric", year: "numeric"
                           })}
+                        </td>
+                        <td className="px-4 py-3">
+                          <EmailStatusCell
+                            type="appointment"
+                            id={appt.id}
+                            status={appt.email_status}
+                            error={appt.email_error}
+                            onChange={(s, e) => updateApptEmail(appt.id, s, e)}
+                          />
                         </td>
                       </tr>
                     ))

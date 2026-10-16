@@ -1,5 +1,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { SMTPClient } from "npm:emailjs@4.0.3";
+import nodemailer from "npm:nodemailer@6.9.16";
+import { createClient } from "npm:@supabase/supabase-js@2.57.4";
+import { Buffer } from "node:buffer";
 import { PDFDocument, StandardFonts, rgb, PageSizes } from "npm:pdf-lib@1.17.1";
 
 const corsHeaders = {
@@ -10,12 +12,44 @@ const corsHeaders = {
 
 const CLINIC_EMAIL = "reception@astradentalcentre.com";
 const CC_EMAIL = "operations@sitemaxi.com";
-const FROM_EMAIL = "marketing@sitemaxi.com";
+const PUBLIC_SUBMISSION_WINDOW_MS = 60 * 60 * 1000;
+
+const TABLES: Record<string, string> = {
+  appointment: "appointment_requests",
+  new_patient: "new_patient_forms",
+};
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 type FormData = Record<string, string | string[]>;
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function json(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+}
+
+function describeError(err: unknown): string {
+  const e = err as { code?: string; responseCode?: number; message?: string };
+  if (e?.code === "EAUTH" || e?.responseCode === 535) {
+    return "Gmail rejected the sign-in. Check the Gmail address and app password.";
+  }
+  if (e?.code === "ECONNECTION" || e?.code === "ETIMEDOUT" || e?.code === "ESOCKET") {
+    return "Could not connect to Gmail. Please try again shortly.";
+  }
+  return (e?.message || String(err)).slice(0, 300);
+}
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -36,7 +70,7 @@ function val(v: string | string[] | undefined): string {
 // ---------------------------------------------------------------------------
 // PDF Generation
 // ---------------------------------------------------------------------------
-async function generateFilledPDF(d: FormData): Promise<string> {
+async function generateFilledPDF(d: FormData): Promise<Uint8Array> {
   const pdfDoc = await PDFDocument.create();
   const fontRegular = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const fontBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
@@ -104,7 +138,10 @@ async function generateFilledPDF(d: FormData): Promise<string> {
     y -= 18;
   }
 
-  function drawField(label: string, value: string, indent = 0) {
+  function drawField(label: string, rawValue: string, indent = 0) {
+    const value = rawValue
+      .replace(/\s+/g, " ")
+      .replace(/[^\x20-\x7E\u00A0-\u00FF\u2013\u2014\u2018\u2019\u201C\u201D\u2022]/g, "?");
     const lines = wrapText(value, fontRegular, 9, contentWidth - 150 - indent);
     const rowH = Math.max(18, lines.length * 13 + 6);
     ensureSpace(rowH);
@@ -228,8 +265,7 @@ async function generateFilledPDF(d: FormData): Promise<string> {
     x: margin + 12, y: y - 22, size: 8, font: fontRegular, color: GREY,
   });
 
-  const pdfBytes = await pdfDoc.save();
-  return btoa(String.fromCharCode(...pdfBytes));
+  return await pdfDoc.save();
 }
 
 // ---------------------------------------------------------------------------
@@ -241,7 +277,7 @@ function field(label: string, value: string | undefined) {
       <td style="padding:8px 12px 8px 0;border-bottom:1px solid #f0f0f0;width:42%;vertical-align:top;">
         <strong style="color:#555;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">${label}</strong>
       </td>
-      <td style="padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:14px;color:#1a1a2e;">${value || "—"}</td>
+      <td style="padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:14px;color:#1a1a2e;">${escapeHtml(String(value || "—"))}</td>
     </tr>`;
 }
 
@@ -361,79 +397,119 @@ function buildNewPatientEmail(d: FormData): string {
 // ---------------------------------------------------------------------------
 // Main handler
 // ---------------------------------------------------------------------------
+function rowToFormData(row: Record<string, unknown>): FormData {
+  const out: FormData = {};
+  for (const [k, v] of Object.entries(row)) {
+    if (v === null || v === undefined) out[k] = "";
+    else if (Array.isArray(v)) out[k] = v.map(String);
+    else out[k] = String(v);
+  }
+  return out;
+}
+
+async function sendClinicEmail(type: string, data: FormData, gmailUser: string, gmailPass: string) {
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: { user: gmailUser, pass: gmailPass },
+  });
+
+  const from = `"Astra Dental Website" <${gmailUser}>`;
+  const name = `${data.first_name} ${data.last_name}`;
+
+  if (type === "appointment") {
+    await transporter.sendMail({
+      from,
+      to: CLINIC_EMAIL,
+      cc: CC_EMAIL,
+      subject: `New Appointment Request — ${name}`,
+      html: buildAppointmentEmail(data),
+    });
+    return;
+  }
+
+  const pdfBytes = await generateFilledPDF(data);
+  const safeFileName = `NewPatient_${data.first_name}_${data.last_name}`.replace(/[^A-Za-z0-9_-]/g, "_");
+  await transporter.sendMail({
+    from,
+    to: CLINIC_EMAIL,
+    cc: CC_EMAIL,
+    subject: `New Patient Form — ${name}`,
+    html: buildNewPatientEmail(data),
+    attachments: [
+      { filename: `${safeFileName}.pdf`, content: Buffer.from(pdfBytes), contentType: "application/pdf" },
+    ],
+  });
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
   try {
+    const body = await req.json().catch(() => null);
+    const type = body?.type;
+    const id = body?.id;
+    const table = typeof type === "string" ? TABLES[type] : undefined;
+    if (!table || typeof id !== "string" || !/^[0-9a-f-]{36}$/i.test(id)) {
+      return json({ error: "Invalid request" }, 400);
+    }
+
+    const supabase = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+    );
+
+    const token = (req.headers.get("Authorization") ?? "").replace(/^Bearer\s+/i, "");
+    let isAdmin = false;
+    if (token) {
+      const { data: userData } = await supabase.auth.getUser(token);
+      isAdmin = !!userData?.user;
+    }
+
+    let claim = supabase
+      .from(table)
+      .update({ email_status: "sending", email_error: null })
+      .eq("id", id)
+      .in("email_status", isAdmin ? ["pending", "failed", "not_sent"] : ["pending"]);
+    if (!isAdmin) {
+      claim = claim.gte("created_at", new Date(Date.now() - PUBLIC_SUBMISSION_WINDOW_MS).toISOString());
+    }
+    const { data: row, error: claimError } = await claim.select("*").maybeSingle();
+
+    if (claimError) {
+      console.error("Claim error:", claimError);
+      return json({ error: "Could not process request" }, 500);
+    }
+    if (!row) {
+      return json({ error: "Nothing to send for this submission" }, 409);
+    }
+
     const gmailUser = Deno.env.get("GMAIL_USER");
-    const gmailPass = Deno.env.get("GMAIL_APP_PASSWORD");
+    const gmailPass = Deno.env.get("GMAIL_APP_PASSWORD")?.replace(/\s+/g, "");
 
-    if (!gmailUser || !gmailPass) {
-      return new Response(
-        JSON.stringify({ error: "Email credentials not configured" }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+    try {
+      if (!gmailUser || !gmailPass) {
+        throw new Error("Gmail address or app password is not set up.");
+      }
+      await sendClinicEmail(type, rowToFormData(row), gmailUser, gmailPass);
+    } catch (sendErr) {
+      console.error("Email send error:", sendErr);
+      const reason = describeError(sendErr);
+      await supabase.from(table).update({ email_status: "failed", email_error: reason }).eq("id", id);
+      return json({ success: false, error: isAdmin ? reason : "Email could not be sent" }, 502);
     }
 
-    const body = await req.json();
-    const { type, data }: { type: string; data: FormData } = body;
+    await supabase
+      .from(table)
+      .update({ email_status: "sent", email_error: null, email_sent_at: new Date().toISOString() })
+      .eq("id", id);
 
-    const client = new SMTPClient({
-      user: gmailUser,
-      password: gmailPass,
-      host: "smtp.gmail.com",
-      ssl: true,
-      port: 465,
-    });
-
-    if (type === "appointment") {
-      await client.sendAsync({
-        from: `Astra Dental Website <${FROM_EMAIL}>`,
-        to: CLINIC_EMAIL,
-        cc: CC_EMAIL,
-        subject: `New Appointment Request — ${data.first_name} ${data.last_name}`,
-        attachment: [{ data: buildAppointmentEmail(data), alternative: true }],
-      });
-
-    } else if (type === "new_patient") {
-      // Generate the filled PDF server-side
-      const pdfBase64 = await generateFilledPDF(data);
-
-      await client.sendAsync({
-        from: `Astra Dental Website <${FROM_EMAIL}>`,
-        to: CLINIC_EMAIL,
-        cc: CC_EMAIL,
-        subject: `New Patient Form — ${data.first_name} ${data.last_name}`,
-        attachment: [
-          { data: buildNewPatientEmail(data), alternative: true },
-          {
-            name: `NewPatient_${data.first_name}_${data.last_name}.pdf`,
-            data: pdfBase64,
-            type: "application/pdf",
-            encoded: true,
-          },
-        ],
-      });
-
-    } else {
-      return new Response(
-        JSON.stringify({ error: "Unknown form type" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    return new Response(
-      JSON.stringify({ success: true }),
-      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
-
+    return json({ success: true });
   } catch (err) {
-    console.error("Email send error:", err);
-    return new Response(
-      JSON.stringify({ error: "Failed to send email", detail: String(err) }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    console.error("Unexpected error:", err);
+    return json({ error: "Unexpected error" }, 500);
   }
 });

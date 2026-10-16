@@ -3,10 +3,14 @@ import { useNavigate, Link } from "react-router-dom";
 import { LogOut, FileText, AlertCircle, Download, ChevronDown, ChevronUp } from "lucide-react";
 import { jsPDF } from "jspdf";
 import { supabase } from "../lib/supabase";
+import EmailStatusCell, { needsEmailAttention } from "../components/admin/EmailStatusCell";
+import type { EmailStatus } from "../lib/formEmail";
 
 interface PatientForm {
   id: string;
   created_at: string;
+  email_status: EmailStatus;
+  email_error: string | null;
   title: string;
   first_name: string;
   last_name: string;
@@ -587,6 +591,7 @@ export default function AdminPatientFormsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [filter, setFilter] = useState<"all" | "attention">("all");
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -615,6 +620,13 @@ export default function AdminPatientFormsPage() {
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     navigate("/admin/login");
+  };
+
+  const needingAttention = forms.filter((f) => needsEmailAttention(f.email_status)).length;
+  const visibleForms = filter === "attention" ? forms.filter((f) => needsEmailAttention(f.email_status)) : forms;
+
+  const updateFormEmail = (id: string, email_status: EmailStatus, email_error: string | null) => {
+    setForms((prev) => prev.map((f) => (f.id === id ? { ...f, email_status, email_error } : f)));
   };
 
   return (
@@ -657,6 +669,22 @@ export default function AdminPatientFormsPage() {
               <p className="text-sm text-gray-500">{forms.length} submission{forms.length !== 1 ? "s" : ""}</p>
             </div>
           </div>
+          <div className="flex items-center gap-1 bg-gray-100 rounded-xl p-1">
+            {([
+              { key: "all", label: "All" },
+              { key: "attention", label: `Needs attention (${needingAttention})` },
+            ] as const).map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setFilter(key)}
+                className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors ${
+                  filter === key ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-800"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {error && (
@@ -675,23 +703,26 @@ export default function AdminPatientFormsPage() {
                   <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Date of Birth</th>
                   <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Contact</th>
                   <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Submitted</th>
+                  <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Clinic Email</th>
                   <th className="text-right px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
                   [...Array(5)].map((_, i) => <SkeletonRow key={i} />)
-                ) : forms.length === 0 ? (
+                ) : visibleForms.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="px-4 py-16 text-center">
+                    <td colSpan={6} className="px-4 py-16 text-center">
                       <div className="flex flex-col items-center gap-3">
                         <FileText size={36} className="text-gray-200" />
-                        <p className="text-sm text-gray-400">No patient forms submitted yet.</p>
+                        <p className="text-sm text-gray-400">
+                          {filter === "attention" ? "Every patient form has been emailed to the clinic." : "No patient forms submitted yet."}
+                        </p>
                       </div>
                     </td>
                   </tr>
                 ) : (
-                  forms.map((f) => (
+                  visibleForms.map((f) => (
                     <>
                       <tr
                         key={f.id}
@@ -721,6 +752,15 @@ export default function AdminPatientFormsPage() {
                           })}
                         </td>
                         <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                          <EmailStatusCell
+                            type="new_patient"
+                            id={f.id}
+                            status={f.email_status}
+                            error={f.email_error}
+                            onChange={(s, e) => updateFormEmail(f.id, s, e)}
+                          />
+                        </td>
+                        <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
                           <div className="flex items-center justify-end gap-2">
                             <button
                               onClick={() => generatePatientFormPDF(f)}
@@ -735,7 +775,7 @@ export default function AdminPatientFormsPage() {
                       </tr>
                       {expandedId === f.id && (
                         <tr key={`${f.id}-detail`} className="border-b border-gray-100">
-                          <td colSpan={5} className="p-0">
+                          <td colSpan={6} className="p-0">
                             <ExpandedDetail form={f} />
                           </td>
                         </tr>

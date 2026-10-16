@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight, Download, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import SEOHead from "../components/SEOHead";
 import { supabase } from "../lib/supabase";
+import { requestFormEmail } from "../lib/formEmail";
 import { trackFormSubmit, trackFbLead } from "../lib/analytics";
 
 const inputClass =
@@ -250,8 +251,10 @@ export default function NewPatientFormPage() {
     setSubmitting(true);
     setError("");
 
+    const submissionId = crypto.randomUUID();
     const payload = {
       ...form,
+      id: submissionId,
       date_of_birth: form.date_of_birth || null,
       q20_delivery_date: form.q20_delivery_date || null,
       signature_date: form.signature_date || null,
@@ -265,18 +268,7 @@ export default function NewPatientFormPage() {
       return;
     }
 
-    // Fire-and-forget email notification — does not block success flow
-    fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-form-email`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-      },
-      body: JSON.stringify({
-        type: "new_patient",
-        data: { ...form },
-      }),
-    }).catch(() => { /* email failure is silent — data is already saved */ });
+    void requestFormEmail("new_patient", submissionId);
 
     trackFormSubmit("new_patient_form");
     trackFbLead();
