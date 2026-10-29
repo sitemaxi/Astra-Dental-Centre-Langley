@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowLeft, Sparkles, Save, Loader2, AlertCircle, CheckCircle2, ChevronDown, ChevronUp, Info } from "lucide-react";
-import { supabase } from "../lib/supabase";
 import { getPromptSettings, updatePromptSetting, type AIPromptSetting } from "../lib/aiApi";
 
 const PROMPT_DOCS: Record<string, { variables?: string[]; tips: string[] }> = {
@@ -36,7 +35,6 @@ const PROMPT_DOCS: Record<string, { variables?: string[]; tips: string[] }> = {
 };
 
 export default function AdminAISettingsPage() {
-  const navigate = useNavigate();
   const [prompts, setPrompts] = useState<AIPromptSetting[]>([]);
   const [edited, setEdited] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
@@ -44,12 +42,6 @@ export default function AdminAISettingsPage() {
   const [saved, setSaved] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (!data.session) navigate("/admin/login");
-    });
-  }, [navigate]);
 
   useEffect(() => {
     setLoading(true);

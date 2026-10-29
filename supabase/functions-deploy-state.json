@@ -1,0 +1,17 @@
+{
+  "projectId": "64901395",
+  "functions": {
+    "generate-blog-post": {
+      "hasChanged": false,
+      "hash": "e132c6caf8eca6d6dbeb90ab9cd723ef1d9320af38f0176339cf92c20f12be12"
+    },
+    "generate-location-image": {
+      "hasChanged": false,
+      "hash": "0146fb67b2b6147bfc2defa343b0eb03f4daaa747d16c3b4b52683c0cc05dbd3"
+    },
+    "send-form-email": {
+      "hasChanged": false,
+      "hash": "9f5f66e6422416a0fd976d42d93d9619f3f6bb5076c708c22bb281bc99eeb677"
+    }
+  }
+}

@@ -1,10 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { LogOut, FileText, AlertCircle, Download, ChevronDown, ChevronUp } from "lucide-react";
+import { LogOut, FileText, AlertCircle, Download, ChevronDown, ChevronUp, Loader2 } from "lucide-react";
 import { jsPDF } from "jspdf";
 import { supabase } from "../lib/supabase";
 import EmailStatusCell, { needsEmailAttention } from "../components/admin/EmailStatusCell";
 import type { EmailStatus } from "../lib/formEmail";
+import { logRecordAccess } from "../lib/adminAuth";
 
 interface PatientForm {
   id: string;
@@ -592,12 +593,7 @@ export default function AdminPatientFormsPage() {
   const [error, setError] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [filter, setFilter] = useState<"all" | "attention">("all");
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (!data.session) navigate("/admin/login");
-    });
-  }, [navigate]);
+  const [exportingId, setExportingId] = useState<string | null>(null);
 
   const fetchForms = useCallback(async () => {
     setLoading(true);
@@ -624,6 +620,33 @@ export default function AdminPatientFormsPage() {
 
   const needingAttention = forms.filter((f) => needsEmailAttention(f.email_status)).length;
   const visibleForms = filter === "attention" ? forms.filter((f) => needsEmailAttention(f.email_status)) : forms;
+
+  const toggleExpand = async (id: string) => {
+    if (expandedId === id) {
+      setExpandedId(null);
+      return;
+    }
+    setError("");
+    try {
+      await logRecordAccess("new_patient", id, "view");
+      setExpandedId(id);
+    } catch {
+      setError("This form couldn't be opened. Please try again.");
+    }
+  };
+
+  const handleDownload = async (f: PatientForm) => {
+    setError("");
+    setExportingId(f.id);
+    try {
+      await logRecordAccess("new_patient", f.id, "export");
+      generatePatientFormPDF(f);
+    } catch {
+      setError("The PDF couldn't be prepared. Please try again.");
+    } finally {
+      setExportingId(null);
+    }
+  };
 
   const updateFormEmail = (id: string, email_status: EmailStatus, email_error: string | null) => {
     setForms((prev) => prev.map((f) => (f.id === id ? { ...f, email_status, email_error } : f)));
@@ -727,7 +750,7 @@ export default function AdminPatientFormsPage() {
                       <tr
                         key={f.id}
                         className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors cursor-pointer"
-                        onClick={() => setExpandedId(expandedId === f.id ? null : f.id)}
+                        onClick={() => toggleExpand(f.id)}
                       >
                         <td className="px-4 py-3 font-medium text-gray-800">
                           <div className="flex items-center gap-2">
@@ -763,11 +786,12 @@ export default function AdminPatientFormsPage() {
                         <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
                           <div className="flex items-center justify-end gap-2">
                             <button
-                              onClick={() => generatePatientFormPDF(f)}
-                              className="flex items-center gap-1.5 bg-teal-600 text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-teal-700 transition-colors"
+                              onClick={() => handleDownload(f)}
+                              disabled={exportingId === f.id}
+                              className="flex items-center gap-1.5 bg-teal-600 text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-60"
                               title="Download PDF"
                             >
-                              <Download size={12} />
+                              {exportingId === f.id ? <Loader2 size={12} className="animate-spin" /> : <Download size={12} />}
                               Download PDF
                             </button>
                           </div>

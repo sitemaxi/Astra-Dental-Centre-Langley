@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -23,33 +23,10 @@ import DentalImplantsPage from "./pages/services/DentalImplantsPage";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import ThankYouPage from "./pages/ThankYouPage";
+import AdminAccessLogPage from "./pages/AdminAccessLogPage";
+import AdminGuard from "./components/admin/AdminGuard";
+import { locations } from "./data/locations";
 
-const locationSlugs = [
-  "dentist-langley",
-  "dentist-willowbrook-langley",
-  "dentist-walnut-grove-langley",
-  "dentist-brookswood-langley",
-  "dentist-murrayville-langley",
-  "dentist-cloverdale-surrey",
-  "dentist-white-rock",
-  "dentist-north-delta",
-  "dentist-aldergrove-langley",
-  "dentist-fort-langley",
-  "dentist-abbotsford",
-  "dentist-maple-ridge",
-  "dentist-surrey",
-  "dentist-burnaby",
-  "dentist-clayton-heights-surrey",
-  "dentist-fleetwood-surrey",
-  "dentist-guildford-surrey",
-  "dentist-south-surrey",
-  "dentist-panorama-ridge-surrey",
-  "dentist-newton-surrey",
-  "dentist-ocean-park-surrey",
-  "dentist-ladner",
-  "dentist-tsawwassen",
-  "dentist-pitt-meadows",
-];
 
 const router = createBrowserRouter([
   {
@@ -57,36 +34,20 @@ const router = createBrowserRouter([
     element: <AdminLoginPage />,
   },
   {
-    path: "/admin/blog",
-    element: <AdminBlogPage />,
-  },
-  {
-    path: "/admin/blog/new",
-    element: <AdminBlogEditorPage />,
-  },
-  {
-    path: "/admin/blog/edit/:id",
-    element: <AdminBlogEditorPage />,
-  },
-  {
-    path: "/admin/ai-settings",
-    element: <AdminAISettingsPage />,
-  },
-  {
-    path: "/admin/locations",
-    element: <AdminLocationsPage />,
-  },
-  {
-    path: "/admin/service-images",
-    element: <AdminServiceImagesPage />,
-  },
-  {
-    path: "/admin/patient-forms",
-    element: <AdminPatientFormsPage />,
-  },
-  {
-    path: "/admin/download-images",
-    element: <AdminDownloadImagesPage />,
+    path: "/admin",
+    element: <AdminGuard />,
+    children: [
+      { index: true, element: <Navigate to="/admin/blog" replace /> },
+      { path: "blog", element: <AdminBlogPage /> },
+      { path: "blog/new", element: <AdminBlogEditorPage /> },
+      { path: "blog/edit/:id", element: <AdminBlogEditorPage /> },
+      { path: "ai-settings", element: <AdminAISettingsPage /> },
+      { path: "locations", element: <AdminLocationsPage /> },
+      { path: "service-images", element: <AdminServiceImagesPage /> },
+      { path: "patient-forms", element: <AdminPatientFormsPage /> },
+      { path: "download-images", element: <AdminDownloadImagesPage /> },
+      { path: "access-log", element: <AdminAccessLogPage /> },
+    ],
   },
   {
     path: "/",
@@ -111,7 +72,7 @@ const router = createBrowserRouter([
         path: ":categorySlug/:serviceSlug/",
         element: <ServiceDetailPage />,
       },
-      ...locationSlugs.map((slug) => ({
+      ...locations.map(({ slug }) => ({
         path: `${slug}/`,
         element: <LocationPage key={slug} locationSlug={slug} />,
       })),

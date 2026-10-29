@@ -4,6 +4,7 @@ import {
   List, ListOrdered, Quote, Link2, Image as ImageIcon
 } from "lucide-react";
 import { resolveInternalHref } from "../lib/internalLinks";
+import { sanitizeBlogHtml } from "../lib/sanitize";
 
 export interface RichTextEditorRef {
   insertImage: (url: string, alt: string) => void;
@@ -51,15 +52,18 @@ const RichTextEditor = forwardRef<RichTextEditorRef, RichTextEditorProps>(
         const editor = editorRef.current;
         if (!editor) return;
         editor.focus();
-        const img = `<img src="${url}" alt="${alt}" class="max-w-full rounded-lg my-4" />`;
-        document.execCommand("insertHTML", false, img);
+        const img = document.createElement("img");
+        img.src = url;
+        img.alt = alt;
+        img.className = "max-w-full rounded-lg my-4";
+        document.execCommand("insertHTML", false, sanitizeBlogHtml(img.outerHTML));
         onChange(editor.innerHTML);
       },
       setContent(html: string) {
         const editor = editorRef.current;
         if (!editor) return;
         isInternalUpdate.current = true;
-        editor.innerHTML = html;
+        editor.innerHTML = sanitizeBlogHtml(html);
         isInternalUpdate.current = false;
       },
     }));
@@ -69,7 +73,7 @@ const RichTextEditor = forwardRef<RichTextEditorRef, RichTextEditorProps>(
       if (!editor) return;
       if (editor.innerHTML !== content && !isInternalUpdate.current) {
         isInternalUpdate.current = true;
-        editor.innerHTML = content;
+        editor.innerHTML = sanitizeBlogHtml(content);
         isInternalUpdate.current = false;
       }
     }, [content]);

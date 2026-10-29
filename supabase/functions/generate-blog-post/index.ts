@@ -1,5 +1,5 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -67,6 +67,27 @@ async function generateImageWithImagen(
   return b64;
 }
 
+async function isAdminRequest(req: Request, supabase: SupabaseClient): Promise<boolean> {
+  const token = (req.headers.get("Authorization") ?? "").replace(/^Bearer\s+/i, "");
+  if (!token) return false;
+  const { data: userData } = await supabase.auth.getUser(token);
+  if (!userData?.user) return false;
+  const { data, error } = await supabase
+    .from("admin_users")
+    .select("user_id")
+    .eq("user_id", userData.user.id)
+    .maybeSingle();
+  if (error) console.error("Admin lookup error:", error);
+  return !!data;
+}
+
+function forbidden() {
+  return new Response(
+    JSON.stringify({ error: "Not authorised." }),
+    { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+  );
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
@@ -75,23 +96,19 @@ Deno.serve(async (req: Request) => {
   try {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    if (!(await isAdminRequest(req, supabase))) return forbidden();
+
     const openaiKey = Deno.env.get("OPENAI_API_KEY");
     const googleApiKey = Deno.env.get("GOOGLE_API_KEY");
 
-    const missingKeys: string[] = [];
-    if (!openaiKey) missingKeys.push("OPENAI_API_KEY");
-    if (!googleApiKey) missingKeys.push("GOOGLE_API_KEY");
-
-    if (missingKeys.length > 0) {
+    if (!openaiKey || !googleApiKey) {
+      console.error("AI provider keys missing", { openai: !!openaiKey, google: !!googleApiKey });
       return new Response(
-        JSON.stringify({
-          error: `Missing API keys: ${missingKeys.join(", ")}. Please add them in the AI Settings.`,
-        }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        JSON.stringify({ error: "AI writing is not set up yet. Please contact your site administrator." }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
-
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     const body: GenerateRequest = await req.json();
     const { topic, internalLinks = [] } = body;
@@ -239,8 +256,9 @@ Deno.serve(async (req: Request) => {
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (err) {
+    console.error("Unhandled error:", err);
     return new Response(
-      JSON.stringify({ error: (err as Error).message }),
+      JSON.stringify({ error: "Blog post generation failed. Please try again." }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }

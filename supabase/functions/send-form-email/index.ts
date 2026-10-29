@@ -13,6 +13,8 @@ const corsHeaders = {
 const CLINIC_EMAIL = "reception@astradentalcentre.com";
 const CC_EMAIL = "operations@sitemaxi.com";
 const PUBLIC_SUBMISSION_WINDOW_MS = 60 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 
 const TABLES: Record<string, string> = {
   appointment: "appointment_requests",
@@ -41,14 +43,26 @@ function json(body: unknown, status = 200) {
 }
 
 function describeError(err: unknown): string {
-  const e = err as { code?: string; responseCode?: number; message?: string };
+  const e = err as { code?: string; responseCode?: number };
   if (e?.code === "EAUTH" || e?.responseCode === 535) {
-    return "Gmail rejected the sign-in. Check the Gmail address and app password.";
+    return "The clinic email account refused the sign-in. The email settings need updating.";
   }
   if (e?.code === "ECONNECTION" || e?.code === "ETIMEDOUT" || e?.code === "ESOCKET") {
-    return "Could not connect to Gmail. Please try again shortly.";
+    return "Could not reach the email service. Please try again shortly.";
   }
-  return (e?.message || String(err)).slice(0, 300);
+  if (e?.code === "NOT_CONFIGURED") {
+    return "Email sending is not set up yet.";
+  }
+  return "The email could not be sent. Please try again later.";
+}
+
+async function clientKey(req: Request): Promise<string> {
+  const ip =
+    req.headers.get("cf-connecting-ip") ??
+    (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() ??
+    "";
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(ip || "unknown"));
+  return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 // ---------------------------------------------------------------------------
@@ -449,24 +463,56 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const body = await req.json().catch(() => null);
-    const type = body?.type;
-    const id = body?.id;
-    const table = typeof type === "string" ? TABLES[type] : undefined;
-    if (!table || typeof id !== "string" || !/^[0-9a-f-]{36}$/i.test(id)) {
-      return json({ error: "Invalid request" }, 400);
-    }
-
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
     );
 
     const token = (req.headers.get("Authorization") ?? "").replace(/^Bearer\s+/i, "");
-    let isAdmin = false;
+    let admin: { user_id: string; email: string } | null = null;
     if (token) {
       const { data: userData } = await supabase.auth.getUser(token);
-      isAdmin = !!userData?.user;
+      if (userData?.user) {
+        const { data: adminRow, error: adminError } = await supabase
+          .from("admin_users")
+          .select("user_id, email")
+          .eq("user_id", userData.user.id)
+          .maybeSingle();
+        if (adminError) console.error("Admin lookup error:", adminError);
+        admin = adminRow ?? null;
+      }
+    }
+    const isAdmin = !!admin;
+
+    if (!isAdmin) {
+      const key = await clientKey(req);
+      const since = new Date(Date.now() - RATE_LIMIT_WINDOW_MS).toISOString();
+      const { count, error: countError } = await supabase
+        .from("email_send_attempts")
+        .select("id", { count: "exact", head: true })
+        .eq("client_key", key)
+        .gte("created_at", since);
+      if (countError) {
+        console.error("Rate limit check error:", countError);
+        return json({ error: "Could not process request" }, 500);
+      }
+      if ((count ?? 0) >= RATE_LIMIT_MAX) {
+        return json({ error: "Too many requests. Please try again later." }, 429);
+      }
+      const { error: attemptError } = await supabase.from("email_send_attempts").insert({ client_key: key });
+      if (attemptError) console.error("Rate limit record error:", attemptError);
+      await supabase
+        .from("email_send_attempts")
+        .delete()
+        .lt("created_at", new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString());
+    }
+
+    const body = await req.json().catch(() => null);
+    const type = body?.type;
+    const id = body?.id;
+    const table = typeof type === "string" ? TABLES[type] : undefined;
+    if (!table || typeof id !== "string" || !/^[0-9a-f-]{36}$/i.test(id)) {
+      return json({ error: "Invalid request" }, 400);
     }
 
     let claim = supabase
@@ -487,12 +533,29 @@ Deno.serve(async (req: Request) => {
       return json({ error: "Nothing to send for this submission" }, 409);
     }
 
+    if (admin) {
+      const subjectName = `${row.first_name ?? ""} ${row.last_name ?? ""}`.trim() || "Unknown";
+      const { error: logError } = await supabase.from("patient_record_access_log").insert({
+        admin_user_id: admin.user_id,
+        admin_email: admin.email,
+        record_type: type,
+        record_id: id,
+        subject_name: subjectName,
+        action: "resend",
+      });
+      if (logError) {
+        console.error("Access log error:", logError);
+        await supabase.from(table).update({ email_status: "failed", email_error: "Resend could not be recorded. Please try again." }).eq("id", id);
+        return json({ success: false, error: "Resend could not be recorded. Please try again." }, 500);
+      }
+    }
+
     const gmailUser = Deno.env.get("GMAIL_USER");
     const gmailPass = Deno.env.get("GMAIL_APP_PASSWORD")?.replace(/\s+/g, "");
 
     try {
       if (!gmailUser || !gmailPass) {
-        throw new Error("Gmail address or app password is not set up.");
+        throw Object.assign(new Error("mail credentials missing"), { code: "NOT_CONFIGURED" });
       }
       await sendClinicEmail(type, rowToFormData(row), gmailUser, gmailPass);
     } catch (sendErr) {

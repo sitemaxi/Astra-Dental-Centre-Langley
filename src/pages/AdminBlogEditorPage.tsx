@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { ArrowLeft, Save, Globe, Image as ImageIcon, X, Loader2, AlertCircle, CheckCircle2, Plus, Trash2, CreditCard as Edit3, Eye, Sparkles, Settings } from "lucide-react";
-import { supabase } from "../lib/supabase";
 import {
   getPostById, createPost, updatePost, generateSlug,
   type BlogPost, type BlogPostInsert
@@ -58,12 +57,6 @@ export default function AdminBlogEditorPage() {
   const [saveError, setError] = useState("");
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
   const [autoSaveStatus, setAutoSaveStatus] = useState<"idle" | "saving" | "saved">("idle");
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (!data.session) navigate("/admin/login");
-    });
-  }, [navigate]);
 
   useEffect(() => {
     if (!isNew && id) {

@@ -4,6 +4,7 @@ import { CalendarDays, Clock, Loader2, AlertCircle } from "lucide-react";
 import { supabase } from "../../lib/supabase";
 import { requestFormEmail } from "../../lib/formEmail";
 import { trackFormSubmit } from "../../lib/analytics";
+import { stripHtml } from "../../lib/sanitize";
 
 declare global {
   interface Window {
@@ -94,6 +95,7 @@ export default function BookingForm() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [trap, setTrap] = useState("");
 
   const selectedDayIndex = form.date ? getDayIndexFromDateString(form.date) : null;
   const hoursForDay = selectedDayIndex !== null ? CLINIC_HOURS[selectedDayIndex] : null;
@@ -119,17 +121,29 @@ export default function BookingForm() {
     setSubmitting(true);
     setError("");
 
+    const thankYouState = {
+      firstName: stripHtml(form.firstName),
+      date: form.date,
+      time: form.time,
+      service: form.service,
+    };
+
+    if (trap) {
+      navigate("/thankyou/", { state: thankYouState });
+      return;
+    }
+
     const submissionId = crypto.randomUUID();
     const { error: dbError } = await supabase.from("appointment_requests").insert({
       id: submissionId,
-      first_name: form.firstName,
-      last_name: form.lastName,
-      email: form.email,
-      phone: form.phone,
+      first_name: stripHtml(form.firstName),
+      last_name: stripHtml(form.lastName),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
       service: form.service,
       preferred_date: form.date,
       preferred_time: form.time,
-      message: form.message,
+      message: stripHtml(form.message),
     });
 
     if (dbError) {
@@ -157,27 +171,26 @@ export default function BookingForm() {
 
     trackFormSubmit("appointment_booking");
     setSubmitting(false);
-    navigate("/thankyou/", {
-      state: {
-        firstName: form.firstName,
-        date: form.date,
-        time: form.time,
-        service: form.service,
-      },
-    });
+    navigate("/thankyou/", { state: thankYouState });
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      <div aria-hidden="true" className="absolute -left-[10000px] top-auto w-px h-px overflow-hidden">
+        <label>
+          Leave this field empty
+          <input type="text" name="company_website" tabIndex={-1} autoComplete="off" value={trap} onChange={(e) => setTrap(e.target.value)} />
+        </label>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">First Name</label>
-          <input name="firstName" type="text" required value={form.firstName} onChange={handleChange}
+          <input name="firstName" type="text" required maxLength={100} value={form.firstName} onChange={handleChange}
             className={inputClass} placeholder="John" />
         </div>
         <div>
           <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Last Name</label>
-          <input name="lastName" type="text" required value={form.lastName} onChange={handleChange}
+          <input name="lastName" type="text" required maxLength={100} value={form.lastName} onChange={handleChange}
             className={inputClass} placeholder="Doe" />
         </div>
       </div>
@@ -185,12 +198,12 @@ export default function BookingForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Email Address</label>
-          <input name="email" type="email" required value={form.email} onChange={handleChange}
+          <input name="email" type="email" required maxLength={254} value={form.email} onChange={handleChange}
             className={inputClass} placeholder="john@example.com" />
         </div>
         <div>
           <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Phone Number</label>
-          <input name="phone" type="tel" required value={form.phone} onChange={handleChange}
+          <input name="phone" type="tel" required minLength={7} maxLength={25} pattern="[0-9+\(\)\-. ]{7,25}" title="Please enter a valid phone number" value={form.phone} onChange={handleChange}
             className={inputClass} placeholder="604-000-0000" />
         </div>
       </div>
@@ -261,6 +274,7 @@ export default function BookingForm() {
         <textarea
           name="message"
           rows={3}
+          maxLength={2000}
           value={form.message}
           onChange={handleChange}
           className={`${inputClass} resize-none`}

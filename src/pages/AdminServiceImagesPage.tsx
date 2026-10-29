@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   ArrowLeft, Image as ImageIcon, Upload, Trash2, Plus,
   ChevronDown, ChevronRight, ChevronUp, Loader2, CheckCircle2, AlertCircle, Save, LayoutGrid,
@@ -913,7 +913,6 @@ function ClinicGalleryImages() {
 type Tab = "categories" | "services" | "whoweserve" | "homehero" | "clinicgallery" | "video";
 
 export default function AdminServiceImagesPage() {
-  const navigate = useNavigate();
   const [tab, setTab] = useState<Tab>("categories");
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -923,12 +922,6 @@ export default function AdminServiceImagesPage() {
   const [loadingWhoWeServe, setLoadingWhoWeServe] = useState(true);
   const [homeHeroRows, setHomeHeroRows] = useState<SiteImageRow[]>([]);
   const [loadingHomeHero, setLoadingHomeHero] = useState(true);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (!data.session) navigate("/admin/login");
-    });
-  }, [navigate]);
 
   useEffect(() => {
     getAllCategoryImages().then((imgs) => {

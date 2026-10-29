@@ -5,6 +5,7 @@ import SEOHead from "../components/SEOHead";
 import { supabase } from "../lib/supabase";
 import { requestFormEmail } from "../lib/formEmail";
 import { trackFormSubmit, trackFbLead } from "../lib/analytics";
+import { stripHtmlFields } from "../lib/sanitize";
 
 const inputClass =
   "w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-navy-900 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-all placeholder:text-gray-300 bg-white";
@@ -202,6 +203,7 @@ export default function NewPatientFormPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [trap, setTrap] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormState, string>>>({});
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
@@ -251,9 +253,16 @@ export default function NewPatientFormPage() {
     setSubmitting(true);
     setError("");
 
+    if (trap) {
+      setSubmitting(false);
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     const submissionId = crypto.randomUUID();
     const payload = {
-      ...form,
+      ...stripHtmlFields(form),
       id: submissionId,
       date_of_birth: form.date_of_birth || null,
       q20_delivery_date: form.q20_delivery_date || null,
@@ -359,6 +368,12 @@ export default function NewPatientFormPage() {
         )}
 
         <form onSubmit={handleSubmit} className="space-y-10">
+          <div aria-hidden="true" className="absolute -left-[10000px] top-auto w-px h-px overflow-hidden">
+            <label>
+              Leave this field empty
+              <input type="text" name="company_website" tabIndex={-1} autoComplete="off" value={trap} onChange={(e) => setTrap(e.target.value)} />
+            </label>
+          </div>
 
           {/* SECTION A — Personal Information */}
           <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 sm:p-8">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { X, Sparkles, Loader2, AlertCircle, Link, Plus, Trash2, ChevronRight, CheckCircle2, Image as ImageIcon, FileText, Search } from "lucide-react";
 import { generateBlogPost, type AIGeneratedBlog } from "../../lib/aiApi";
+import { sanitizeBlogHtml } from "../../lib/sanitize";
 import { serviceCategories } from "../../data/services";
 
 interface Props {
@@ -343,7 +344,7 @@ export default function AIBlogGenerator({ isOpen, onClose, onApply }: Props) {
               <div>
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Content Preview</p>
                 <div className="text-sm text-gray-600 bg-gray-50 rounded-xl px-4 py-3 max-h-32 overflow-hidden relative">
-                  <div dangerouslySetInnerHTML={{ __html: result.content.slice(0, 400) + "..." }} className="line-clamp-4" />
+                  <div dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(result.content.slice(0, 400) + "...") }} className="line-clamp-4" />
                   <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-gray-50" />
                 </div>
               </div>

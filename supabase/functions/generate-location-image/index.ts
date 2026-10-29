@@ -1,5 +1,5 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
-import { createClient } from "npm:@supabase/supabase-js@2";
+import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -46,6 +46,27 @@ async function generateImageWithImagen(
   return b64;
 }
 
+async function isAdminRequest(req: Request, supabase: SupabaseClient): Promise<boolean> {
+  const token = (req.headers.get("Authorization") ?? "").replace(/^Bearer\s+/i, "");
+  if (!token) return false;
+  const { data: userData } = await supabase.auth.getUser(token);
+  if (!userData?.user) return false;
+  const { data, error } = await supabase
+    .from("admin_users")
+    .select("user_id")
+    .eq("user_id", userData.user.id)
+    .maybeSingle();
+  if (error) console.error("Admin lookup error:", error);
+  return !!data;
+}
+
+function forbidden() {
+  return new Response(
+    JSON.stringify({ error: "Not authorised." }),
+    { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+  );
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
@@ -54,11 +75,15 @@ Deno.serve(async (req: Request) => {
   try {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    if (!(await isAdminRequest(req, supabase))) return forbidden();
+
     const googleApiKey = Deno.env.get("GOOGLE_API_KEY");
 
     if (!googleApiKey) {
+      console.error("Image provider key missing");
       return new Response(
-        JSON.stringify({ error: "Google API key not configured." }),
+        JSON.stringify({ error: "Image generation is not set up yet." }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -66,9 +91,12 @@ Deno.serve(async (req: Request) => {
     const body: GenerateLocationImageRequest = await req.json();
     const { slug, prompt } = body;
 
-    if (!slug || !prompt) {
+    if (
+      typeof slug !== "string" || !/^[a-z0-9-]{1,100}$/.test(slug) ||
+      typeof prompt !== "string" || !prompt.trim() || prompt.length > 4000
+    ) {
       return new Response(
-        JSON.stringify({ error: "slug and prompt are required." }),
+        JSON.stringify({ error: "A valid location and prompt are required." }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -80,8 +108,6 @@ Deno.serve(async (req: Request) => {
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
-
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     const fileName = `location-heroes/${slug}-${Date.now()}.jpg`;
     const imageBytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));

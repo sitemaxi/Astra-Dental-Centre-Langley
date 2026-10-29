@@ -1,21 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { SquarePen as PenSquare, Trash2, ExternalLink, PlusCircle, LogOut, Eye, Clock, Tag, CalendarDays, ChevronRight, Loader2, AlertCircle, Users, TrendingUp, Calendar, BarChart2, FileText, Sparkles, MapPin, Image as ImageIcon, ClipboardList, Download } from "lucide-react";
+import { SquarePen as PenSquare, Trash2, ExternalLink, PlusCircle, LogOut, Eye, Clock, Tag, CalendarDays, ChevronRight, Loader2, AlertCircle, Users, TrendingUp, Calendar, BarChart2, FileText, Sparkles, MapPin, Image as ImageIcon, ClipboardList, Download, ShieldCheck } from "lucide-react";
 import { supabase } from "../lib/supabase";
 import { getAllPosts, deletePost, type BlogPost } from "../lib/blogApi";
 import EmailStatusCell, { needsEmailAttention } from "../components/admin/EmailStatusCell";
 import type { EmailStatus } from "../lib/formEmail";
+import AppointmentDetailModal from "../components/admin/AppointmentDetailModal";
 
-interface AppointmentRequest {
+interface AppointmentSummary {
   id: string;
   first_name: string;
   last_name: string;
-  email: string;
-  phone: string;
-  service: string | null;
   preferred_date: string | null;
-  preferred_time: string | null;
-  message: string | null;
   email_status: EmailStatus;
   email_error: string | null;
   created_at: string;
@@ -34,10 +30,10 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
-function SkeletonRow() {
+function SkeletonRow({ cols = 7 }: { cols?: number }) {
   return (
     <tr className="border-b border-gray-100">
-      {[...Array(7)].map((_, i) => (
+      {[...Array(cols)].map((_, i) => (
         <td key={i} className="px-4 py-3">
           <div className="h-4 bg-gray-100 rounded animate-pulse" />
         </td>
@@ -49,19 +45,14 @@ function SkeletonRow() {
 export default function AdminBlogPage() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [appointments, setAppointments] = useState<AppointmentRequest[]>([]);
+  const [appointments, setAppointments] = useState<AppointmentSummary[]>([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [loadingAppts, setLoadingAppts] = useState(true);
   const [error, setError] = useState("");
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [deleting, setDeleting] = useState(false);
   const [apptFilter, setApptFilter] = useState<"all" | "attention">("all");
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (!data.session) navigate("/admin/login");
-    });
-  }, [navigate]);
+  const [openAppt, setOpenAppt] = useState<AppointmentSummary | null>(null);
 
   const fetchPosts = useCallback(async () => {
     setLoadingPosts(true);
@@ -80,10 +71,10 @@ export default function AdminBlogPage() {
     try {
       const { data, error: err } = await supabase
         .from("appointment_requests")
-        .select("*")
+        .select("id, first_name, last_name, preferred_date, email_status, email_error, created_at")
         .order("created_at", { ascending: false });
       if (err) throw err;
-      setAppointments((data ?? []) as AppointmentRequest[]);
+      setAppointments((data ?? []) as AppointmentSummary[]);
     } catch {
       setError("Failed to load appointments.");
     } finally {
@@ -210,20 +201,18 @@ export default function AdminBlogPage() {
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-100">
                     <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Patient</th>
-                    <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Contact</th>
-                    <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Service</th>
-                    <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Preferred Date</th>
-                    <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Time</th>
+                    <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Requested Date</th>
                     <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Submitted</th>
                     <th className="text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Clinic Email</th>
+                    <th className="text-right px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide">Details</th>
                   </tr>
                 </thead>
                 <tbody>
                   {loadingAppts ? (
-                    [...Array(5)].map((_, i) => <SkeletonRow key={i} />)
+                    [...Array(5)].map((_, i) => <SkeletonRow key={i} cols={5} />)
                   ) : visibleAppointments.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="px-4 py-10 text-center text-sm text-gray-400">
+                      <td colSpan={5} className="px-4 py-10 text-center text-sm text-gray-400">
                         {apptFilter === "attention" ? "Every appointment request has been emailed to the clinic." : "No appointment requests yet."}
                       </td>
                     </tr>
@@ -233,11 +222,6 @@ export default function AdminBlogPage() {
                         <td className="px-4 py-3 font-medium text-gray-800">
                           {appt.first_name} {appt.last_name}
                         </td>
-                        <td className="px-4 py-3 text-gray-500">
-                          <div>{appt.email}</div>
-                          <div className="text-xs text-gray-400">{appt.phone}</div>
-                        </td>
-                        <td className="px-4 py-3 text-gray-600">{appt.service ?? "—"}</td>
                         <td className="px-4 py-3">
                           {appt.preferred_date ? (
                             <span className="flex items-center gap-1 text-gray-600">
@@ -245,14 +229,6 @@ export default function AdminBlogPage() {
                               {new Date(appt.preferred_date + "T00:00:00").toLocaleDateString("en-CA", {
                                 month: "short", day: "numeric", year: "numeric"
                               })}
-                            </span>
-                          ) : "—"}
-                        </td>
-                        <td className="px-4 py-3">
-                          {appt.preferred_time ? (
-                            <span className="flex items-center gap-1 text-gray-600">
-                              <Clock size={12} className="text-teal-500" />
-                              {appt.preferred_time}
                             </span>
                           ) : "—"}
                         </td>
@@ -269,6 +245,15 @@ export default function AdminBlogPage() {
                             error={appt.email_error}
                             onChange={(s, e) => updateApptEmail(appt.id, s, e)}
                           />
+                        </td>
+                        <td className="px-4 py-3 text-right">
+                          <button
+                            onClick={() => setOpenAppt(appt)}
+                            className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 border border-blue-100 bg-blue-50/50 px-3 py-1.5 rounded-lg hover:bg-blue-50 hover:border-blue-200 transition-colors"
+                          >
+                            <Eye size={13} />
+                            Open
+                          </button>
                         </td>
                       </tr>
                     ))
@@ -289,7 +274,15 @@ export default function AdminBlogPage() {
                 {publishedPosts} published · {totalViews} views
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              <Link
+                to="/admin/access-log"
+                className="flex items-center gap-2 border border-gray-200 text-gray-600 text-sm font-medium px-3 py-2 rounded-xl hover:bg-gray-50 transition-colors"
+                title="Who opened patient records"
+              >
+                <ShieldCheck size={14} className="text-teal-500" />
+                Access Log
+              </Link>
               <Link
                 to="/admin/patient-forms"
                 className="flex items-center gap-2 border border-gray-200 text-gray-600 text-sm font-medium px-3 py-2 rounded-xl hover:bg-gray-50 transition-colors"
@@ -453,6 +446,15 @@ export default function AdminBlogPage() {
           </div>
         </section>
       </main>
+
+      {openAppt && (
+        <AppointmentDetailModal
+          id={openAppt.id}
+          name={`${openAppt.first_name} ${openAppt.last_name}`}
+          submittedAt={openAppt.created_at}
+          onClose={() => setOpenAppt(null)}
+        />
+      )}
 
       {/* Delete Confirmation Modal */}
       {deleteConfirm && (

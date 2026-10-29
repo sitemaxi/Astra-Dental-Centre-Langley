@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader2, AlertCircle, Lock } from "lucide-react";
 import { supabase } from "../lib/supabase";
+import { isCurrentUserAdmin } from "../lib/adminAuth";
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
@@ -14,12 +15,25 @@ export default function AdminLoginPage() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
-    setLoading(false);
-    if (authError) {
+    const { data, error: authError } = await supabase.auth.signInWithPassword({ email, password });
+    if (authError || !data.user) {
+      setLoading(false);
       setError("Invalid email or password. Please try again.");
       return;
     }
+    let allowed = false;
+    try {
+      allowed = await isCurrentUserAdmin(data.user.id);
+    } catch {
+      allowed = false;
+    }
+    if (!allowed) {
+      await supabase.auth.signOut();
+      setLoading(false);
+      setError("Not authorised. This account does not have admin access.");
+      return;
+    }
+    setLoading(false);
     navigate("/admin/blog");
   }
 

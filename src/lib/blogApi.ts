@@ -1,4 +1,9 @@
 import { supabase } from "./supabase";
+import { sanitizeBlogHtml } from "./sanitize";
+
+function withCleanContent<T extends { content?: string | null }>(data: T): T {
+  return typeof data.content === "string" ? { ...data, content: sanitizeBlogHtml(data.content) } : data;
+}
 
 export interface BlogPost {
   id: string;
@@ -75,7 +80,7 @@ export async function getPostById(id: string): Promise<BlogPost | null> {
 export async function createPost(data: BlogPostInsert): Promise<BlogPost> {
   const { data: post, error } = await supabase
     .from("blog_posts")
-    .insert(data)
+    .insert(withCleanContent(data))
     .select()
     .single();
   if (error) throw error;
@@ -85,7 +90,7 @@ export async function createPost(data: BlogPostInsert): Promise<BlogPost> {
 export async function updatePost(id: string, data: BlogPostUpdate): Promise<BlogPost> {
   const { data: post, error } = await supabase
     .from("blog_posts")
-    .update(data)
+    .update(withCleanContent(data))
     .eq("id", id)
     .select()
     .single();

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useSearchParams, Link, useNavigate } from "react-router-dom";
 import { resolveInternalHref } from "../lib/internalLinks";
+import { sanitizeBlogHtml } from "../lib/sanitize";
 import SEOHead from "../components/SEOHead";
 import { ArticleSchema, BreadcrumbSchema } from "../components/SchemaMarkup";
 import {
@@ -221,7 +222,7 @@ export default function BlogPostPage() {
               navigate(internalPath);
             }
           }}
-          dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
+          dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(post.content) }}
         />
 
         {/* Tags */}

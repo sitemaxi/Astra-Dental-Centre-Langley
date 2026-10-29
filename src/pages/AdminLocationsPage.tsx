@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   ArrowLeft, MapPin, Sparkles, Loader2, AlertCircle, CheckCircle2,
   Image as ImageIcon, RefreshCw, Upload, Trash2, Home,
@@ -74,7 +74,6 @@ function ImageUploadButton({
 }
 
 export default function AdminLocationsPage() {
-  const navigate = useNavigate();
   const [locations, setLocations] = useState<LocationHeroImage[]>([]);
   const [siteImages, setSiteImages] = useState<SiteImage[]>([]);
   const [loading, setLoading] = useState(true);
@@ -84,12 +83,6 @@ export default function AdminLocationsPage() {
   const [uploading, setUploading] = useState<string | null>(null);
   const [successSlug, setSuccessSlug] = useState<string | null>(null);
   const [error, setError] = useState<string>("");
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (!data.session) navigate("/admin/login");
-    });
-  }, [navigate]);
 
   useEffect(() => {
     loadAll();

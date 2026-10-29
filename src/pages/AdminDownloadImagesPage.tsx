@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowLeft, Download, Loader2, AlertCircle, CheckCircle, Image as ImageIcon } from "lucide-react";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
@@ -94,18 +94,11 @@ const FOLDER_LABELS: Record<string, string> = {
 type DownloadState = "idle" | "loading" | "downloading" | "done" | "error";
 
 export default function AdminDownloadImagesPage() {
-  const navigate = useNavigate();
   const [images, setImages] = useState<ImageEntry[]>([]);
   const [loadState, setLoadState] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [downloadState, setDownloadState] = useState<DownloadState>("idle");
   const [progress, setProgress] = useState(0);
   const [errorMsg, setErrorMsg] = useState("");
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (!data.session) navigate("/admin/login");
-    });
-  }, [navigate]);
 
   useEffect(() => {
     setLoadState("loading");
